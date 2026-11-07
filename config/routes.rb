@@ -13,9 +13,16 @@ Rails.application.routes.draw do
     resources :riders, only: %i[index show new create] do
       post :invite, on: :member
     end
+    resources :events do
+      resources :categories, only: %i[create destroy]
+      resources :registrations, only: %i[create update destroy] do
+        patch :check_in, on: :member
+      end
+    end
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root "home#index"
+  get "start" => "home#index", as: :start
+  root "pages#home"
 end

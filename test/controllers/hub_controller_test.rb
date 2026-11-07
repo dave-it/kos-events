@@ -9,6 +9,12 @@ class HubControllerTest < ActionDispatch::IntegrationTest
     assert_select "dd", text: "Anna Fast"
   end
 
+  test "zeigt eigene Anmeldungen" do
+    get hub_path
+    assert_select "li", /Summer Race/
+    assert_select "li", /Nr\. 7/
+  end
+
   test "Profil aktualisieren" do
     patch hub_path, params: { rider: { nickname: "Flash", nation: "DE" } }
     assert_redirected_to hub_path

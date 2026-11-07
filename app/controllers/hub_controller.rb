@@ -4,6 +4,7 @@ class HubController < ApplicationController
 
   def show
     @rider = current_user.rider
+    @registrations = @rider.registrations.includes(:event, :category).joins(:event).order("events.starts_at DESC")
   end
 
   def edit

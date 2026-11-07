@@ -1,0 +1,14 @@
+pro:
+  event: summer
+  name: Pro Men
+  position: 1
+
+women:
+  event: summer
+  name: Women
+  position: 2
+  female: true
+
+other_event_cat:
+  event: draft
+  name: Open

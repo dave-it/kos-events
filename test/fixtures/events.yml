@@ -1,0 +1,11 @@
+summer:
+  name: Summer Race
+  location: Innsbruck
+  description: Sommerevent
+  starts_at: <%= 30.days.from_now.to_fs(:db) %>
+  published: true
+
+draft:
+  name: Entwurf Cup
+  starts_at: <%= 60.days.from_now.to_fs(:db) %>
+  published: false

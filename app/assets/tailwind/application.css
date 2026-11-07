@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0b0c;
+  --color-ink-soft: #17181a;
+  --color-ice: #e9f2f8;
+  --color-signal: #d6202b;
+  --color-signal-dark: #b01a23;
+  --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+}

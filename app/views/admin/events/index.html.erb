@@ -1,0 +1,21 @@
+<div class="flex items-center justify-between">
+  <h1 class="font-bold text-3xl">Events</h1>
+  <div class="flex gap-3 items-center">
+    <%= link_to "Fahrer", admin_riders_path, class: "underline" %>
+    <%= link_to "Neues Event", new_admin_event_path, class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+  </div>
+</div>
+<table class="mt-6 w-full bg-white rounded-lg border border-gray-200 text-sm">
+  <thead class="text-left text-gray-500"><tr><th class="p-3">Name</th><th class="p-3">Datum</th><th class="p-3">Ort</th><th class="p-3">Status</th></tr></thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr class="border-t border-gray-100">
+        <td class="p-3"><%= link_to event.name, admin_event_path(event), class: "text-blue-600 underline" %></td>
+        <td class="p-3"><%= l event.starts_at.to_date %></td>
+        <td class="p-3"><%= event.location %></td>
+        <td class="p-3"><%= event.published? ? "Veröffentlicht" : "Entwurf" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @events.empty? %><p class="mt-4 text-gray-500">Noch keine Events.</p><% end %>

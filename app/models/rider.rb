@@ -1,6 +1,7 @@
 class Rider < ApplicationRecord
   belongs_to :user, optional: true
   has_many :invitations, dependent: :destroy
+  has_many :registrations, dependent: :restrict_with_error
 
   normalizes :email, with: ->(e) { e.strip.downcase }
 

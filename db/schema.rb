@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_07_210000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_07_211725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "name", null: false
+    t.integer "position", default: 0, null: false
+    t.boolean "female", default: false, null: false
+    t.boolean "juniors", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id", "name"], name: "index_categories_on_event_id_and_name", unique: true
+    t.index ["event_id"], name: "index_categories_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "location"
+    t.text "description"
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at"
+    t.boolean "published", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["published"], name: "index_events_on_published"
+    t.index ["starts_at"], name: "index_events_on_starts_at"
+  end
 
   create_table "invitations", force: :cascade do |t|
     t.bigint "rider_id", null: false
@@ -26,6 +51,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_210000) do
     t.index ["invited_by_id"], name: "index_invitations_on_invited_by_id"
     t.index ["rider_id"], name: "index_invitations_on_rider_id"
     t.index ["token"], name: "index_invitations_on_token", unique: true
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "category_id", null: false
+    t.bigint "rider_id", null: false
+    t.integer "start_number"
+    t.datetime "waiver_signed_at"
+    t.datetime "checked_in_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_registrations_on_category_id"
+    t.index ["event_id", "rider_id"], name: "index_registrations_on_event_id_and_rider_id", unique: true
+    t.index ["event_id", "start_number"], name: "index_registrations_on_event_id_and_start_number", unique: true
+    t.index ["event_id"], name: "index_registrations_on_event_id"
+    t.index ["rider_id"], name: "index_registrations_on_rider_id"
   end
 
   create_table "riders", force: :cascade do |t|
@@ -67,8 +108,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_210000) do
     t.index ["role"], name: "index_users_on_role"
   end
 
+  add_foreign_key "categories", "events"
   add_foreign_key "invitations", "riders"
   add_foreign_key "invitations", "users", column: "invited_by_id"
+  add_foreign_key "registrations", "categories"
+  add_foreign_key "registrations", "events"
+  add_foreign_key "registrations", "riders"
   add_foreign_key "riders", "users"
   add_foreign_key "sessions", "users"
 end

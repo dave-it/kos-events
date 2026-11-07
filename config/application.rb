@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module KosEvents
   class Application < Rails::Application
+    config.i18n.default_locale = :de
+    config.i18n.available_locales = %i[de en]
+    config.time_zone = "Vienna"
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
