@@ -20,4 +20,22 @@ class HubControllerTest < ActionDispatch::IntegrationTest
     assert_equal "anna@example.com", riders(:anna).reload.email
     assert_equal users(:rider_user), riders(:anna).user
   end
+
+  test "Profil ist standardmäßig nicht öffentlich" do
+    assert_not riders(:anna).public_profile?
+    assert_not_includes Rider.publicly_visible, riders(:anna)
+  end
+
+  test "Zustimmung wird mit Zeitpunkt gespeichert und kann widerrufen werden" do
+    patch hub_path, params: { rider: { public_profile: "1" } }
+    anna = riders(:anna).reload
+    assert anna.public_profile?
+    assert_not_nil anna.public_profile_consented_at
+    assert_includes Rider.publicly_visible, anna
+
+    patch hub_path, params: { rider: { public_profile: "0" } }
+    anna.reload
+    assert_not anna.public_profile?
+    assert_nil anna.public_profile_consented_at
+  end
 end

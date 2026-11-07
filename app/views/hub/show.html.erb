@@ -12,6 +12,7 @@
     <dt class="text-gray-500">Nation</dt><dd><%= @rider.nation.presence || "–" %></dd>
     <dt class="text-gray-500">Geburtstag</dt><dd><%= @rider.birthday ? l(@rider.birthday) : "–" %></dd>
     <dt class="text-gray-500">Team / Organisation</dt><dd><%= @rider.organization.presence || "–" %></dd>
+    <dt class="text-gray-500">Öffentliches Profil</dt><dd><%= @rider.public_profile? ? "Ja" : "Nein" %></dd>
   </dl>
 </section>
 

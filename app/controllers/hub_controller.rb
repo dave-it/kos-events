@@ -21,6 +21,6 @@ class HubController < ApplicationController
 
   private
     def profile_params
-      params.expect(rider: %i[firstname lastname nickname nation birthday organization info])
+      params.expect(rider: %i[firstname lastname nickname nation birthday organization info public_profile])
     end
 end

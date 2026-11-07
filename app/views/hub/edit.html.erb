@@ -18,6 +18,12 @@
     <%= form.label :info, "Über mich", class: "text-sm text-gray-600" %>
     <%= form.text_area :info, rows: 4, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
   </div>
+  <div class="my-6 flex items-start gap-3">
+    <%= form.check_box :public_profile, class: "mt-1" %>
+    <%= form.label :public_profile, class: "text-sm" do %>
+      Meine Profilseite öffentlich anzeigen (zusätzlich Team und Infos). Name und Nation erscheinen in den Ergebnissen immer; unter 18 nur mit Zustimmung, sonst nur Initialen. E-Mail und Geburtstag bleiben privat. Du kannst das jederzeit widerrufen.
+    <% end %>
+  </div>
   <%= form.submit "Speichern", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
   <%= link_to "Abbrechen", hub_path, class: "ml-3 underline" %>
 <% end %>
