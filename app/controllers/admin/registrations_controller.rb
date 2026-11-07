@@ -6,7 +6,7 @@ module Admin
     def create
       registration = @event.registrations.new(registration_params)
       if registration.save
-        redirect_to admin_event_path(@event), notice: "Fahrer angemeldet."
+        redirect_to admin_event_path(@event), notice: t("flash.registrations.created")
       else
         redirect_to admin_event_path(@event), alert: registration.errors.full_messages.to_sentence
       end
@@ -15,7 +15,7 @@ module Admin
     def update
       registration = @event.registrations.find(params[:id])
       if registration.update(params.expect(registration: [ :start_number ]))
-        redirect_to admin_event_path(@event), notice: "Startnummer gespeichert."
+        redirect_to admin_event_path(@event), notice: t("flash.registrations.number_saved")
       else
         redirect_to admin_event_path(@event), alert: registration.errors.full_messages.to_sentence
       end
@@ -24,12 +24,12 @@ module Admin
     def check_in
       registration = @event.registrations.find(params[:id])
       registration.update!(checked_in_at: registration.checked_in? ? nil : Time.current)
-      redirect_to admin_event_path(@event), notice: registration.checked_in? ? "Eingecheckt." : "Check-in zurückgenommen."
+      redirect_to admin_event_path(@event), notice: registration.checked_in? ? t("flash.registrations.checked_in") : t("flash.registrations.check_in_undone")
     end
 
     def destroy
       @event.registrations.find(params[:id]).destroy
-      redirect_to admin_event_path(@event), notice: "Anmeldung entfernt.", status: :see_other
+      redirect_to admin_event_path(@event), notice: t("flash.registrations.removed"), status: :see_other
     end
 
     private

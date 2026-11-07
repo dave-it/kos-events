@@ -12,6 +12,6 @@ class Event < ApplicationRecord
 
   private
     def ends_after_start
-      errors.add(:ends_at, "muss nach dem Beginn liegen") if ends_at && starts_at && ends_at < starts_at
+      errors.add(:ends_at, :after_start) if ends_at && starts_at && ends_at < starts_at
     end
 end

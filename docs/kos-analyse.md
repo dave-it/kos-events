@@ -9,10 +9,10 @@ Event-Management für Rennen mit Heats (Gates, Zeitfahren/Time Trials, Finals, L
 | Altes Model | Bedeutung | Neu |
 |---|---|---|
 | User | Admin/Veranstalter-Login (has_secure_password, `admin`, `accesslevel`) | **Ersetzen** durch Rails-8-Auth + Rollen (staff, rider) |
-| Rider | Fahrerstamm (Name, Nation, Geburtstag, E-Mail, ATSX-Punkte, Lizenz) | **Übernehmen**, bekommt Login = Rider Hub |
+| Rider | Fahrerstamm (Name, Nation, Geburtstag, E-Mail, ATSX-Punkte, Lizenz) | **Übernehmen**, bekommt Login = Fahrerlager (Rider Hub) |
 | Event | Veranstaltung, Live-Pointer (current/previous heat, tt pointer) | Übernehmen, Pointer als Integer-FKs statt Strings |
 | Category | Klasse pro Event, Heat-Konfiguration (heatsize, lcq, small_final, …) | Übernehmen |
-| Eventrider | Anmeldung Fahrer ↔ Event/Kategorie (Startnr., Zeiten, Waiver, Check-in, Zahlungen) | Übernehmen (zentral für Rider Hub: "meine Anmeldungen") |
+| Eventrider | Anmeldung Fahrer ↔ Event/Kategorie (Startnr., Zeiten, Waiver, Check-in, Zahlungen) | Übernehmen (zentral für Fahrerlager (Rider Hub): "meine Anmeldungen") |
 | Heat / Heatrider | Heats und Platzierungen | Übernehmen, Logik (Heat 229 Zeilen, Eventrider 300) portieren und mit Tests absichern |
 | Rundown / RundownGroup / RundownItem | Ablaufplan | Übernehmen |
 | Teamevent / Team / Teamrider / Teamheat | Team-Wettbewerb | Prüfen, ob noch gebraucht |
@@ -45,12 +45,12 @@ Schriften (Exo 2, Lato, Bebas Neue) und Logos aus `app/assets`. Das Design wird 
 ## Vorgeschlagene Reihenfolge im neuen Projekt
 1. Auth (Rails 8 Generator) + Rollen: `staff`, `rider`; Rider ↔ User verknüpfen
 2. Datenmodell: Rider, Event, Category, Eventrider, Series (mit FKs/Indizes)
-3. **Rider Hub** (Login für Fahrer): Profil, eigene Anmeldungen, Zeiten/Ergebnisse, Check-in/Waiver
+3. **Fahrerlager (Rider Hub)** (Login für Fahrer): Profil, eigene Anmeldungen, Zeiten/Ergebnisse, Check-in/Waiver
 4. Staff-Backend: Events, Kategorien, Anmeldungen, Rundown
 5. Heats/Zeitfahren/Finals-Logik portieren (mit Tests) + Live-Ansicht per Turbo Streams
 6. Öffentlicher Bereich ohne Login: Eventübersicht, Ergebnisse und Fahrerprofile (Live-Ansicht ebenfalls öffentlich)
    - Öffentlich sichtbar nur Name/Nickname, Nation, Team und Ergebnisse. Nie E-Mail oder Geburtstag, höchstens das Geburtsjahr.
-   - Entschieden: Profile sind nur öffentlich, wenn der Fahrer im Rider Hub zustimmt (Opt-in, Zeitpunkt wird gespeichert, jederzeit widerrufbar). Umgesetzt als `riders.public_profile`.
+   - Entschieden: Profile sind nur öffentlich, wenn der Fahrer im Fahrerlager (Rider Hub) zustimmt (Opt-in, Zeitpunkt wird gespeichert, jederzeit widerrufbar). Umgesetzt als `riders.public_profile`.
    - Ergebnisse: Name und Nation sind immer öffentlich, auch ohne Profil-Zustimmung (werden für Ergebnisse gebraucht). Ausnahme unter 18: ohne Zustimmung nur Initialen, keine Nation. Ohne bekannten Geburtstag gilt ein Fahrer als minderjährig. Umgesetzt in `Rider#public_name` / `#public_nation`.
    - Offen: Zustimmung bei Minderjährigen müsste eigentlich von den Erziehungsberechtigten kommen.
 7. Integrationen ATSX/Ticketteer als Jobs (Solid Queue)

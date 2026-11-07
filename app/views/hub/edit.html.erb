@@ -1,29 +1,31 @@
-<h1 class="font-bold text-3xl">Profil bearbeiten</h1>
+<h1 class="font-bold text-3xl"><%= t(".title") %></h1>
 
 <%= form_with model: @rider, url: hub_path, method: :patch, class: "mt-5" do |form| %>
   <% if @rider.errors.any? %>
-    <p class="py-2 px-3 bg-red-50 text-red-600 rounded-lg"><%= @rider.errors.full_messages.to_sentence %></p>
+    <div class="py-2 px-3 bg-red-50 text-red-600 rounded-lg"><%= @rider.errors.full_messages.to_sentence %></div>
   <% end %>
-  <% { firstname: "Vorname", lastname: "Nachname", nickname: "Nickname", nation: "Nation (z. B. DE)", organization: "Team / Organisation" }.each do |field, label| %>
+  <% %i[firstname lastname nickname nation organization].each do |field| %>
     <div class="my-4">
-      <%= form.label field, label, class: "text-sm text-gray-600" %>
+      <%= form.label field, t("riders.fields.#{field}"), class: "text-sm text-gray-600" %>
       <%= form.text_field field, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
     </div>
   <% end %>
   <div class="my-4">
-    <%= form.label :birthday, "Geburtstag", class: "text-sm text-gray-600" %>
+    <%= form.label :birthday, t("riders.fields.birthday"), class: "text-sm text-gray-600" %>
     <%= form.date_field :birthday, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="my-4">
-    <%= form.label :info, "Über mich", class: "text-sm text-gray-600" %>
+    <%= form.label :info, t(".info"), class: "text-sm text-gray-600" %>
     <%= form.text_area :info, rows: 4, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-4">
+    <%= form.label :locale, t("riders.fields.locale"), class: "text-sm text-gray-600" %>
+    <%= form.select :locale, available_locales.map { |l| [ t("shared.locale_names.#{l}"), l ] }, {}, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="my-6 flex items-start gap-3">
     <%= form.check_box :public_profile, class: "mt-1" %>
-    <%= form.label :public_profile, class: "text-sm" do %>
-      Meine Profilseite öffentlich anzeigen (zusätzlich Team und Infos). Name und Nation erscheinen in den Ergebnissen immer; unter 18 nur mit Zustimmung, sonst nur Initialen. E-Mail und Geburtstag bleiben privat. Du kannst das jederzeit widerrufen.
-    <% end %>
+    <%= form.label :public_profile, t(".public_consent"), class: "text-sm" %>
   </div>
-  <%= form.submit "Speichern", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
-  <%= link_to "Abbrechen", hub_path, class: "ml-3 underline" %>
+  <%= form.submit t(".submit"), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+  <%= link_to t("shared.cancel"), hub_path, class: "ml-3 underline" %>
 <% end %>

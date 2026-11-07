@@ -1,115 +1,113 @@
 <%# Hero %>
 <section class="relative isolate overflow-hidden">
-  <%= image_tag "landing/hero.jpg", alt: "Zwei Ice-Cross-Fahrer im Rennen bei Nacht", class: "absolute inset-0 -z-10 h-full w-full object-cover", fetchpriority: "high" %>
+  <%= image_tag "landing/hero.jpg", alt: t(".hero_alt"), class: "absolute inset-0 -z-10 h-full w-full object-cover", fetchpriority: "high" %>
   <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/50 to-ink/20"></div>
 
   <div class="mx-auto max-w-7xl px-5 pt-40 pb-16 md:pt-56">
-    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Ice Cross Austria</p>
+    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-white/70"><%= t("public.brand") %></p>
     <h1 class="mt-4 max-w-4xl font-display text-6xl leading-[0.95] uppercase sm:text-7xl md:text-8xl">
-      Mach mit beim schnellsten Sport auf Eislaufschuhen
+      <%= t(".headline") %>
     </h1>
     <div class="mt-8 flex flex-wrap gap-3">
-      <a href="#mitmachen" class="rounded bg-signal hover:bg-signal-dark px-6 py-3 font-semibold">Ich will mitfahren</a>
-      <a href="#sport" class="rounded border border-white/40 hover:bg-white/10 px-6 py-3 font-semibold">Was ist Ice Cross?</a>
+      <a href="#mitmachen" class="rounded bg-signal hover:bg-signal-dark px-6 py-3 font-semibold"><%= t(".cta_ride") %></a>
+      <a href="#sport" class="rounded border border-white/40 hover:bg-white/10 px-6 py-3 font-semibold"><%= t(".cta_what") %></a>
     </div>
   </div>
 </section>
 
-<%# Nächstes Event + Countdown %>
+<%# Next event %>
 <section id="event" class="bg-signal scroll-mt-16">
-  <div class="mx-auto max-w-7xl px-5 py-8 grid gap-6 md:grid-cols-[1fr_auto_auto] md:items-center">
+  <div class="mx-auto max-w-7xl px-5 py-8 grid gap-6 md:grid-cols-[auto_1fr_auto] md:items-center">
     <% if @next_event %>
+      <% days_left = [ (@next_event.starts_at.to_date - Date.current).to_i, 0 ].max %>
+      <div class="flex items-center gap-4 md:pr-6 md:border-r md:border-white/30" aria-hidden="true">
+        <div class="font-display text-7xl leading-none"><%= @next_event.starts_at.day %></div>
+        <div class="font-display text-2xl uppercase leading-tight">
+          <%= l(@next_event.starts_at.to_date, format: "%b") %><br><%= @next_event.starts_at.year %>
+        </div>
+      </div>
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/80">Nächstes Event</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/80"><%= t("public.nav.event") %></p>
         <h2 class="mt-1 font-display text-4xl uppercase md:text-5xl"><%= @next_event.name %></h2>
         <p class="mt-1 text-white/90">
           <%= l @next_event.starts_at.to_date, format: :long %><%= " · #{@next_event.location}" if @next_event.location.present? %>
         </p>
+        <p class="mt-2 inline-block rounded-full bg-ink px-3 py-1 text-sm font-semibold"><%= t(".days_left", count: days_left) %></p>
       </div>
-      <div data-controller="countdown" data-countdown-to-value="<%= @next_event.starts_at.iso8601 %>" class="flex gap-5" aria-label="Countdown bis zum Event">
-        <% { days: "Tage", hours: "Std", minutes: "Min", seconds: "Sek" }.each do |key, label| %>
-          <div class="text-center">
-            <div data-countdown-target="<%= key %>" class="font-display text-5xl tabular-nums leading-none">00</div>
-            <div class="mt-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white/80"><%= label %></div>
-          </div>
-        <% end %>
-      </div>
-      <%= link_to "Zum Fahrer-Login", new_session_path, class: "rounded bg-ink hover:bg-ink-soft px-6 py-3 font-semibold text-center" %>
+      <%= link_to t(".to_login"), new_session_path, class: "rounded bg-ink hover:bg-ink-soft px-6 py-3 font-semibold text-center" %>
     <% else %>
       <div class="md:col-span-3">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/80">Nächstes Event</p>
-        <h2 class="mt-1 font-display text-4xl uppercase md:text-5xl">Termine folgen</h2>
-        <p class="mt-1 text-white/90">Sobald das nächste Event feststeht, findest du es hier.</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/80"><%= t("public.nav.event") %></p>
+        <h2 class="mt-1 font-display text-4xl uppercase md:text-5xl"><%= t(".no_event_title") %></h2>
+        <p class="mt-1 text-white/90"><%= t(".no_event_text") %></p>
       </div>
     <% end %>
   </div>
 </section>
 
-<%# Zuschauen oder Mitfahren %>
+<%# Watch or ride %>
 <section id="mitmachen" class="mx-auto max-w-7xl px-5 py-20 scroll-mt-16">
-  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal">Wähle deine Seite</p>
-  <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl">Zuschauen oder mitfahren</h2>
+  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".pick_side") %></p>
+  <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".watch_or_ride") %></h2>
   <div class="mt-10 grid gap-6 md:grid-cols-2">
     <article class="rounded-lg bg-ink-soft border border-white/10 p-8">
-      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60">Fans · Familien · Besucher</p>
-      <h3 class="mt-3 font-display text-5xl uppercase">Zuschauen</h3>
-      <p class="mt-4 text-white/80">Erlebe die spektakulärsten Rennen auf Eis aus nächster Nähe. Vier Fahrer, ein Track, und die ersten zwei kommen weiter.</p>
-      <a href="#event" class="mt-6 inline-block font-semibold text-signal hover:underline">Nächstes Event ansehen →</a>
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60"><%= t(".watch.kicker") %></p>
+      <h3 class="mt-3 font-display text-5xl uppercase"><%= t(".watch.title") %></h3>
+      <p class="mt-4 text-white/80"><%= t(".watch.text") %></p>
+      <a href="#event" class="mt-6 inline-block font-semibold text-signal hover:underline"><%= t(".watch.link") %></a>
     </article>
     <article class="rounded-lg bg-white text-ink p-8">
-      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-ink/60">Fahrer · alle Levels</p>
-      <h3 class="mt-3 font-display text-5xl uppercase">Mitfahren</h3>
-      <p class="mt-4 text-ink/80">Du willst Ice Cross ausprobieren oder beim Weltcup mitfahren? Fahrer bekommen ihren Zugang per Einladung und verwalten ihr Profil und ihre Anmeldungen im Rider Hub.</p>
-      <%= link_to "Zum Fahrer-Login →", new_session_path, class: "mt-6 inline-block rounded bg-signal hover:bg-signal-dark px-5 py-3 font-semibold text-white" %>
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-ink/60"><%= t(".ride.kicker") %></p>
+      <h3 class="mt-3 font-display text-5xl uppercase"><%= t(".ride.title") %></h3>
+      <p class="mt-4 text-ink/80"><%= t(".ride.text") %></p>
+      <%= link_to t(".ride.link"), new_session_path, class: "mt-6 inline-block rounded bg-signal hover:bg-signal-dark px-5 py-3 font-semibold text-white" %>
     </article>
   </div>
 </section>
 
-<%# Der Sport %>
+<%# The sport %>
 <section id="sport" class="bg-ink-soft scroll-mt-16">
   <div class="mx-auto max-w-7xl px-5 py-20 grid gap-12 lg:grid-cols-2 lg:items-center">
     <div>
-      <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal">Neu bei Ice Cross?</p>
-      <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl">Vier Fahrer. Eine Eisbahn.</h2>
-      <p class="mt-5 text-white/80 max-w-xl">Beim Ice Cross rasen Fahrer auf Schlittschuhen Seite an Seite durch Kurven, Sprünge und Wellen. Kurz, laut und leicht zu verstehen, auch beim ersten Mal.</p>
+      <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".sport.kicker") %></p>
+      <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".sport.title") %></h2>
+      <p class="mt-5 text-white/80 max-w-xl"><%= t(".sport.text") %></p>
       <ol class="mt-8 space-y-6">
-        <% [ [ "01", "Start", "Vier Fahrer stehen nebeneinander am Startgate." ],
-              [ "02", "Rennen", "Kurven, Sprünge und Wellen, dicht an dicht bis ins Ziel." ],
-              [ "03", "Weiter", "Die ersten zwei jedes Heats kommen eine Runde weiter, bis zum Finale." ] ].each do |nr, title, text| %>
+        <% %w[start race advance].each_with_index do |key, i| %>
           <li class="flex gap-5">
-            <span class="font-display text-4xl text-signal leading-none"><%= nr %></span>
+            <span class="font-display text-4xl text-signal leading-none">0<%= i + 1 %></span>
             <div>
-              <h3 class="font-display text-3xl uppercase leading-none"><%= title %></h3>
-              <p class="mt-1 text-white/70"><%= text %></p>
+              <h3 class="font-display text-3xl uppercase leading-none"><%= t(".sport.steps.#{key}.title") %></h3>
+              <p class="mt-1 text-white/70"><%= t(".sport.steps.#{key}.text") %></p>
             </div>
           </li>
         <% end %>
       </ol>
     </div>
-    <%= image_tag "landing/race-3.jpg", alt: "Fahrerinnen am Startgate", class: "w-full rounded-lg object-cover aspect-[4/3]", loading: "lazy" %>
+    <%= image_tag "landing/race-3.jpg", alt: t(".sport.image_alt"), class: "w-full rounded-lg object-cover aspect-[4/3]", loading: "lazy" %>
   </div>
 </section>
 
-<%# Galerie %>
+<%# Gallery %>
 <section id="galerie" class="mx-auto max-w-7xl px-5 py-20 scroll-mt-16">
-  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal">Speed + Impact</p>
-  <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl">Race Day</h2>
+  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".gallery.kicker") %></p>
+  <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".gallery.title") %></h2>
   <div class="mt-10 grid gap-3 grid-cols-2 md:grid-cols-3">
-    <% [ [ "start.jpg", "Dreikampf um die erste Kurve", "col-span-2 md:col-span-2 md:row-span-2" ],
-         [ "track.jpg", "Fahrer in der Welle", "" ],
-         [ "race-1.jpg", "Rennszene", "" ],
-         [ "race-2.jpg", "Rennszene", "" ],
-         [ "race-4.jpg", "Rennszene bei Nacht", "" ] ].each do |file, alt, span| %>
-      <%= image_tag "landing/#{file}", alt: alt, loading: "lazy", class: "w-full h-full object-cover rounded-lg aspect-[4/3] #{span}" %>
+    <% [ [ "start.jpg", "start", "col-span-2 md:col-span-2 md:row-span-2" ],
+         [ "track.jpg", "track", "" ],
+         [ "race-1.jpg", "race", "" ],
+         [ "race-2.jpg", "race", "" ],
+         [ "race-4.jpg", "night", "" ] ].each do |file, alt_key, span| %>
+      <%= image_tag "landing/#{file}", alt: t(".gallery.alt.#{alt_key}"), loading: "lazy", class: "w-full h-full object-cover rounded-lg aspect-[4/3] #{span}" %>
     <% end %>
   </div>
 </section>
 
-<%# Ergebnisse und Profile (Platzhalter bis die Daten importiert sind) %>
+<%# Results and profiles (placeholder until data is imported) %>
 <section class="border-t border-white/10 bg-ink-soft">
   <div class="mx-auto max-w-7xl px-5 py-20 text-center">
-    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal">Bald hier</p>
-    <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl">Ergebnisse und Fahrerprofile</h2>
-    <p class="mx-auto mt-4 max-w-2xl text-white/70">Alle Rennergebnisse und die Profile der Fahrer findest du in Kürze auf dieser Seite.</p>
+    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".results.kicker") %></p>
+    <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".results.title") %></h2>
+    <p class="mx-auto mt-4 max-w-2xl text-white/70"><%= t(".results.text") %></p>
   </div>
 </section>

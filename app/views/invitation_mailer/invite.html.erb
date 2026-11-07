@@ -1,4 +1,4 @@
-<p>Hallo <%= @rider.firstname %>,</p>
-<p>du wurdest zum Rider Hub eingeladen.</p>
-<p><%= link_to "Passwort festlegen", invitation_url(token: @invitation.token) %></p>
-<p>Der Link ist bis zum <%= l @invitation.expires_at.to_date %> gültig.</p>
+<p><%= t(".greeting", name: @rider.firstname) %></p>
+<p><%= t(".body") %></p>
+<p><%= link_to t(".link"), invitation_url(token: @invitation.token) %></p>
+<p><%= t(".expires", date: l(@invitation.expires_at.to_date)) %></p>

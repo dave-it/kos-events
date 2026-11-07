@@ -6,6 +6,7 @@ class Rider < ApplicationRecord
   normalizes :email, with: ->(e) { e.strip.downcase }
 
   validates :firstname, :lastname, presence: true
+  validates :locale, inclusion: { in: ->(_) { I18n.available_locales.map(&:to_s) } }
   validates :email, presence: true, uniqueness: true,
                     format: { with: URI::MailTo::EMAIL_REGEXP }
 

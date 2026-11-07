@@ -1,33 +1,33 @@
 <%= form_with model: [:admin, event], class: "mt-5" do |form| %>
   <% if event.errors.any? %>
-    <p class="py-2 px-3 bg-red-50 text-red-600 rounded-lg"><%= event.errors.full_messages.to_sentence %></p>
+    <div class="py-2 px-3 bg-red-50 text-red-600 rounded-lg"><%= event.errors.full_messages.to_sentence %></div>
   <% end %>
   <div class="my-4">
-    <%= form.label :name, "Name", class: "text-sm text-gray-600" %>
+    <%= form.label :name, t(".name"), class: "text-sm text-gray-600" %>
     <%= form.text_field :name, required: true, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
   </div>
   <div class="my-4">
-    <%= form.label :location, "Ort", class: "text-sm text-gray-600" %>
+    <%= form.label :location, t(".location"), class: "text-sm text-gray-600" %>
     <%= form.text_field :location, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
   </div>
   <div class="my-4 grid grid-cols-2 gap-4">
     <div>
-      <%= form.label :starts_at, "Beginn", class: "text-sm text-gray-600" %>
+      <%= form.label :starts_at, t(".starts_at"), class: "text-sm text-gray-600" %>
       <%= form.datetime_field :starts_at, required: true, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
     </div>
     <div>
-      <%= form.label :ends_at, "Ende", class: "text-sm text-gray-600" %>
+      <%= form.label :ends_at, t(".ends_at"), class: "text-sm text-gray-600" %>
       <%= form.datetime_field :ends_at, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
     </div>
   </div>
   <div class="my-4">
-    <%= form.label :description, "Beschreibung", class: "text-sm text-gray-600" %>
+    <%= form.label :description, t(".description"), class: "text-sm text-gray-600" %>
     <%= form.text_area :description, rows: 4, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
   </div>
   <div class="my-4 flex items-center gap-2">
     <%= form.check_box :published %>
-    <%= form.label :published, "Veröffentlicht (öffentlich sichtbar)", class: "text-sm" %>
+    <%= form.label :published, t(".published"), class: "text-sm" %>
   </div>
   <%= form.submit class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
-  <%= link_to "Abbrechen", event.persisted? ? admin_event_path(event) : admin_events_path, class: "ml-3 underline" %>
+  <%= link_to t("shared.cancel"), event.persisted? ? admin_event_path(event) : admin_events_path, class: "ml-3 underline" %>
 <% end %>

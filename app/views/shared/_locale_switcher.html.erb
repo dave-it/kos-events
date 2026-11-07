@@ -1,0 +1,7 @@
+<div class="flex items-center gap-1 text-xs font-semibold" aria-label="<%= t("shared.language") %>">
+  <% available_locales.each do |loc| %>
+    <%= button_to loc.upcase, locale_path(loc), method: :patch,
+          class: "px-1.5 py-0.5 rounded cursor-pointer #{I18n.locale.to_s == loc ? 'bg-white text-ink' : 'text-white/70 hover:text-white'}",
+          form_class: "contents", "aria-current": (I18n.locale.to_s == loc ? "true" : nil) %>
+  <% end %>
+</div>

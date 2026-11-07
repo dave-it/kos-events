@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
     <title><%= content_for(:title) || "Kos Events" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -26,10 +26,13 @@
           <%= link_to "Kos Events", root_path, class: "font-bold" %>
           <div class="flex items-center gap-4 text-sm">
             <span class="text-gray-500"><%= current_user.email_address %></span>
-            <%= button_to "Abmelden", session_path, method: :delete, class: "underline hover:no-underline cursor-pointer" %>
+            <div class="bg-ink rounded p-0.5"><%= render "shared/locale_switcher" %></div>
+            <%= button_to t("shared.sign_out"), session_path, method: :delete, class: "underline hover:no-underline cursor-pointer" %>
           </div>
         </nav>
       </header>
+    <% else %>
+      <div class="flex justify-end px-5 pt-3"><div class="bg-ink rounded p-0.5"><%= render "shared/locale_switcher" %></div></div>
     <% end %>
 
     <main class="container mx-auto mt-10 px-5 max-w-3xl">

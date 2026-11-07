@@ -19,7 +19,7 @@ module Admin
     def create
       @event = Event.new(event_params)
       if @event.save
-        redirect_to admin_event_path(@event), notice: "Event angelegt."
+        redirect_to admin_event_path(@event), notice: t("flash.events.created")
       else
         render :new, status: :unprocessable_entity
       end
@@ -30,7 +30,7 @@ module Admin
 
     def update
       if @event.update(event_params)
-        redirect_to admin_event_path(@event), notice: "Event gespeichert."
+        redirect_to admin_event_path(@event), notice: t("flash.events.saved")
       else
         render :edit, status: :unprocessable_entity
       end
@@ -38,7 +38,7 @@ module Admin
 
     def destroy
       @event.destroy
-      redirect_to admin_events_path, notice: "Event gelöscht.", status: :see_other
+      redirect_to admin_events_path, notice: t("flash.events.deleted"), status: :see_other
     end
 
     private

@@ -6,7 +6,7 @@ module Admin
     def create
       category = @event.categories.new(category_params)
       if category.save
-        redirect_to admin_event_path(@event), notice: "Kategorie angelegt."
+        redirect_to admin_event_path(@event), notice: t("flash.categories.created")
       else
         redirect_to admin_event_path(@event), alert: category.errors.full_messages.to_sentence
       end
@@ -15,9 +15,9 @@ module Admin
     def destroy
       category = @event.categories.find(params[:id])
       if category.destroy
-        redirect_to admin_event_path(@event), notice: "Kategorie gelöscht.", status: :see_other
+        redirect_to admin_event_path(@event), notice: t("flash.categories.deleted"), status: :see_other
       else
-        redirect_to admin_event_path(@event), alert: "Kategorie hat noch Anmeldungen.", status: :see_other
+        redirect_to admin_event_path(@event), alert: t("flash.categories.has_registrations"), status: :see_other
       end
     end
 

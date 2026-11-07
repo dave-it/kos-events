@@ -1,31 +1,304 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  shared:
+    sign_out: Sign out
+    language: Language
+    "yes": "Yes"
+    "no": "No"
+    cancel: Cancel
+    back: Back
+    locale_names:
+      de: Deutsch
+      en: English
+
+  public:
+    site_title: Ice Cross Austria
+    meta_description: "Join the fastest sport on ice skates: Ice Cross in Austria."
+    home_aria: Ice Cross Austria – Home
+    brand: Ice Cross Austria
+    footer_org: Austrian Skate Cross Federation
+    nav:
+      event: Next event
+      join: Join in
+      sport: The sport
+      gallery: Gallery
+      my_area: Go to my area
+      login: Rider login
+
+  pages:
+    home:
+      hero_alt: Two ice cross riders racing at night
+      headline: Join the fastest sport on ice skates
+      cta_ride: I want to race
+      cta_what: What is Ice Cross?
+      days_left:
+        zero: Race day is today!
+        one: Starts tomorrow!
+        other: "%{count} days to go"
+      to_login: Go to rider login
+      no_event_title: Dates coming soon
+      no_event_text: As soon as the next event is set, you will find it here.
+      pick_side: Pick your side
+      watch_or_ride: Watch or race
+      watch:
+        kicker: Fans · Families · Visitors
+        title: Watch
+        text: Experience the most spectacular races on ice up close. Four riders, one track, and the first two go through.
+        link: See the next event →
+      ride:
+        kicker: Riders · all levels
+        title: Race
+        text: Want to try Ice Cross or race in the World Cup? Riders get access by invitation and manage their profile and registrations in the Paddock.
+        link: Go to rider login →
+      sport:
+        kicker: New to Ice Cross?
+        title: Four riders. One ice track.
+        text: In Ice Cross, riders race on skates side by side through turns, jumps and waves. Short, loud and easy to follow, even the first time.
+        image_alt: Riders at the start gate
+        steps:
+          start:
+            title: Start
+            text: Four riders line up side by side at the start gate.
+          race:
+            title: Race
+            text: Turns, jumps and waves, wheel to wheel all the way to the finish.
+          advance:
+            title: Go through
+            text: The first two of each heat advance to the next round, all the way to the final.
+      gallery:
+        kicker: Speed + Impact
+        title: Race Day
+        alt:
+          start: Three riders fighting for the first turn
+          track: Riders in the wave section
+          race: Race scene
+          night: Race scene at night
+      results:
+        kicker: Coming soon
+        title: Results and rider profiles
+        text: You will soon find all race results and rider profiles on this page.
+
+  sessions:
+    new:
+      title: Sign in
+      email: Email address
+      password: Password
+      submit: Sign in
+      forgot: Forgot password?
+
+  passwords:
+    new:
+      title: Forgot your password?
+      email: Email address
+      submit: Email reset instructions
+    edit:
+      title: Set a new password
+      password: New password
+      confirmation: Repeat new password
+      submit: Save
+
+  invitations:
+    show:
+      title: "Welcome, %{name}!"
+      intro: "Set a password for your Paddock access (%{email})."
+      password: Password (min. 8 characters)
+      confirmation: Repeat password
+      submit: Activate access
+
+  riders:
+    fields:
+      firstname: First name
+      lastname: Last name
+      nickname: Nickname
+      nation: Nation (e.g. AT)
+      organization: Team / organization
+      birthday: Date of birth
+      locale: Language
+
+  hub:
+    show:
+      title: Paddock
+      greeting: "Hello %{name}!"
+      profile: Your profile
+      edit: Edit
+      name: Name
+      nickname: Nickname
+      nation: Nation
+      birthday: Date of birth
+      organization: Team / organization
+      public_profile: Public profile
+      my_events: My events
+      no_registrations: No registrations yet.
+      number: "No. %{number}"
+      number_open: Start number open
+      checked_in: checked in
+    edit:
+      title: Edit profile
+      info: About me
+      public_consent: "Show my profile page publicly (additionally team and info). Name and nation always appear in results; under 18 only with consent, otherwise initials only. Email and date of birth stay private. You can withdraw this at any time."
+      submit: Save
+
+  admin:
+    nav:
+      events: Events
+      riders: Riders
+    riders:
+      index:
+        title: Riders
+        invite: Invite rider
+        name: Name
+        email: Email
+        status: Status
+        active: Active
+        invited: Invited
+        empty: No riders yet.
+      new:
+        title: Invite rider
+        email: Email (for the invitation)
+        locale: Language (of the invitation)
+        submit: Create and invite
+      show:
+        email: Email
+        access: Access
+        access_active: Active
+        access_invited: Invited, not accepted yet
+        resend: Resend invitation
+    events:
+      published: Published
+      draft: Draft
+      index:
+        title: Events
+        new: New event
+        name: Name
+        date: Date
+        location: Location
+        status: Status
+        empty: No events yet.
+      new:
+        title: New event
+      edit:
+        title: Edit event
+      form:
+        name: Name
+        location: Location
+        starts_at: Start
+        ends_at: End
+        description: Description
+        published: Published (publicly visible)
+      show:
+        edit: Edit
+        delete: Delete
+        delete_confirm: Delete event including categories and registrations?
+        location_open: Location open
+        delete_category: Delete category
+        number_short: No.
+        ok: OK
+        checked_in: Checked in ✓
+        check_in: Check in
+        remove: Remove
+        register_prompt: Register rider …
+        register: Register
+        add_category: Add category
+        category_name: Name (e.g. Pro Men)
+        women: Women
+        juniors: Juniors
+        add: Add
+        all_events: All events
+
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Save %{model}"
+      submit: Save
+
+  flash:
+    try_again_later: Please try again later.
+    sessions:
+      invalid: Wrong email address or password.
+    passwords:
+      sent: If an account with that email address exists, we have sent reset instructions.
+      reset: Your password has been reset.
+      mismatch: The passwords do not match.
+      invalid: The reset link is invalid or has expired.
+    invitations:
+      welcome: Welcome to the Paddock!
+      invalid: This invitation is invalid or has expired.
+    hub:
+      saved: Profile saved.
+    riders:
+      created: Rider created and invitation sent.
+      already_registered: This rider already has access.
+      reinvited: Invitation sent again.
+    events:
+      created: Event created.
+      saved: Event saved.
+      deleted: Event deleted.
+    categories:
+      created: Category created.
+      deleted: Category deleted.
+      has_registrations: Category still has registrations.
+    registrations:
+      created: Rider registered.
+      number_saved: Start number saved.
+      checked_in: Checked in.
+      check_in_undone: Check-in undone.
+      removed: Registration removed.
+
+  invitation_mailer:
+    invite:
+      subject: Invitation to the Paddock
+      greeting: "Hello %{name},"
+      body: you have been invited to the Paddock. Set your password here.
+      link: Set password
+      expires: "The link is valid until %{date}."
+
+  passwords_mailer:
+    reset:
+      subject: Reset your password
+      intro: You can reset your password here
+      link: password reset page
+      expires: "This link will expire in %{time}."
+
+  activerecord:
+    models:
+      event: Event
+      category: Category
+      rider: Rider
+      registration: Registration
+    attributes:
+      event:
+        name: Name
+        starts_at: Start
+        ends_at: End
+      rider:
+        firstname: First name
+        lastname: Last name
+        email: Email
+      user:
+        email_address: Email address
+        password: Password
+        password_confirmation: Password confirmation
+      category:
+        name: Name
+      registration:
+        rider: Rider
+        rider_id: Rider
+        start_number: Start number
+        category: Category
+    errors:
+      models:
+        event:
+          attributes:
+            ends_at:
+              after_start: must be after the start
+        registration:
+          attributes:
+            rider_id:
+              taken: is already registered for this event
+            category:
+              wrong_event: does not belong to this event
+        category:
+          restrict_dependent_destroy:
+            has_many: "Category still has registrations."
+        rider:
+          restrict_dependent_destroy:
+            has_many: "Rider still has registrations."

@@ -18,7 +18,7 @@ module Admin
       @rider = Rider.new(rider_params)
       if @rider.save
         send_invitation(@rider)
-        redirect_to admin_rider_path(@rider), notice: "Fahrer angelegt und Einladung verschickt."
+        redirect_to admin_rider_path(@rider), notice: t("flash.riders.created")
       else
         render :new, status: :unprocessable_entity
       end
@@ -26,10 +26,10 @@ module Admin
 
     def invite
       if @rider.registered?
-        redirect_to admin_rider_path(@rider), alert: "Fahrer hat bereits einen Zugang."
+        redirect_to admin_rider_path(@rider), alert: t("flash.riders.already_registered")
       else
         send_invitation(@rider)
-        redirect_to admin_rider_path(@rider), notice: "Einladung erneut verschickt."
+        redirect_to admin_rider_path(@rider), notice: t("flash.riders.reinvited")
       end
     end
 
@@ -42,7 +42,7 @@ module Admin
       end
 
       def rider_params
-        params.expect(rider: %i[firstname lastname email nickname nation birthday organization])
+        params.expect(rider: %i[firstname lastname email nickname nation birthday organization locale])
       end
   end
 end

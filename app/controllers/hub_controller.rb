@@ -14,7 +14,7 @@ class HubController < ApplicationController
   def update
     @rider = current_user.rider
     if @rider.update(profile_params)
-      redirect_to hub_path, notice: "Profil gespeichert."
+      redirect_to hub_path, notice: t("flash.hub.saved")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -22,6 +22,6 @@ class HubController < ApplicationController
 
   private
     def profile_params
-      params.expect(rider: %i[firstname lastname nickname nation birthday organization info public_profile])
+      params.expect(rider: %i[firstname lastname nickname nation birthday organization info public_profile locale])
     end
 end

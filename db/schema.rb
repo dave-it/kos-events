@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_07_211725) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_07_230000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -84,6 +84,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_211725) do
     t.datetime "updated_at", null: false
     t.boolean "public_profile", default: false, null: false
     t.datetime "public_profile_consented_at"
+    t.string "locale", default: "de", null: false
     t.index ["email"], name: "index_riders_on_email", unique: true
     t.index ["public_profile"], name: "index_riders_on_public_profile"
     t.index ["user_id"], name: "index_riders_on_user_id", unique: true

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resource :session
+  patch "locale/:locale" => "locales#update", as: :locale
   resources :passwords, param: :token
 
   # Einladungen (öffentlich, per Token)

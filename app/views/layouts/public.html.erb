@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<%= I18n.locale %>">
   <head>
-    <title><%= content_for(:title) || "Ice Cross Austria" %></title>
+    <title><%= content_for(:title) || t("public.site_title") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="<%= content_for(:description) || "Mach mit beim schnellsten Sport auf Eislaufschuhen: Ice Cross in Österreich." %>">
+    <meta name="description" content="<%= content_for(:description) || t("public.meta_description") %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
@@ -16,19 +16,20 @@
   <body class="bg-ink text-white antialiased">
     <header class="sticky top-0 z-30 bg-ink/95 backdrop-blur border-b border-white/10">
       <nav class="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between gap-6">
-        <%= link_to root_path, class: "shrink-0", "aria-label": "Ice Cross Austria – Startseite" do %>
-          <%= image_tag "landing/logo-white.png", alt: "Ice Cross Austria", class: "h-9 w-auto" %>
+        <%= link_to root_path, class: "shrink-0", "aria-label": t("public.home_aria") do %>
+          <%= image_tag "landing/logo-white.png", alt: t("public.brand"), class: "h-9 w-auto" %>
         <% end %>
         <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
-          <a href="#event" class="hover:text-white">Nächstes Event</a>
-          <a href="#mitmachen" class="hover:text-white">Mitmachen</a>
-          <a href="#sport" class="hover:text-white">Der Sport</a>
-          <a href="#galerie" class="hover:text-white">Galerie</a>
+          <a href="#event" class="hover:text-white"><%= t("public.nav.event") %></a>
+          <a href="#mitmachen" class="hover:text-white"><%= t("public.nav.join") %></a>
+          <a href="#sport" class="hover:text-white"><%= t("public.nav.sport") %></a>
+          <a href="#galerie" class="hover:text-white"><%= t("public.nav.gallery") %></a>
         </div>
+        <%= render "shared/locale_switcher" %>
         <% if current_user %>
-          <%= link_to "Zu meinem Bereich", start_path, class: "rounded bg-signal hover:bg-signal-dark px-4 py-2 text-sm font-semibold" %>
+          <%= link_to t("public.nav.my_area"), start_path, class: "rounded bg-signal hover:bg-signal-dark px-4 py-2 text-sm font-semibold" %>
         <% else %>
-          <%= link_to "Fahrer-Login", new_session_path, class: "rounded bg-signal hover:bg-signal-dark px-4 py-2 text-sm font-semibold" %>
+          <%= link_to t("public.nav.login"), new_session_path, class: "rounded bg-signal hover:bg-signal-dark px-4 py-2 text-sm font-semibold" %>
         <% end %>
       </nav>
     </header>
@@ -37,8 +38,8 @@
 
     <footer class="border-t border-white/10 bg-ink">
       <div class="mx-auto max-w-7xl px-5 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-white/60">
-        <%= image_tag "landing/logo-white.png", alt: "Ice Cross Austria", class: "h-8 w-auto self-start" %>
-        <p>© <%= Date.current.year %> Österreichischer Skate Cross Verband</p>
+        <%= image_tag "landing/logo-white.png", alt: t("public.brand"), class: "h-8 w-auto self-start" %>
+        <p>© <%= Date.current.year %> <%= t("public.footer_org") %></p>
       </div>
     </footer>
   </body>

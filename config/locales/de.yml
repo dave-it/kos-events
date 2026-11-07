@@ -1,0 +1,304 @@
+de:
+  shared:
+    sign_out: Abmelden
+    language: Sprache
+    "yes": "Ja"
+    "no": "Nein"
+    cancel: Abbrechen
+    back: Zurück
+    locale_names:
+      de: Deutsch
+      en: English
+
+  public:
+    site_title: Ice Cross Austria
+    meta_description: "Mach mit beim schnellsten Sport auf Eislaufschuhen: Ice Cross in Österreich."
+    home_aria: Ice Cross Austria – Startseite
+    brand: Ice Cross Austria
+    footer_org: Österreichischer Skate Cross Verband
+    nav:
+      event: Nächstes Event
+      join: Mitmachen
+      sport: Der Sport
+      gallery: Galerie
+      my_area: Zu meinem Bereich
+      login: Fahrer-Login
+
+  pages:
+    home:
+      hero_alt: Zwei Ice-Cross-Fahrer im Rennen bei Nacht
+      headline: Mach mit beim schnellsten Sport auf Eislaufschuhen
+      cta_ride: Ich will mitfahren
+      cta_what: Was ist Ice Cross?
+      days_left:
+        zero: Heute ist Renntag!
+        one: Morgen geht's los!
+        other: "Noch %{count} Tage"
+      to_login: Zum Fahrer-Login
+      no_event_title: Termine folgen
+      no_event_text: Sobald das nächste Event feststeht, findest du es hier.
+      pick_side: Wähle deine Seite
+      watch_or_ride: Zuschauen oder mitfahren
+      watch:
+        kicker: Fans · Familien · Besucher
+        title: Zuschauen
+        text: Erlebe die spektakulärsten Rennen auf Eis aus nächster Nähe. Vier Fahrer, ein Track, und die ersten zwei kommen weiter.
+        link: Nächstes Event ansehen →
+      ride:
+        kicker: Fahrer · alle Levels
+        title: Mitfahren
+        text: Du willst Ice Cross ausprobieren oder beim Weltcup mitfahren? Fahrer bekommen ihren Zugang per Einladung und verwalten ihr Profil und ihre Anmeldungen im Fahrerlager.
+        link: Zum Fahrer-Login →
+      sport:
+        kicker: Neu bei Ice Cross?
+        title: Vier Fahrer. Eine Eisbahn.
+        text: Beim Ice Cross rasen Fahrer auf Schlittschuhen Seite an Seite durch Kurven, Sprünge und Wellen. Kurz, laut und leicht zu verstehen, auch beim ersten Mal.
+        image_alt: Fahrerinnen am Startgate
+        steps:
+          start:
+            title: Start
+            text: Vier Fahrer stehen nebeneinander am Startgate.
+          race:
+            title: Rennen
+            text: Kurven, Sprünge und Wellen, dicht an dicht bis ins Ziel.
+          advance:
+            title: Weiter
+            text: Die ersten zwei jedes Heats kommen eine Runde weiter, bis zum Finale.
+      gallery:
+        kicker: Speed + Impact
+        title: Race Day
+        alt:
+          start: Dreikampf um die erste Kurve
+          track: Fahrer in der Welle
+          race: Rennszene
+          night: Rennszene bei Nacht
+      results:
+        kicker: Bald hier
+        title: Ergebnisse und Fahrerprofile
+        text: Alle Rennergebnisse und die Profile der Fahrer findest du in Kürze auf dieser Seite.
+
+  sessions:
+    new:
+      title: Anmelden
+      email: E-Mail-Adresse
+      password: Passwort
+      submit: Anmelden
+      forgot: Passwort vergessen?
+
+  passwords:
+    new:
+      title: Passwort vergessen?
+      email: E-Mail-Adresse
+      submit: Anleitung per E-Mail senden
+    edit:
+      title: Neues Passwort festlegen
+      password: Neues Passwort
+      confirmation: Neues Passwort wiederholen
+      submit: Speichern
+
+  invitations:
+    show:
+      title: "Willkommen, %{name}!"
+      intro: "Lege ein Passwort für deinen Fahrerlager-Zugang fest (%{email})."
+      password: Passwort (mind. 8 Zeichen)
+      confirmation: Passwort wiederholen
+      submit: Zugang aktivieren
+
+  riders:
+    fields:
+      firstname: Vorname
+      lastname: Nachname
+      nickname: Nickname
+      nation: Nation (z. B. AT)
+      organization: Team / Organisation
+      birthday: Geburtstag
+      locale: Sprache
+
+  hub:
+    show:
+      title: Fahrerlager
+      greeting: "Hallo %{name}!"
+      profile: Dein Profil
+      edit: Bearbeiten
+      name: Name
+      nickname: Nickname
+      nation: Nation
+      birthday: Geburtstag
+      organization: Team / Organisation
+      public_profile: Öffentliches Profil
+      my_events: Meine Events
+      no_registrations: Noch keine Anmeldungen.
+      number: "Nr. %{number}"
+      number_open: Startnummer offen
+      checked_in: eingecheckt
+    edit:
+      title: Profil bearbeiten
+      info: Über mich
+      public_consent: "Meine Profilseite öffentlich anzeigen (zusätzlich Team und Infos). Name und Nation erscheinen in den Ergebnissen immer; unter 18 nur mit Zustimmung, sonst nur Initialen. E-Mail und Geburtstag bleiben privat. Du kannst das jederzeit widerrufen."
+      submit: Speichern
+
+  admin:
+    nav:
+      events: Events
+      riders: Fahrer
+    riders:
+      index:
+        title: Fahrer
+        invite: Fahrer einladen
+        name: Name
+        email: E-Mail
+        status: Status
+        active: Aktiv
+        invited: Eingeladen
+        empty: Noch keine Fahrer.
+      new:
+        title: Fahrer einladen
+        email: E-Mail (für die Einladung)
+        locale: Sprache (der Einladung)
+        submit: Anlegen und einladen
+      show:
+        email: E-Mail
+        access: Zugang
+        access_active: Aktiv
+        access_invited: Eingeladen, noch nicht angenommen
+        resend: Einladung erneut senden
+    events:
+      published: Veröffentlicht
+      draft: Entwurf
+      index:
+        title: Events
+        new: Neues Event
+        name: Name
+        date: Datum
+        location: Ort
+        status: Status
+        empty: Noch keine Events.
+      new:
+        title: Neues Event
+      edit:
+        title: Event bearbeiten
+      form:
+        name: Name
+        location: Ort
+        starts_at: Beginn
+        ends_at: Ende
+        description: Beschreibung
+        published: Veröffentlicht (öffentlich sichtbar)
+      show:
+        edit: Bearbeiten
+        delete: Löschen
+        delete_confirm: Event samt Kategorien und Anmeldungen löschen?
+        location_open: Ort offen
+        delete_category: Kategorie löschen
+        number_short: Nr.
+        ok: OK
+        checked_in: Eingecheckt ✓
+        check_in: Einchecken
+        remove: Entfernen
+        register_prompt: Fahrer anmelden …
+        register: Anmelden
+        add_category: Kategorie hinzufügen
+        category_name: Name (z. B. Pro Men)
+        women: Frauen
+        juniors: Junioren
+        add: Hinzufügen
+        all_events: Alle Events
+
+  helpers:
+    submit:
+      create: "%{model} anlegen"
+      update: "%{model} speichern"
+      submit: Speichern
+
+  flash:
+    try_again_later: Bitte später erneut versuchen.
+    sessions:
+      invalid: E-Mail-Adresse oder Passwort stimmt nicht.
+    passwords:
+      sent: Falls ein Konto mit dieser E-Mail-Adresse existiert, haben wir eine Anleitung zum Zurücksetzen gesendet.
+      reset: Das Passwort wurde zurückgesetzt.
+      mismatch: Die Passwörter stimmen nicht überein.
+      invalid: Der Link zum Zurücksetzen ist ungültig oder abgelaufen.
+    invitations:
+      welcome: Willkommen im Fahrerlager!
+      invalid: Diese Einladung ist ungültig oder abgelaufen.
+    hub:
+      saved: Profil gespeichert.
+    riders:
+      created: Fahrer angelegt und Einladung verschickt.
+      already_registered: Fahrer hat bereits einen Zugang.
+      reinvited: Einladung erneut verschickt.
+    events:
+      created: Event angelegt.
+      saved: Event gespeichert.
+      deleted: Event gelöscht.
+    categories:
+      created: Kategorie angelegt.
+      deleted: Kategorie gelöscht.
+      has_registrations: Kategorie hat noch Anmeldungen.
+    registrations:
+      created: Fahrer angemeldet.
+      number_saved: Startnummer gespeichert.
+      checked_in: Eingecheckt.
+      check_in_undone: Check-in zurückgenommen.
+      removed: Anmeldung entfernt.
+
+  invitation_mailer:
+    invite:
+      subject: Einladung ins Fahrerlager
+      greeting: "Hallo %{name},"
+      body: du wurdest ins Fahrerlager eingeladen. Lege hier dein Passwort fest.
+      link: Passwort festlegen
+      expires: "Der Link ist bis zum %{date} gültig."
+
+  passwords_mailer:
+    reset:
+      subject: Passwort zurücksetzen
+      intro: Du kannst dein Passwort hier zurücksetzen
+      link: Seite zum Zurücksetzen
+      expires: "Der Link läuft in %{time} ab."
+
+  activerecord:
+    models:
+      event: Event
+      category: Kategorie
+      rider: Fahrer
+      registration: Anmeldung
+    attributes:
+      event:
+        name: Name
+        starts_at: Beginn
+        ends_at: Ende
+      rider:
+        firstname: Vorname
+        lastname: Nachname
+        email: E-Mail
+      user:
+        email_address: E-Mail-Adresse
+        password: Passwort
+        password_confirmation: Passwortbestätigung
+      category:
+        name: Name
+      registration:
+        rider: Fahrer
+        rider_id: Fahrer
+        start_number: Startnummer
+        category: Kategorie
+    errors:
+      models:
+        event:
+          attributes:
+            ends_at:
+              after_start: muss nach dem Beginn liegen
+        registration:
+          attributes:
+            rider_id:
+              taken: ist für dieses Event bereits angemeldet
+            category:
+              wrong_event: gehört nicht zu diesem Event
+        category:
+          restrict_dependent_destroy:
+            has_many: "Kategorie hat noch Anmeldungen."
+        rider:
+          restrict_dependent_destroy:
+            has_many: "Fahrer hat noch Anmeldungen."

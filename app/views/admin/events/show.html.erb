@@ -1,51 +1,51 @@
 <div class="flex items-center justify-between">
   <h1 class="font-bold text-3xl"><%= @event.name %></h1>
   <div class="flex gap-3 items-center text-sm">
-    <%= link_to "Bearbeiten", edit_admin_event_path(@event), class: "underline" %>
-    <%= button_to "Löschen", admin_event_path(@event), method: :delete, form: { data: { turbo_confirm: "Event samt Kategorien und Anmeldungen löschen?" } }, class: "underline text-red-600 cursor-pointer" %>
+    <%= link_to t(".edit"), edit_admin_event_path(@event), class: "underline" %>
+    <%= button_to t(".delete"), admin_event_path(@event), method: :delete, form: { data: { turbo_confirm: t(".delete_confirm") } }, class: "underline text-red-600 cursor-pointer" %>
   </div>
 </div>
 <p class="mt-1 text-gray-600 text-sm">
   <%= l @event.starts_at, format: :short %><%= " – #{l(@event.ends_at, format: :short)}" if @event.ends_at %>
-  · <%= @event.location.presence || "Ort offen" %> · <%= @event.published? ? "Veröffentlicht" : "Entwurf" %>
+  · <%= @event.location.presence || t(".location_open") %> · <%= @event.published? ? t("admin.events.published") : t("admin.events.draft") %>
 </p>
 
 <% @categories.each do |category| %>
   <section class="mt-6 bg-white rounded-lg border border-gray-200 p-5">
     <div class="flex items-center justify-between">
       <h2 class="font-semibold text-lg"><%= category.name %> <span class="text-sm text-gray-500">(<%= category.registrations.size %>)</span></h2>
-      <%= button_to "Kategorie löschen", admin_event_category_path(@event, category), method: :delete, class: "text-sm underline text-red-600 cursor-pointer" %>
+      <%= button_to t(".delete_category"), admin_event_category_path(@event, category), method: :delete, class: "text-sm underline text-red-600 cursor-pointer" %>
     </div>
     <ul class="mt-3 divide-y divide-gray-100 text-sm">
       <% category.registrations.sort_by { |r| [r.start_number || 9999, r.rider.lastname] }.each do |reg| %>
         <li class="py-2 flex items-center gap-3">
           <%= form_with model: [:admin, @event, reg], class: "flex items-center gap-2" do |f| %>
-            <%= f.number_field :start_number, min: 1, placeholder: "Nr.", class: "w-20 rounded border border-gray-400 px-2 py-1" %>
-            <%= f.submit "OK", class: "text-xs underline cursor-pointer" %>
+            <%= f.number_field :start_number, min: 1, placeholder: t(".number_short"), class: "w-20 rounded border border-gray-400 px-2 py-1" %>
+            <%= f.submit t(".ok"), class: "text-xs underline cursor-pointer" %>
           <% end %>
           <span class="flex-1"><%= reg.rider.name %></span>
-          <%= button_to (reg.checked_in? ? "Eingecheckt ✓" : "Einchecken"), check_in_admin_event_registration_path(@event, reg), method: :patch, class: "underline cursor-pointer" %>
-          <%= button_to "Entfernen", admin_event_registration_path(@event, reg), method: :delete, class: "underline text-red-600 cursor-pointer" %>
+          <%= button_to (reg.checked_in? ? t(".checked_in") : t(".check_in")), check_in_admin_event_registration_path(@event, reg), method: :patch, class: "underline cursor-pointer" %>
+          <%= button_to t(".remove"), admin_event_registration_path(@event, reg), method: :delete, class: "underline text-red-600 cursor-pointer" %>
         </li>
       <% end %>
     </ul>
     <% if @available_riders.any? %>
       <%= form_with model: [:admin, @event, Registration.new], class: "mt-3 flex gap-2" do |f| %>
         <%= f.hidden_field :category_id, value: category.id %>
-        <%= f.collection_select :rider_id, @available_riders, :id, :name, { prompt: "Fahrer anmelden …" }, { required: true, class: "flex-1 rounded border border-gray-400 px-2 py-1 text-sm" } %>
-        <%= f.submit "Anmelden", class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer text-sm" %>
+        <%= f.collection_select :rider_id, @available_riders, :id, :name, { prompt: t(".register_prompt") }, { required: true, class: "flex-1 rounded border border-gray-400 px-2 py-1 text-sm" } %>
+        <%= f.submit t(".register"), class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer text-sm" %>
       <% end %>
     <% end %>
   </section>
 <% end %>
 
 <section class="mt-6 bg-white rounded-lg border border-gray-200 p-5">
-  <h2 class="font-semibold text-lg">Kategorie hinzufügen</h2>
+  <h2 class="font-semibold text-lg"><%= t(".add_category") %></h2>
   <%= form_with model: [:admin, @event, Category.new], class: "mt-3 flex flex-wrap items-center gap-3" do |f| %>
-    <%= f.text_field :name, required: true, placeholder: "Name (z. B. Pro Men)", class: "flex-1 rounded border border-gray-400 px-2 py-1 text-sm" %>
-    <label class="text-sm"><%= f.check_box :female %> Frauen</label>
-    <label class="text-sm"><%= f.check_box :juniors %> Junioren</label>
-    <%= f.submit "Hinzufügen", class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer text-sm" %>
+    <%= f.text_field :name, required: true, placeholder: t(".category_name"), class: "flex-1 rounded border border-gray-400 px-2 py-1 text-sm" %>
+    <label class="text-sm"><%= f.check_box :female %> <%= t(".women") %></label>
+    <label class="text-sm"><%= f.check_box :juniors %> <%= t(".juniors") %></label>
+    <%= f.submit t(".add"), class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer text-sm" %>
   <% end %>
 </section>
-<%= link_to "Alle Events", admin_events_path, class: "mt-6 inline-block underline" %>
+<%= link_to t(".all_events"), admin_events_path, class: "mt-6 inline-block underline" %>
