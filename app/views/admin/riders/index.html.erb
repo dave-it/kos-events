@@ -1,0 +1,18 @@
+<div class="flex items-center justify-between">
+  <h1 class="font-bold text-3xl">Fahrer</h1>
+  <%= link_to "Fahrer einladen", new_admin_rider_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+</div>
+
+<table class="mt-6 w-full bg-white rounded-lg border border-gray-200 text-sm">
+  <thead class="text-left text-gray-500"><tr><th class="p-3">Name</th><th class="p-3">E-Mail</th><th class="p-3">Status</th></tr></thead>
+  <tbody>
+    <% @riders.each do |rider| %>
+      <tr class="border-t border-gray-100">
+        <td class="p-3"><%= link_to rider.name, admin_rider_path(rider), class: "text-blue-600 underline" %></td>
+        <td class="p-3"><%= rider.email %></td>
+        <td class="p-3"><%= rider.registered? ? "Aktiv" : "Eingeladen" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @riders.empty? %><p class="mt-4 text-gray-500">Noch keine Fahrer.</p><% end %>

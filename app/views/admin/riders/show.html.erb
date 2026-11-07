@@ -1,0 +1,12 @@
+<h1 class="font-bold text-3xl"><%= @rider.name %></h1>
+<dl class="mt-4 grid grid-cols-2 gap-y-2 text-sm bg-white rounded-lg border border-gray-200 p-5">
+  <dt class="text-gray-500">E-Mail</dt><dd><%= @rider.email %></dd>
+  <dt class="text-gray-500">Nickname</dt><dd><%= @rider.nickname.presence || "–" %></dd>
+  <dt class="text-gray-500">Nation</dt><dd><%= @rider.nation.presence || "–" %></dd>
+  <dt class="text-gray-500">Team / Organisation</dt><dd><%= @rider.organization.presence || "–" %></dd>
+  <dt class="text-gray-500">Zugang</dt><dd><%= @rider.registered? ? "Aktiv" : "Eingeladen, noch nicht angenommen" %></dd>
+</dl>
+<% unless @rider.registered? %>
+  <%= button_to "Einladung erneut senden", invite_admin_rider_path(@rider), class: "mt-5 rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+<% end %>
+<%= link_to "Zurück", admin_riders_path, class: "mt-5 inline-block underline" %>

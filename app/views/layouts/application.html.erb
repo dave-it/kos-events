@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Kos Events" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Kos Events">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-50 text-gray-900">
+    <% if current_user %>
+      <header class="bg-white border-b border-gray-200">
+        <nav class="container mx-auto px-5 py-3 flex items-center justify-between">
+          <%= link_to "Kos Events", root_path, class: "font-bold" %>
+          <div class="flex items-center gap-4 text-sm">
+            <span class="text-gray-500"><%= current_user.email_address %></span>
+            <%= button_to "Abmelden", session_path, method: :delete, class: "underline hover:no-underline cursor-pointer" %>
+          </div>
+        </nav>
+      </header>
+    <% end %>
+
+    <main class="container mx-auto mt-10 px-5 max-w-3xl">
+      <%= render "shared/flash" %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

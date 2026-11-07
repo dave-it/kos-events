@@ -1,0 +1,10 @@
+anna:
+  firstname: Anna
+  lastname: Fast
+  email: anna@example.com
+  user: rider_user
+
+ben:
+  firstname: Ben
+  lastname: Slow
+  email: ben@example.com

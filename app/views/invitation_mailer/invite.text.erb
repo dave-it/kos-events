@@ -1,0 +1,7 @@
+Hallo <%= @rider.firstname %>,
+
+du wurdest zum Rider Hub eingeladen. Lege hier dein Passwort fest:
+
+<%= invitation_url(token: @invitation.token) %>
+
+Der Link ist bis zum <%= l @invitation.expires_at.to_date %> gültig.

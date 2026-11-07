@@ -1,0 +1,21 @@
+<h1 class="font-bold text-3xl">Rider Hub</h1>
+<p class="mt-2 text-gray-600">Hallo <%= @rider.nickname.presence || @rider.firstname %>!</p>
+
+<section class="mt-8 bg-white rounded-lg border border-gray-200 p-5">
+  <div class="flex items-center justify-between">
+    <h2 class="font-semibold text-lg">Dein Profil</h2>
+    <%= link_to "Bearbeiten", edit_hub_path, class: "text-blue-600 underline hover:no-underline" %>
+  </div>
+  <dl class="mt-4 grid grid-cols-2 gap-y-2 text-sm">
+    <dt class="text-gray-500">Name</dt><dd><%= @rider.name %></dd>
+    <dt class="text-gray-500">Nickname</dt><dd><%= @rider.nickname.presence || "–" %></dd>
+    <dt class="text-gray-500">Nation</dt><dd><%= @rider.nation.presence || "–" %></dd>
+    <dt class="text-gray-500">Geburtstag</dt><dd><%= @rider.birthday ? l(@rider.birthday) : "–" %></dd>
+    <dt class="text-gray-500">Team / Organisation</dt><dd><%= @rider.organization.presence || "–" %></dd>
+  </dl>
+</section>
+
+<section class="mt-6 bg-white rounded-lg border border-gray-200 p-5">
+  <h2 class="font-semibold text-lg">Meine Events</h2>
+  <p class="mt-2 text-sm text-gray-500">Hier erscheinen bald deine Anmeldungen und Ergebnisse.</p>
+</section>
