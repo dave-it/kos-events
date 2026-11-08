@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   patch "locale/:locale" => "locales#update", as: :locale
   resources :passwords, param: :token
 
+  # Öffentlich: Events und Ergebnisse
+  resources :events, only: %i[index show]
+
   # Einladungen (öffentlich, per Token)
   resources :invitations, param: :token, only: %i[show update]
 

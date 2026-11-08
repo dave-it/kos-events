@@ -88,6 +88,17 @@
   </div>
 </section>
 
+<%# Heat tree explainer %>
+<section id="heatbaum" class="bg-ink scroll-mt-16">
+  <div class="mx-auto max-w-7xl px-5 pt-20">
+    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".tree.kicker") %></p>
+    <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".tree.title") %></h2>
+    <p class="mt-4 max-w-2xl text-white/80"><%= t(".tree.text") %></p>
+    <%= render "events/legend" %>
+    <%= render "events/bracket", bracket: HeatBracket.example, title: t(".tree.example") %>
+  </div>
+</section>
+
 <%# Gallery %>
 <section id="galerie" class="mx-auto max-w-7xl px-5 py-20 scroll-mt-16">
   <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".gallery.kicker") %></p>
@@ -103,11 +114,27 @@
   </div>
 </section>
 
-<%# Results and profiles (placeholder until data is imported) %>
+<%# Results and profiles %>
 <section class="border-t border-white/10 bg-ink-soft">
   <div class="mx-auto max-w-7xl px-5 py-20 text-center">
-    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".results.kicker") %></p>
-    <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".results.title") %></h2>
-    <p class="mx-auto mt-4 max-w-2xl text-white/70"><%= t(".results.text") %></p>
+    <% if @recent_events.any? %>
+      <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".results.kicker_live") %></p>
+      <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".results.title_live") %></h2>
+      <ul class="mx-auto mt-8 max-w-2xl divide-y divide-white/10 border-y border-white/10 text-left">
+        <% @recent_events.each do |event| %>
+          <li>
+            <%= link_to event_path(event), class: "flex items-center justify-between gap-4 px-2 py-4 hover:bg-white/5" do %>
+              <span class="font-display text-3xl uppercase"><%= event.name %></span>
+              <span class="text-sm text-white/60"><%= l event.starts_at.to_date, format: :long %></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to t(".results.all"), events_path, class: "mt-6 inline-block font-semibold text-signal hover:underline" %>
+    <% else %>
+      <p class="text-sm font-semibold uppercase tracking-[0.25em] text-signal"><%= t(".results.kicker") %></p>
+      <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".results.title") %></h2>
+      <p class="mx-auto mt-4 max-w-2xl text-white/70"><%= t(".results.text") %></p>
+    <% end %>
   </div>
 </section>

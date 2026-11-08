@@ -1,0 +1,24 @@
+<% content_for(:title) { "#{t('events.index.title')} – #{t('public.site_title')}" } %>
+<div class="mx-auto max-w-7xl px-5 pt-12 pb-20">
+  <h1 class="font-display text-5xl uppercase md:text-7xl"><%= t(".title") %></h1>
+
+  <% [ [ :upcoming, @upcoming ], [ :past, @past ] ].each do |key, events| %>
+    <% next if events.empty? %>
+    <h2 class="mt-10 font-display text-3xl uppercase"><%= t(".#{key}") %></h2>
+    <ul class="mt-4 divide-y divide-white/10 border-y border-white/10">
+      <% events.each do |event| %>
+        <li>
+          <%= link_to event_path(event), class: "flex items-center justify-between gap-4 py-4 hover:bg-white/5 px-2" do %>
+            <span>
+              <span class="font-display text-3xl uppercase"><%= event.name %></span>
+              <span class="block text-sm text-white/60"><%= l event.starts_at.to_date, format: :long %><%= " · #{event.location}" if event.location.present? %></span>
+            </span>
+            <span class="text-signal font-semibold"><%= t(".open") %> →</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if @upcoming.empty? && @past.empty? %><p class="mt-10 text-white/70"><%= t(".empty") %></p><% end %>
+</div>

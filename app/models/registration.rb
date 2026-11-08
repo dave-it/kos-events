@@ -2,9 +2,10 @@ class Registration < ApplicationRecord
   belongs_to :event
   belongs_to :category
   belongs_to :rider
+  has_many :heat_entries, dependent: :destroy
 
-  validates :rider_id, uniqueness: { scope: :event_id }
-  validates :start_number, uniqueness: { scope: :event_id }, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+  validates :rider_id, uniqueness: { scope: :category_id }
+  validates :start_number, uniqueness: { scope: :category_id }, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validate :category_belongs_to_event
 
   scope :checked_in, -> { where.not(checked_in_at: nil) }

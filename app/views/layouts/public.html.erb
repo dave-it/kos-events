@@ -24,6 +24,7 @@
           <a href="#mitmachen" class="hover:text-white"><%= t("public.nav.join") %></a>
           <a href="#sport" class="hover:text-white"><%= t("public.nav.sport") %></a>
           <a href="#galerie" class="hover:text-white"><%= t("public.nav.gallery") %></a>
+          <%= link_to t("public.nav.results"), events_path, class: "hover:text-white" %>
         </div>
         <%= render "shared/locale_switcher" %>
         <% if current_user %>

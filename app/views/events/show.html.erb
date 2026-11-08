@@ -1,0 +1,25 @@
+<% content_for(:title) { "#{@event.name} – #{t('public.site_title')}" } %>
+<div class="mx-auto max-w-7xl px-5 pt-12 pb-20">
+  <%= link_to t("events.show.back"), events_path, class: "text-sm text-white/60 hover:text-white" %>
+  <h1 class="mt-2 font-display text-5xl uppercase md:text-7xl"><%= @event.name %></h1>
+  <p class="mt-2 text-white/70">
+    <%= l @event.starts_at.to_date, format: :long %><%= " · #{@event.location}" if @event.location.present? %>
+  </p>
+  <% if @event.description.present? %><p class="mt-4 max-w-2xl text-white/80"><%= @event.description %></p><% end %>
+
+  <% if @category.nil? %>
+    <p class="mt-10 text-white/70"><%= t(".no_results") %></p>
+  <% else %>
+    <nav class="mt-8 flex flex-wrap gap-2" aria-label="<%= t(".categories") %>">
+      <% @categories.each do |cat| %>
+        <%= link_to cat.name, event_path(@event, category: cat.id),
+              class: "rounded-full px-4 py-1.5 text-sm font-semibold #{cat == @category ? 'bg-signal text-white' : 'bg-white/10 text-white/80 hover:bg-white/20'}",
+              "aria-current": (cat == @category ? "page" : nil) %>
+      <% end %>
+    </nav>
+
+    <%= render "legend" %>
+    <%= render "bracket", bracket: @brackets[:main], title: t(".main"), hint: t(".main_hint") %>
+    <%= render "bracket", bracket: @brackets[:lcq], title: t(".lcq"), hint: t(".lcq_hint") %>
+  <% end %>
+</div>

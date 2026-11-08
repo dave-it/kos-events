@@ -1,0 +1,5 @@
+id,firstname,lastname,nickname,female,nation,birthday,email,organization,info
+920,Max,Muster,,f,AUT,1990-04-01,max@example.com,Team A,
+921,Eva,Beispiel,Evi,t,GER,2012-06-15,eva@example.com,,
+922,Kaputt,Mail,,f,SUI,1995-01-01,not-an-email,,
+923,Ben,Slow,,f,AUT,1999-01-01,ben@example.com,,

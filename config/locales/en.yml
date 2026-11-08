@@ -21,6 +21,7 @@ en:
       join: Join in
       sport: The sport
       gallery: Gallery
+      results: Results
       my_area: Go to my area
       login: Rider login
 
@@ -64,6 +65,11 @@ en:
           advance:
             title: Go through
             text: The first two of each heat advance to the next round, all the way to the final.
+      tree:
+        kicker: How a race works
+        title: The heat tree
+        text: Every heat has four riders. The first two advance to the next round until the final decides the winner. Those who drop out race the small final or get a second chance in the Last Chance Qualifier.
+        example: Example with 16 riders
       gallery:
         kicker: Speed + Impact
         title: Race Day
@@ -76,6 +82,39 @@ en:
         kicker: Coming soon
         title: Results and rider profiles
         text: You will soon find all race results and rider profiles on this page.
+        kicker_live: Results
+        title_live: The latest races
+        all: All events and results →
+
+  events:
+    index:
+      title: Events and results
+      upcoming: Upcoming events
+      past: Past events
+      open: Results
+      empty: No published events yet.
+    show:
+      back: ← All events
+      no_results: There are no results for this event yet.
+      categories: Categories
+      main: Heat tree
+      main_hint: The first two of each heat go through.
+      lcq: Last Chance Qualifier
+      lcq_hint: The second chance for everyone who dropped out of the main bracket.
+    bracket:
+      heat: "Heat %{number}"
+      final: Final
+      small_final: Small final
+      rounds:
+        final: Final
+        semi: Semi-final
+        quarter: Quarter-final
+        eighth: Eighth-final
+        number: "Round %{number}"
+      legend:
+        advance: Goes through (places 1 and 2)
+        drop: Races the small final (places 3 and 4)
+        highlight: Advanced
 
   sessions:
     new:
@@ -109,7 +148,7 @@ en:
       firstname: First name
       lastname: Last name
       nickname: Nickname
-      nation: Nation (e.g. AT)
+      nation: Nation (e.g. AUT)
       organization: Team / organization
       birthday: Date of birth
       locale: Language

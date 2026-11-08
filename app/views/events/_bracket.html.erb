@@ -1,0 +1,53 @@
+<%# Heatbaum von links nach rechts. Erwartet: bracket (HeatBracket), title (String), hint (optional) %>
+<% unless bracket.empty? %>
+  <% w, h = HeatBracket::CARD_W, HeatBracket::CARD_H %>
+  <section class="mt-10" aria-label="<%= title %>">
+    <div class="flex flex-wrap items-baseline justify-between gap-2">
+      <h3 class="font-display text-3xl uppercase"><%= title %></h3>
+      <% if local_assigns[:hint] %><p class="text-sm text-white/60"><%= hint %></p><% end %>
+    </div>
+
+    <div class="mt-4 overflow-x-auto rounded-lg border border-white/10 bg-ink-soft">
+      <div class="relative" style="width: <%= bracket.width %>px; height: <%= bracket.height + 36 %>px;">
+        <%# Spaltenköpfe %>
+        <% bracket.columns.each_with_index do |col, i| %>
+          <% name = bracket_round_name(col, i) %>
+          <div class="absolute text-xs font-semibold uppercase tracking-[0.2em] text-white/60"
+               style="left: <%= col.nodes.first.x %>px; top: 8px; width: <%= w %>px;"><%= name %></div>
+        <% end %>
+
+        <%# Verbindungslinien %>
+        <svg class="absolute left-0" style="top: 36px;" width="<%= bracket.width %>" height="<%= bracket.height %>" aria-hidden="true">
+          <% bracket.edges.each do |edge| %>
+            <% x1 = edge.from.x + w; y1 = edge.from.y + h / 2; x2 = edge.to.x; y2 = edge.to.y + h / 2; mid = (x2 - x1) / 2 %>
+            <path d="M<%= x1 %>,<%= y1 %> C<%= x1 + mid %>,<%= y1 %> <%= x2 - mid %>,<%= y2 %> <%= x2 %>,<%= y2 %>"
+                  fill="none" stroke-width="2"
+                  stroke="<%= edge.kind == :advance ? "var(--color-signal)" : "rgba(255,255,255,0.25)" %>"
+                  <%= 'stroke-dasharray="5 5"'.html_safe if edge.kind == :drop %>/>
+          <% end %>
+        </svg>
+
+        <%# Heat-Karten %>
+        <% bracket.columns.each do |col| %>
+          <% col.nodes.each do |node| %>
+            <article class="absolute rounded-md border border-white/15 bg-ink text-sm shadow"
+                     style="left: <%= node.x %>px; top: <%= node.y + 36 %>px; width: <%= w %>px; height: <%= h %>px;">
+              <header class="flex items-center justify-between px-3 py-1.5 border-b border-white/10 text-xs font-semibold uppercase tracking-wider text-white/70">
+                <span><%= bracket_heat_title(node) %></span>
+              </header>
+              <ol class="px-1.5 py-1">
+                <% node.entries.each do |entry| %>
+                  <li class="flex items-center gap-2 rounded px-1.5 py-1 <%= entry.advanced? ? 'bg-signal/15 font-semibold' : 'text-white/60' %>">
+                    <span class="w-4 text-center font-display text-lg leading-none <%= 'text-signal' if entry.advanced? %>"><%= entry.place && entry.place > 0 ? entry.place : "–" %></span>
+                    <span class="truncate"><%= entry.name %></span>
+                    <% if entry.nation.present? %><span class="ml-auto text-xs text-white/50"><%= entry.nation %></span><% end %>
+                  </li>
+                <% end %>
+              </ol>
+            </article>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

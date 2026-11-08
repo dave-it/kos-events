@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_07_230000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_08_100000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,8 +22,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_230000) do
     t.boolean "juniors", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "legacy_id"
     t.index ["event_id", "name"], name: "index_categories_on_event_id_and_name", unique: true
     t.index ["event_id"], name: "index_categories_on_event_id"
+    t.index ["legacy_id"], name: "index_categories_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
   end
 
   create_table "events", force: :cascade do |t|
@@ -35,8 +37,39 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_230000) do
     t.boolean "published", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "legacy_id"
+    t.index ["legacy_id"], name: "index_events_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
     t.index ["published"], name: "index_events_on_published"
     t.index ["starts_at"], name: "index_events_on_starts_at"
+  end
+
+  create_table "heat_entries", force: :cascade do |t|
+    t.bigint "heat_id", null: false
+    t.bigint "registration_id", null: false
+    t.integer "place"
+    t.integer "gate_pick"
+    t.string "gate_color"
+    t.integer "legacy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["heat_id", "registration_id"], name: "index_heat_entries_on_heat_id_and_registration_id", unique: true
+    t.index ["heat_id"], name: "index_heat_entries_on_heat_id"
+    t.index ["legacy_id"], name: "index_heat_entries_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
+    t.index ["registration_id"], name: "index_heat_entries_on_registration_id"
+  end
+
+  create_table "heats", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.integer "round", default: 0, null: false
+    t.integer "number", default: 1, null: false
+    t.boolean "lcq", default: false, null: false
+    t.boolean "finished", default: false, null: false
+    t.integer "legacy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id", "round", "number", "lcq"], name: "index_heats_on_category_id_and_round_and_number_and_lcq"
+    t.index ["category_id"], name: "index_heats_on_category_id"
+    t.index ["legacy_id"], name: "index_heats_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -62,10 +95,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_230000) do
     t.datetime "checked_in_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "legacy_id"
+    t.integer "trial_number"
+    t.json "qualification_times", default: [], null: false
+    t.float "points"
+    t.index ["category_id", "rider_id"], name: "index_registrations_on_category_id_and_rider_id", unique: true
+    t.index ["category_id", "start_number"], name: "index_registrations_on_category_id_and_start_number", unique: true, where: "(start_number IS NOT NULL)"
     t.index ["category_id"], name: "index_registrations_on_category_id"
-    t.index ["event_id", "rider_id"], name: "index_registrations_on_event_id_and_rider_id", unique: true
-    t.index ["event_id", "start_number"], name: "index_registrations_on_event_id_and_start_number", unique: true
     t.index ["event_id"], name: "index_registrations_on_event_id"
+    t.index ["legacy_id"], name: "index_registrations_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
     t.index ["rider_id"], name: "index_registrations_on_rider_id"
   end
 
@@ -85,7 +123,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_230000) do
     t.boolean "public_profile", default: false, null: false
     t.datetime "public_profile_consented_at"
     t.string "locale", default: "de", null: false
+    t.integer "legacy_id"
     t.index ["email"], name: "index_riders_on_email", unique: true
+    t.index ["legacy_id"], name: "index_riders_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
     t.index ["public_profile"], name: "index_riders_on_public_profile"
     t.index ["user_id"], name: "index_riders_on_user_id", unique: true
   end
@@ -110,6 +150,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_07_230000) do
   end
 
   add_foreign_key "categories", "events"
+  add_foreign_key "heat_entries", "heats"
+  add_foreign_key "heat_entries", "registrations"
+  add_foreign_key "heats", "categories"
   add_foreign_key "invitations", "riders"
   add_foreign_key "invitations", "users", column: "invited_by_id"
   add_foreign_key "registrations", "categories"

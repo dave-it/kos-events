@@ -67,9 +67,9 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_not Registration.exists?(reg.id)
   end
 
-  test "Doppelte Anmeldung wird abgelehnt" do
+  test "Doppelte Anmeldung in derselben Kategorie wird abgelehnt" do
     assert_no_difference "Registration.count" do
-      post admin_event_registrations_path(events(:summer)), params: { registration: { rider_id: riders(:anna).id, category_id: categories(:pro).id } }
+      post admin_event_registrations_path(events(:summer)), params: { registration: { rider_id: riders(:anna).id, category_id: categories(:women).id } }
     end
     assert_redirected_to admin_event_path(events(:summer))
   end

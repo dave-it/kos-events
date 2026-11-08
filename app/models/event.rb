@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   has_many :categories, -> { order(:position, :name) }, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :riders, through: :registrations
+  has_many :heats, through: :categories
 
   validates :name, :starts_at, presence: true
   validate :ends_after_start

@@ -21,6 +21,7 @@ de:
       join: Mitmachen
       sport: Der Sport
       gallery: Galerie
+      results: Ergebnisse
       my_area: Zu meinem Bereich
       login: Fahrer-Login
 
@@ -64,6 +65,11 @@ de:
           advance:
             title: Weiter
             text: Die ersten zwei jedes Heats kommen eine Runde weiter, bis zum Finale.
+      tree:
+        kicker: So läuft ein Rennen
+        title: Der Heatbaum
+        text: Jeder Heat hat vier Fahrer. Die ersten zwei kommen eine Runde weiter, bis es im Finale um den Sieg geht. Wer ausscheidet, fährt im kleinen Finale oder bekommt im Last Chance Qualifier eine zweite Chance.
+        example: Beispiel mit 16 Fahrern
       gallery:
         kicker: Speed + Impact
         title: Race Day
@@ -76,6 +82,39 @@ de:
         kicker: Bald hier
         title: Ergebnisse und Fahrerprofile
         text: Alle Rennergebnisse und die Profile der Fahrer findest du in Kürze auf dieser Seite.
+        kicker_live: Ergebnisse
+        title_live: Die letzten Rennen
+        all: Alle Events und Ergebnisse →
+
+  events:
+    index:
+      title: Events und Ergebnisse
+      upcoming: Kommende Events
+      past: Vergangene Events
+      open: Ergebnisse
+      empty: Noch keine veröffentlichten Events.
+    show:
+      back: ← Alle Events
+      no_results: Für dieses Event gibt es noch keine Ergebnisse.
+      categories: Kategorien
+      main: Heatbaum
+      main_hint: Platz 1 und 2 jedes Heats kommen weiter.
+      lcq: Last Chance Qualifier
+      lcq_hint: Die zweite Chance für alle, die im Hauptfeld ausgeschieden sind.
+    bracket:
+      heat: "Heat %{number}"
+      final: Finale
+      small_final: Kleines Finale
+      rounds:
+        final: Finale
+        semi: Halbfinale
+        quarter: Viertelfinale
+        eighth: Achtelfinale
+        number: "Runde %{number}"
+      legend:
+        advance: Kommt weiter (Platz 1 und 2)
+        drop: Fährt im kleinen Finale (Platz 3 und 4)
+        highlight: Weitergekommen
 
   sessions:
     new:
@@ -109,7 +148,7 @@ de:
       firstname: Vorname
       lastname: Nachname
       nickname: Nickname
-      nation: Nation (z. B. AT)
+      nation: Nation (z. B. AUT)
       organization: Team / Organisation
       birthday: Geburtstag
       locale: Sprache

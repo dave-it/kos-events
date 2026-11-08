@@ -7,5 +7,6 @@ class PagesController < ApplicationController
 
   def home
     @next_event = Event.published.upcoming.first
+    @recent_events = Event.published.past.limit(3)
   end
 end
