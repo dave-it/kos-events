@@ -53,4 +53,25 @@ class HeatBracketTest < ActiveSupport::TestCase
     assert_equal [ "Anna Fast", "B. S." ], entries.map(&:name)
     assert_equal [ "AUT", nil ], entries.map(&:nation)
   end
+
+  test "Status DNS/DNF/DEQ und Zeitfahr-Platz werden angezeigt, Status sortiert ans Ende" do
+    event = events(:summer)
+    cat = categories(:pro)
+    heat = Heat.create!(category: cat, round: 1, number: 1)
+    regs = [ riders(:anna), riders(:ben) ].zip([ [ 31_000, 32_000 ], [ 30_000 ] ]).map do |rider, times|
+      Registration.create!(event: event, category: cat, rider: rider, qualification_times: times)
+    end
+    HeatEntry.create!(heat: heat, registration: regs[0], place: -2)
+    HeatEntry.create!(heat: heat, registration: regs[1], place: 1)
+
+    entries = cat.brackets[:main].columns.first.nodes.first.entries
+    assert_equal [ nil, "DEQ" ], entries.map(&:status)
+    assert_equal [ 1, 2 ], entries.map(&:trial_rank)
+  end
+
+  test "Sonderzeiten zählen nicht fürs Zeitfahren" do
+    reg = Registration.new(qualification_times: [ 5_880_000, 40_000 ])
+    assert_equal [ 40_000 ], reg.valid_times
+    assert_nil Registration.new(qualification_times: [ 5_820_000 ]).trial_sort_key
+  end
 end

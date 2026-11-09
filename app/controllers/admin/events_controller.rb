@@ -45,7 +45,7 @@ module Admin
       def set_event = @event = Event.find(params[:id])
 
       def event_params
-        params.expect(event: %i[name location description starts_at ends_at published])
+        params.expect(event: %i[name location description starts_at ends_at published info_de info_en registration_url registration_deadline])
       end
   end
 end

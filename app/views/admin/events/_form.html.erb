@@ -24,6 +24,27 @@
     <%= form.label :description, t(".description"), class: "text-sm text-gray-600" %>
     <%= form.text_area :description, rows: 4, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
   </div>
+  <div class="my-4 grid grid-cols-2 gap-4">
+    <div>
+      <%= form.label :registration_url, t(".registration_url"), class: "text-sm text-gray-600" %>
+      <%= form.url_field :registration_url, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
+    </div>
+    <div>
+      <%= form.label :registration_deadline, t(".registration_deadline"), class: "text-sm text-gray-600" %>
+      <%= form.datetime_field :registration_deadline, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
+    </div>
+  </div>
+  <div class="my-4 grid gap-4 md:grid-cols-2">
+    <div>
+      <%= form.label :info_de, t(".info_de"), class: "text-sm text-gray-600" %>
+      <%= form.text_area :info_de, rows: 16, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full font-mono text-sm" %>
+    </div>
+    <div>
+      <%= form.label :info_en, t(".info_en"), class: "text-sm text-gray-600" %>
+      <%= form.text_area :info_en, rows: 16, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full font-mono text-sm" %>
+    </div>
+  </div>
+  <p class="text-xs text-gray-500"><%= t("admin.pages.form.markdown_hint") %></p>
   <div class="my-4 flex items-center gap-2">
     <%= form.check_box :published %>
     <%= form.label :published, t(".published"), class: "text-sm" %>

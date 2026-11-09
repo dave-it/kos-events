@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_08_100000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_08_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -38,6 +38,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_08_100000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "legacy_id"
+    t.text "info_de"
+    t.text "info_en"
+    t.string "registration_url"
+    t.datetime "registration_deadline"
     t.index ["legacy_id"], name: "index_events_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
     t.index ["published"], name: "index_events_on_published"
     t.index ["starts_at"], name: "index_events_on_starts_at"
@@ -84,6 +88,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_08_100000) do
     t.index ["invited_by_id"], name: "index_invitations_on_invited_by_id"
     t.index ["rider_id"], name: "index_invitations_on_rider_id"
     t.index ["token"], name: "index_invitations_on_token", unique: true
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "slug", null: false
+    t.string "title_de", null: false
+    t.string "title_en", null: false
+    t.text "body_de", default: "", null: false
+    t.text "body_en", default: "", null: false
+    t.string "nav", default: "none", null: false
+    t.integer "position", default: 0, null: false
+    t.boolean "published", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 
   create_table "registrations", force: :cascade do |t|

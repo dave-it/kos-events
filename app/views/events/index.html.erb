@@ -13,7 +13,7 @@
               <span class="font-display text-3xl uppercase"><%= event.name %></span>
               <span class="block text-sm text-white/60"><%= l event.starts_at.to_date, format: :long %><%= " · #{event.location}" if event.location.present? %></span>
             </span>
-            <span class="text-signal font-semibold"><%= t(".open") %> →</span>
+            <span class="text-signal font-semibold"><%= key == :upcoming ? t(".details") : t(".open") %> →</span>
           <% end %>
         </li>
       <% end %>

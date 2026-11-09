@@ -8,3 +8,20 @@
   --color-signal-dark: #b01a23;
   --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
 }
+
+/* Redaktioneller Text (Markdown) */
+.prose-ice { color: rgb(255 255 255 / 0.85); line-height: 1.7; }
+.prose-ice > * + * { margin-top: 1rem; }
+.prose-ice h2 { margin-top: 2.5rem; font-family: var(--font-display); font-size: 2.25rem; line-height: 1.05; text-transform: uppercase; color: #fff; }
+.prose-ice h3 { margin-top: 1.75rem; font-size: 1.15rem; font-weight: 700; color: #fff; }
+.prose-ice h4 { margin-top: 1.5rem; font-weight: 700; color: #fff; }
+.prose-ice a { color: var(--color-signal); text-decoration: underline; text-underline-offset: 3px; }
+.prose-ice a:hover { color: #fff; }
+.prose-ice ul { list-style: disc; padding-left: 1.4rem; }
+.prose-ice ol { list-style: decimal; padding-left: 1.4rem; }
+.prose-ice li + li { margin-top: 0.25rem; }
+.prose-ice table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.prose-ice th, .prose-ice td { border-bottom: 1px solid rgb(255 255 255 / 0.12); padding: 0.55rem 0.75rem; text-align: left; vertical-align: top; }
+.prose-ice th { color: #fff; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
+.prose-ice blockquote { border-left: 3px solid var(--color-signal); padding-left: 1rem; color: rgb(255 255 255 / 0.7); }
+.prose-ice hr { border-color: rgb(255 255 255 / 0.15); }

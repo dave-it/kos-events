@@ -1,0 +1,48 @@
+<% field = "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-1 w-full" %>
+<%= form_with model: [:admin, page], class: "mt-5" do |form| %>
+  <% if page.errors.any? %>
+    <div class="py-2 px-3 bg-red-50 text-red-600 rounded-lg"><%= page.errors.full_messages.to_sentence %></div>
+  <% end %>
+  <div class="my-4">
+    <%= form.label :slug, t(".slug"), class: "text-sm text-gray-600" %>
+    <%= form.text_field :slug, required: true, class: field %>
+    <p class="mt-1 text-xs text-gray-500"><%= t(".slug_hint") %></p>
+  </div>
+  <div class="my-4 grid gap-4 md:grid-cols-2">
+    <div>
+      <%= form.label :title_de, t(".title_de"), class: "text-sm text-gray-600" %>
+      <%= form.text_field :title_de, required: true, class: field %>
+    </div>
+    <div>
+      <%= form.label :title_en, t(".title_en"), class: "text-sm text-gray-600" %>
+      <%= form.text_field :title_en, required: true, class: field %>
+    </div>
+  </div>
+  <div class="my-4 grid gap-4 md:grid-cols-2">
+    <div>
+      <%= form.label :body_de, t(".body_de"), class: "text-sm text-gray-600" %>
+      <%= form.text_area :body_de, rows: 22, class: "#{field} font-mono text-sm" %>
+    </div>
+    <div>
+      <%= form.label :body_en, t(".body_en"), class: "text-sm text-gray-600" %>
+      <%= form.text_area :body_en, rows: 22, class: "#{field} font-mono text-sm" %>
+    </div>
+  </div>
+  <p class="text-xs text-gray-500"><%= t(".markdown_hint") %></p>
+  <div class="my-4 grid gap-4 md:grid-cols-2">
+    <div>
+      <%= form.label :nav, t(".nav"), class: "text-sm text-gray-600" %>
+      <%= form.select :nav, Page::NAVS.map { |n| [ t("admin.pages.navs.#{n}"), n ] }, {}, class: field %>
+    </div>
+    <div>
+      <%= form.label :position, t(".position"), class: "text-sm text-gray-600" %>
+      <%= form.number_field :position, class: field %>
+    </div>
+  </div>
+  <div class="my-4 flex items-center gap-2">
+    <%= form.check_box :published %>
+    <%= form.label :published, t(".published"), class: "text-sm" %>
+  </div>
+  <%= form.submit class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+  <%= link_to t("shared.cancel"), admin_pages_path, class: "ml-3 underline" %>
+<% end %>

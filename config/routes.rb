@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :riders, only: %i[index show new create] do
       post :invite, on: :member
     end
+    resources :pages, except: :show
     resources :events do
       resources :categories, only: %i[create destroy]
       resources :registrations, only: %i[create update destroy] do
@@ -29,4 +30,8 @@ Rails.application.routes.draw do
 
   get "start" => "home#index", as: :start
   root "pages#home"
+
+  # Redaktionelle Seiten: /training, /preise, ... (nur für vorhandene, veröffentlichte Seiten)
+  get ":slug", to: "content_pages#show", as: :content_page,
+      constraints: ->(request) { Page.published.exists?(slug: request.path_parameters[:slug]) }
 end

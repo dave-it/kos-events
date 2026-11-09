@@ -1,0 +1,8 @@
+<div class="flex items-center justify-between">
+  <h1 class="font-bold text-3xl"><%= t(".title") %></h1>
+  <div class="flex gap-3 items-center text-sm">
+    <%= link_to t(".view"), content_page_path(@page.slug), class: "underline" %>
+    <%= button_to t(".delete"), admin_page_path(@page), method: :delete, form: { data: { turbo_confirm: t(".delete_confirm") } }, class: "underline text-red-600 cursor-pointer" %>
+  </div>
+</div>
+<%= render "form", page: @page %>

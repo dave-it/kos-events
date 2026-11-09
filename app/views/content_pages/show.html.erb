@@ -1,0 +1,5 @@
+<% content_for(:title) { "#{@page.title} – #{t('public.site_title')}" } %>
+<article class="mx-auto max-w-3xl px-5 pt-12 pb-24">
+  <h1 class="font-display text-5xl uppercase md:text-7xl"><%= @page.title %></h1>
+  <div class="mt-8"><%= markdown(@page.body) %></div>
+</article>

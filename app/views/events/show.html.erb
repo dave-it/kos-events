@@ -7,8 +7,19 @@
   </p>
   <% if @event.description.present? %><p class="mt-4 max-w-2xl text-white/80"><%= @event.description %></p><% end %>
 
+  <% if @event.registration_open? %>
+    <div class="mt-6 flex flex-wrap items-center gap-4">
+      <%= link_to t(".register"), safe_external_url(@event.registration_url), class: "rounded bg-signal hover:bg-signal-dark px-6 py-3 font-semibold", rel: "noopener", target: "_blank" %>
+      <% if @event.registration_deadline %><p class="text-sm text-white/70"><%= t(".register_until", date: l(@event.registration_deadline.in_time_zone, format: :long)) %></p><% end %>
+    </div>
+  <% end %>
+
+  <% if @event.info.present? %>
+    <div class="mt-10 max-w-3xl"><%= markdown(@event.info) %></div>
+  <% end %>
+
   <% if @category.nil? %>
-    <p class="mt-10 text-white/70"><%= t(".no_results") %></p>
+    <% if @event.info.blank? %><p class="mt-10 text-white/70"><%= t(".no_results") %></p><% end %>
   <% else %>
     <nav class="mt-8 flex flex-wrap gap-2" aria-label="<%= t(".categories") %>">
       <% @categories.each do |cat| %>
@@ -19,7 +30,7 @@
     </nav>
 
     <%= render "legend" %>
-    <%= render "bracket", bracket: @brackets[:main], title: t(".main"), hint: t(".main_hint") %>
+    <%= render "bracket", bracket: @brackets[:main], medals: true, title: t(".main"), hint: t(".main_hint") %>
     <%= render "bracket", bracket: @brackets[:lcq], title: t(".lcq"), hint: t(".lcq_hint") %>
   <% end %>
 </div>

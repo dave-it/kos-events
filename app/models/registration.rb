@@ -10,6 +10,17 @@ class Registration < ApplicationRecord
 
   scope :checked_in, -> { where.not(checked_in_at: nil) }
 
+  # Zeitfahren: Sonderwerte in den Zeiten (Altbestand) stehen für DNS, DNF und DEQ.
+  TIME_CODES = { 5_820_000 => "DNS", 5_880_000 => "DNF", 5_940_000 => "DEQ" }.freeze
+
+  def valid_times = Array(qualification_times).compact.reject { |t| TIME_CODES.key?(t) || t <= 0 }.sort
+
+  # Sortierschlüssel fürs Zeitfahren: schnellste, dann zweitschnellste Zeit. nil ohne gültige Zeit.
+  def trial_sort_key
+    times = valid_times
+    [ times[0], times[1] || times[0] ] if times.any?
+  end
+
   def checked_in? = checked_in_at.present?
   def waiver_signed? = waiver_signed_at.present?
 

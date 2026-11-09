@@ -54,13 +54,22 @@
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/60"><%= t(".watch.kicker") %></p>
       <h3 class="mt-3 font-display text-5xl uppercase"><%= t(".watch.title") %></h3>
       <p class="mt-4 text-white/80"><%= t(".watch.text") %></p>
-      <a href="#event" class="mt-6 inline-block font-semibold text-signal hover:underline"><%= t(".watch.link") %></a>
+      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+        <a href="#event" class="font-semibold text-signal hover:underline"><%= t(".watch.link") %></a>
+        <%= link_to t(".watch.info"), content_page_path("zuschauer"), class: "font-semibold text-white/80 hover:underline" %>
+      </div>
     </article>
     <article class="rounded-lg bg-white text-ink p-8">
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-ink/60"><%= t(".ride.kicker") %></p>
       <h3 class="mt-3 font-display text-5xl uppercase"><%= t(".ride.title") %></h3>
       <p class="mt-4 text-ink/80"><%= t(".ride.text") %></p>
-      <%= link_to t(".ride.link"), new_session_path, class: "mt-6 inline-block rounded bg-signal hover:bg-signal-dark px-5 py-3 font-semibold text-white" %>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <%= link_to t(".ride.try"), content_page_path("training"), class: "rounded bg-signal hover:bg-signal-dark px-5 py-3 font-semibold text-white" %>
+        <% if @next_event %>
+          <%= link_to t(".ride.register"), event_path(@next_event), class: "rounded border border-ink/30 hover:bg-ink/5 px-5 py-3 font-semibold" %>
+        <% end %>
+        <%= link_to t(".ride.link"), new_session_path, class: "font-semibold text-ink/70 hover:underline" %>
+      </div>
     </article>
   </div>
 </section>
@@ -95,7 +104,7 @@
     <h2 class="mt-2 font-display text-5xl uppercase md:text-6xl"><%= t(".tree.title") %></h2>
     <p class="mt-4 max-w-2xl text-white/80"><%= t(".tree.text") %></p>
     <%= render "events/legend" %>
-    <%= render "events/bracket", bracket: HeatBracket.example, title: t(".tree.example") %>
+    <%= render "events/bracket", bracket: HeatBracket.example, medals: true, title: t(".tree.example") %>
   </div>
 </section>
 

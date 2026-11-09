@@ -45,11 +45,14 @@ de:
         title: Zuschauen
         text: Erlebe die spektakulärsten Rennen auf Eis aus nächster Nähe. Vier Fahrer, ein Track, und die ersten zwei kommen weiter.
         link: Nächstes Event ansehen →
+        info: Infos für Zuschauer
       ride:
         kicker: Fahrer · alle Levels
         title: Mitfahren
         text: Du willst Ice Cross ausprobieren oder beim Weltcup mitfahren? Fahrer bekommen ihren Zugang per Einladung und verwalten ihr Profil und ihre Anmeldungen im Fahrerlager.
-        link: Zum Fahrer-Login →
+        link: Zum Fahrer-Login
+        try: Training buchen
+        register: Zum Rennen anmelden
       sport:
         kicker: Neu bei Ice Cross?
         title: Vier Fahrer. Eine Eisbahn.
@@ -91,11 +94,14 @@ de:
       title: Events und Ergebnisse
       upcoming: Kommende Events
       past: Vergangene Events
+      details: Infos und Anmeldung
       open: Ergebnisse
       empty: Noch keine veröffentlichten Events.
     show:
       back: ← Alle Events
       no_results: Für dieses Event gibt es noch keine Ergebnisse.
+      register: Jetzt anmelden
+      register_until: "Anmeldung bis %{date}"
       categories: Kategorien
       main: Heatbaum
       main_hint: Platz 1 und 2 jedes Heats kommen weiter.
@@ -115,6 +121,18 @@ de:
         advance: Kommt weiter (Platz 1 und 2)
         drop: Fährt im kleinen Finale (Platz 3 und 4)
         highlight: Weitergekommen
+        trial: Platz im Zeitfahren
+        status: Nicht gestartet, nicht im Ziel, disqualifiziert
+      trial_rank: "Zeitfahren: Platz %{rank}"
+      trial_rank_short: "ZF %{rank}"
+      medal:
+        gold: Gold
+        silver: Silber
+        bronze: Bronze
+      status:
+        dns: Nicht gestartet (DNS)
+        dnf: Nicht im Ziel (DNF)
+        deq: Disqualifiziert (DEQ)
 
   sessions:
     new:
@@ -180,6 +198,37 @@ de:
     nav:
       events: Events
       riders: Fahrer
+      pages: Seiten
+    pages:
+      navs:
+        header: Menü oben
+        footer: Fußzeile
+        none: Nicht verlinkt
+      index:
+        title: Seiten
+        new: Neue Seite
+        page_title: Titel
+        url: Adresse
+        nav: Navigation
+        status: Status
+      new:
+        title: Neue Seite
+      edit:
+        title: Seite bearbeiten
+        view: Ansehen
+        delete: Löschen
+        delete_confirm: Seite wirklich löschen?
+      form:
+        slug: Adresse (z. B. training)
+        slug_hint: Nur Kleinbuchstaben, Zahlen und Bindestriche. Die Seite ist dann unter /adresse erreichbar.
+        title_de: Titel (Deutsch)
+        title_en: Titel (Englisch)
+        body_de: Text (Deutsch)
+        body_en: Text (Englisch)
+        markdown_hint: "Formatierung mit Markdown: ## Überschrift, **fett**, [Link](https://…), - Liste. Fehlt ein Text, wird die andere Sprache angezeigt."
+        nav: Navigation
+        position: Reihenfolge
+        published: Veröffentlicht
     riders:
       index:
         title: Fahrer
@@ -222,6 +271,10 @@ de:
         starts_at: Beginn
         ends_at: Ende
         description: Beschreibung
+        registration_url: Anmelde-Link (Ticketshop)
+        registration_deadline: Anmeldeschluss
+        info_de: Infos für Besucher und Fahrer (Deutsch, Markdown)
+        info_en: Infos für Besucher und Fahrer (Englisch, Markdown)
         published: Veröffentlicht (öffentlich sichtbar)
       show:
         edit: Bearbeiten
@@ -250,6 +303,10 @@ de:
       submit: Speichern
 
   flash:
+    pages:
+      created: Seite angelegt.
+      saved: Seite gespeichert.
+      deleted: Seite gelöscht.
     try_again_later: Bitte später erneut versuchen.
     sessions:
       invalid: E-Mail-Adresse oder Passwort stimmt nicht.

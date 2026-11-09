@@ -20,10 +20,11 @@
           <%= image_tag "landing/logo-white.png", alt: t("public.brand"), class: "h-9 w-auto" %>
         <% end %>
         <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
-          <a href="#event" class="hover:text-white"><%= t("public.nav.event") %></a>
-          <a href="#mitmachen" class="hover:text-white"><%= t("public.nav.join") %></a>
-          <a href="#sport" class="hover:text-white"><%= t("public.nav.sport") %></a>
-          <a href="#galerie" class="hover:text-white"><%= t("public.nav.gallery") %></a>
+          <%= link_to t("public.nav.event"), root_path(anchor: "event"), class: "hover:text-white" %>
+          <%= link_to t("public.nav.sport"), root_path(anchor: "sport"), class: "hover:text-white" %>
+          <% Page.in_nav("header").each do |page| %>
+            <%= link_to page.title, content_page_path(page.slug), class: "hover:text-white" %>
+          <% end %>
           <%= link_to t("public.nav.results"), events_path, class: "hover:text-white" %>
         </div>
         <%= render "shared/locale_switcher" %>
@@ -40,6 +41,14 @@
     <footer class="border-t border-white/10 bg-ink">
       <div class="mx-auto max-w-7xl px-5 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-white/60">
         <%= image_tag "landing/logo-white.png", alt: t("public.brand"), class: "h-8 w-auto self-start" %>
+        <ul class="flex flex-wrap gap-x-5 gap-y-2">
+          <% Page.in_nav("footer").each do |page| %>
+            <li><%= link_to page.title, content_page_path(page.slug), class: "hover:text-white" %></li>
+          <% end %>
+          <li><a href="https://www.instagram.com/oescv/" rel="noopener" target="_blank" class="hover:text-white">Instagram</a></li>
+          <li><a href="https://www.facebook.com/oescv" rel="noopener" target="_blank" class="hover:text-white">Facebook</a></li>
+          <li><a href="mailto:info@ice-cross.at" class="hover:text-white">info@ice-cross.at</a></li>
+        </ul>
         <p>© <%= Date.current.year %> <%= t("public.footer_org") %></p>
       </div>
     </footer>

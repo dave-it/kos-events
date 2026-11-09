@@ -44,12 +44,15 @@ en:
         kicker: Fans · Families · Visitors
         title: Watch
         text: Experience the most spectacular races on ice up close. Four riders, one track, and the first two go through.
+        info: Spectator info
         link: See the next event →
       ride:
         kicker: Riders · all levels
         title: Race
         text: Want to try Ice Cross or race in the World Cup? Riders get access by invitation and manage their profile and registrations in the Paddock.
-        link: Go to rider login →
+        link: Rider login
+        try: Book a training
+        register: Register for the race
       sport:
         kicker: New to Ice Cross?
         title: Four riders. One ice track.
@@ -91,10 +94,13 @@ en:
       title: Events and results
       upcoming: Upcoming events
       past: Past events
+      details: Info and registration
       open: Results
       empty: No published events yet.
     show:
       back: ← All events
+      register: Register now
+      register_until: "Registration until %{date}"
       no_results: There are no results for this event yet.
       categories: Categories
       main: Heat tree
@@ -115,6 +121,18 @@ en:
         advance: Goes through (places 1 and 2)
         drop: Races the small final (places 3 and 4)
         highlight: Advanced
+        trial: Time trial rank
+        status: Did not start, did not finish, disqualified
+      trial_rank: "Time trial: rank %{rank}"
+      trial_rank_short: "TT %{rank}"
+      medal:
+        gold: Gold
+        silver: Silver
+        bronze: Bronze
+      status:
+        dns: Did not start (DNS)
+        dnf: Did not finish (DNF)
+        deq: Disqualified (DEQ)
 
   sessions:
     new:
@@ -180,6 +198,37 @@ en:
     nav:
       events: Events
       riders: Riders
+      pages: Pages
+    pages:
+      navs:
+        header: Top menu
+        footer: Footer
+        none: Not linked
+      index:
+        title: Pages
+        new: New page
+        page_title: Title
+        url: Address
+        nav: Navigation
+        status: Status
+      new:
+        title: New page
+      edit:
+        title: Edit page
+        view: View
+        delete: Delete
+        delete_confirm: Really delete this page?
+      form:
+        slug: Address (e.g. training)
+        slug_hint: Lowercase letters, digits and hyphens only. The page will be available at /address.
+        title_de: Title (German)
+        title_en: Title (English)
+        body_de: Text (German)
+        body_en: Text (English)
+        markdown_hint: "Formatting with Markdown: ## Heading, **bold**, [link](https://…), - list. If a text is missing, the other language is shown."
+        nav: Navigation
+        position: Order
+        published: Published
     riders:
       index:
         title: Riders
@@ -222,6 +271,10 @@ en:
         starts_at: Start
         ends_at: End
         description: Description
+        registration_url: Registration link (ticket shop)
+        registration_deadline: Registration deadline
+        info_de: Info for visitors and riders (German, Markdown)
+        info_en: Info for visitors and riders (English, Markdown)
         published: Published (publicly visible)
       show:
         edit: Edit
@@ -250,6 +303,10 @@ en:
       submit: Save
 
   flash:
+    pages:
+      created: Page created.
+      saved: Page saved.
+      deleted: Page deleted.
     try_again_later: Please try again later.
     sessions:
       invalid: Wrong email address or password.

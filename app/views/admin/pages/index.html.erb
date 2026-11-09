@@ -1,0 +1,20 @@
+<div class="flex items-center justify-between">
+  <h1 class="font-bold text-3xl"><%= t(".title") %></h1>
+  <div class="flex gap-3 items-center">
+    <%= link_to t("admin.nav.events"), admin_events_path, class: "underline" %>
+    <%= link_to t(".new"), new_admin_page_path, class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+  </div>
+</div>
+<table class="mt-6 w-full bg-white rounded-lg border border-gray-200 text-sm">
+  <thead class="text-left text-gray-500"><tr><th class="p-3"><%= t(".page_title") %></th><th class="p-3"><%= t(".url") %></th><th class="p-3"><%= t(".nav") %></th><th class="p-3"><%= t(".status") %></th></tr></thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr class="border-t border-gray-100">
+        <td class="p-3"><%= link_to page.title_de, edit_admin_page_path(page), class: "text-blue-600 underline" %></td>
+        <td class="p-3 text-gray-500">/<%= page.slug %></td>
+        <td class="p-3"><%= t("admin.pages.navs.#{page.nav}") %></td>
+        <td class="p-3"><%= page.published? ? t("admin.events.published") : t("admin.events.draft") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

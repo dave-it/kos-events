@@ -1,0 +1,658 @@
+# Redaktionelle Seiten (von ice-cross.at übernommen, Stand 2026-11-08).
+# Wird per db/seeds.rb nur angelegt, wenn die Seite noch nicht existiert – spätere Änderungen im Team-Bereich bleiben erhalten.
+
+- slug: training
+  nav: header
+  position: 1
+  title_de: Training
+  title_en: Training
+  body_de: |
+    ## Ice Cross Strecke Winterleiten
+
+    Die Ice-Cross-Downhill-Strecke auf der Winterleiten steht den ganzen Winter für Training zur Verfügung. [Zur Preisliste](/preise)
+
+    ## Wann ist die Strecke geöffnet?
+
+    Wir öffnen die Strecke basierend auf den gebuchten Trainingsanfragen. Die öffentlichen Trainings können [hier gebucht werden](https://shop.entrello.app/de/icecross-austria/events/ev_37QRTjlNQM5mVXhd2fcr5l282fZ). Die aktuellen Termine findest du [im Ticketshop](https://shop.entrello.app/de/icecross-austria/events/ev_37tDv7VC6qiQ8rRT5H9OGkaXKYd).
+
+    Gerne machen wir auch begleitete Trainings an speziellen Tagen mit einem unserer Trainer. Bitte Anfragen an [info@ice-cross.at](mailto:info@ice-cross.at).
+
+    ## Kann ich einfach so vorbeikommen?
+
+    Nein. Die Strecke wird nur zu den kommunizierten Zeiten bei bestehenden Buchungen geöffnet. Wir erlauben Partnern und erfahrenen Fahrerinnen und Fahrern sowie Verbänden, die Strecke für eigene Trainings zu mieten.
+
+    ## Wie viele Fahrten sind in einem Training enthalten?
+
+    Eine Trainingseinheit dauert immer zwei Stunden. In dieser Zeit kann die Strecke so oft benutzt werden, wie die Trainingsgäste wollen.
+
+    ## Wo ist die Strecke?
+
+    Ice Cross Downhill Strecke Winterleiten
+    Winterleitenhüttenstraße 1
+    8750 Judenburg
+    [Google Maps](https://goo.gl/maps/T3aPY1RPNdBweMcg9)
+
+    ## Verpflichtende Ausrüstung
+
+    - Vollvisier-Helm (Moto-X, MTB-Downhill oder Hockeyhelm mit Gesichtsschutz)
+    - Brustpanzer mit Schulterschutz
+    - Ellbogenschützer
+    - Schnittfeste Handschuhe
+    - Knie- und Schienbeinschützer
+    - Eislaufschuhe (ohne Zacken, Kunstlaufschuhe sind nicht erlaubt)
+
+    ## Kann ich Ausrüstung vor Ort mieten?
+
+    Nein. Aktuell gibt es keine Mietausrüstung vor Ort.
+  body_en: |
+    ## Ice Cross Track Winterleiten
+
+    The ice cross downhill track in Winterleiten is open for training all winter long. [Price list](/preise)
+
+    ## When is the track open?
+
+    We open the track based on booked trainings and general interest. You can book a training slot [here](https://shop.entrello.app/de/icecross-austria/events/ev_37QRTjlNQM5mVXhd2fcr5l282fZ). Current dates are in our [ticket shop](https://shop.entrello.app/de/icecross-austria/events/ev_37tDv7VC6qiQ8rRT5H9OGkaXKYd).
+
+    If you are interested in a special experience with one of our trainers, please contact us at [info@ice-cross.at](mailto:info@ice-cross.at).
+
+    ## Can I just show up?
+
+    No. You need to book a training or make an appointment with one of our trainers. We allow partners, associations and experienced riders to use the track on their own under certain conditions.
+
+    ## How often can I go down?
+
+    Training sessions are always two hours long. You can go as many times as you want until the session is over.
+
+    ## Where is the track?
+
+    Ice Cross Downhill Track Winterleiten
+    Winterleitenhüttenstraße 1
+    8750 Judenburg
+    [Google Maps](https://goo.gl/maps/T3aPY1RPNdBweMcg9)
+
+    ## Required equipment
+
+    - Full-face helmet (Moto-X, MTB downhill or hockey helmet with cage)
+    - Chest and shoulder protection
+    - Elbow protection
+    - Cut-resistant gloves (covered by protective pads on top of hand and wrist, e.g. hockey gloves)
+    - Knee and shin protection
+    - Ice skates (no blades with pointy ends; figure skates are not allowed)
+
+    ## Can I rent equipment on site?
+
+    No. We don't have rental equipment.
+
+- slug: preise
+  nav: header
+  position: 2
+  title_de: Preise
+  title_en: Prices
+  body_de: |
+    ## Training (2 Stunden)
+
+    | | Einzeltraining | 5er-Karte | Saisonkarte* |
+    |---|---|---|---|
+    | Kinder (unter 16) | 17,50 € | 70,00 € | 147,50 € |
+    | Erwachsene | 35,00 € | 140,00 € | 295,00 € |
+    | Mitglieder | 28,00 € | 112,00 € | 236,00 € |
+
+    \* Die Saisonkarte gilt nur an offiziellen Trainingstagen und beinhaltet keinen unlimitierten Zugang außerhalb der Trainingszeiten. [Mitglied werden](/mitglied-werden)
+
+    ## Gruppen (2 Stunden Training, Preis je Teilnehmer)
+
+    | | ab 9 Personen | ab 17 Personen | ab 25 Personen |
+    |---|---|---|---|
+    | Kinder (unter 16) | 15,00 € | 12,50 € | 10,00 € |
+    | Erwachsene | 30,00 € | 25,00 € | 20,00 € |
+    | Mitglieder | 24,00 € | 20,00 € | 16,00 € |
+
+    ### Das Plus für euer Gruppentraining
+
+    - Transport vom Ziel zum Start: 60,00 € pro Auto und Stunde
+    - Exklusive Nutzung der Strecke: +20 % der gesamten Kosten
+
+    ## Macht euer eigenes Rennen
+
+    Inklusive Trainingsläufen, Zeitläufen mit Timing-System und einem professionellen Rennablauf.
+
+    - 1.410,00 € für mehr als 8 Teilnehmer
+    - 2.485,00 € für mehr als 12 Teilnehmer
+    - 3.000,00 € für mehr als 24 und weniger als 33 Teilnehmer
+
+    ## Trainingscamp über mehrere Tage
+
+    - 2 Tage Camp: −10 %
+    - 3 Tage Camp: −15 %
+    - 4 Tage oder mehr: −20 %
+
+    ### Unterkunft im Partnerhotel Art Spielberg
+
+    - 55,00 € pro Person und Nacht, mit Frühstück
+    - 80,00 € pro Person und Nacht, mit Frühstück und Abendessen
+    - Transport vom Hotel zur Strecke und zurück: Preis auf Anfrage
+
+    Mehr zum Hotel: [Art Hotel Spielberg](/hotel)
+  body_en: |
+    ## Training (2 hours)
+
+    | | Single training | 5 trainings | Season pass* |
+    |---|---|---|---|
+    | Children (under 16) | €17.50 | €70.00 | €147.50 |
+    | Adults | €35.00 | €140.00 | €295.00 |
+    | Members | €28.00 | €112.00 | €236.00 |
+
+    \* The season pass is valid on official training days only and does not include unlimited access outside training times. [Become a member](/mitglied-werden)
+
+    ## Groups (2 hours of training, price per participant)
+
+    | | more than 8 | more than 16 | more than 24 |
+    |---|---|---|---|
+    | Children (under 16) | €15.00 | €12.50 | €10.00 |
+    | Adults | €30.00 | €25.00 | €20.00 |
+    | Members | €24.00 | €20.00 | €16.00 |
+
+    ### Extras for your group training
+
+    - Transport from finish to start: €60.00 per car and hour
+    - Exclusive use of the track: +20% of the total cost
+
+    ## Host your own race
+
+    Includes training runs, time trials with a timing system and a professional race procedure.
+
+    - €1,410.00 for more than 8 participants
+    - €2,485.00 for more than 12 participants
+    - €3,000.00 for more than 24 and fewer than 33 participants
+
+    ## Multi-day training camp
+
+    - 2-day camp: −10%
+    - 3-day camp: −15%
+    - 4 days or more: −20%
+
+    ### Accommodation at our partner hotel Art Spielberg
+
+    - €55.00 per person and night, breakfast included
+    - €80.00 per person and night, breakfast and dinner included
+    - Transport from the hotel to the track and back: price on request
+
+    More about the hotel: [Art Hotel Spielberg](/hotel)
+
+- slug: mitglied-werden
+  nav: footer
+  position: 1
+  title_de: Mitglied werden
+  title_en: Become a member
+  body_de: |
+    ## Werde jetzt Mitglied!
+
+    | Mitgliedschaft | Beitrag |
+    |---|---|
+    | Reguläres Mitglied | 50 € pro Jahr |
+    | Kinder & Jugend | 40 € pro Jahr |
+    | Unterstützendes Mitglied | 15 € pro Jahr |
+
+    Neben den günstigeren Trainingspreisen gibt es für reguläre Mitglieder ein Gratis-Training. Mit der unterstützenden Mitgliedschaft hilfst du Ice Cross Austria, ohne selbst zu trainieren. Kinder und Jugendliche zahlen einen vergünstigten Beitrag.
+
+    ## Deine Vorteile
+
+    - **Informationen zuerst:** Alles zum aktuellen Zustand der Strecke, zu Trainingsmöglichkeiten und Events geht zuerst an unsere Mitglieder.
+    - **Finanzielle Vorteile:** Mitglieder zahlen bei jedem Training weniger und können um Unterstützung für internationale Bewerbe ansuchen.
+    - **Österreichisches Team-Jersey:** Mitglieder können ein offizielles Team-Österreich-Jersey bestellen. Ice Cross Austria übernimmt aktuell 50 % der Kosten.
+    - **Internationale Vertretung:** Ice Cross Austria ist Mitglied des internationalen Verbandes ATSX und damit stets über Regeländerungen und wichtige Informationen informiert.
+
+    ## Mitglied werden
+
+    Schreib uns eine E-Mail an [info@ice-cross.at](mailto:info@ice-cross.at) mit deinem Namen und der gewünschten Mitgliedschaft. Wir melden uns bei dir.
+  body_en: |
+    ## Become a member today!
+
+    | Membership | Fee |
+    |---|---|
+    | Regular member | €50 per year |
+    | Children & youth | €40 per year |
+    | Supporting member | €15 per year |
+
+    Besides cheaper training prices, regular members get one free training. As a supporting member you help Ice Cross Austria without training yourself. Children and teenagers pay a reduced fee.
+
+    ## Your benefits
+
+    - **First to know:** Everything about track conditions, training options and events goes to our members first.
+    - **Financial benefits:** Members pay less for every training and can apply for support for international competitions.
+    - **Austrian team jersey:** Members can order an official Team Austria jersey. Ice Cross Austria currently covers 50% of the cost.
+    - **International representation:** Ice Cross Austria is a member of the international federation ATSX and is always up to date on rule changes and important information.
+
+    ## Become a member
+
+    Send us an email at [info@ice-cross.at](mailto:info@ice-cross.at) with your name and the membership you want. We will get back to you.
+
+- slug: heats
+  nav: footer
+  position: 2
+  title_de: Heats und Qualifikation
+  title_en: Heats and qualification
+  body_de: |
+    ## Die Grundlagen
+
+    - Vier Athleten starten gemeinsam auf ein Signal.
+    - Es gilt, eine vereiste Strecke bergab mit diversen Hindernissen zu überwinden.
+    - Die beiden Schnelleren kommen weiter in die nächste Runde.
+    - Absichtlicher Körperkontakt (Bodychecks, Zurückhalten) ist verboten.
+
+    ## Die Qualifikation
+
+    Bevor es zu viert an die Startaufstellung geht, muss sich jede Athletin und jeder Athlet allein auf der Strecke beweisen. Es werden zwei Durchgänge gefahren, wobei die bessere Zeit zur Reihung verwendet wird. Die zweite Zeit dient als Tie-Breaker bei gleich schnellen Zeiten. Eine gute Qualifikationszeit ist der Schlüssel zu einem erfolgreichen Rennen, denn man qualifiziert sich nicht nur, sondern hat auch Vorteile bei der Wahl der Startposition.
+
+    Nach dem Zeitfahren gibt es drei Gruppen von Fahrern:
+
+    - Direkt für das Hauptrennen qualifiziert
+    - Qualifiziert für den LCQ (Last Chance Qualifier)
+    - Ausgeschieden
+
+    ## LCQ und Heats
+
+    Der Last Chance Qualifier (LCQ) ist eine Art Vorrennen und die Möglichkeit für Athletinnen und Athleten mit schlechter Qualifikation, sich doch noch für das Hauptrennen zu qualifizieren. Beispiel: 100 Fahrer haben sich angemeldet. Die besten 32 qualifizieren sich direkt für das Hauptrennen. Die Platzierungen 33 bis 96 fahren die restlichen 32 Plätze für das Hauptrennen aus.
+
+    Als Heat werden in manchen Wettkampfsportarten, etwa Skicross, Shorttrack oder Rallycross, Startgruppen bezeichnet. Im Ice Cross Downhill besteht ein Heat immer aus vier Personen. Startet eine Person nicht, wird das als Did Not Start (DNS) gewertet.
+
+    Sowohl die Platzierung in den Heats und im LCQ als auch die Qualifikationszeit haben Einfluss auf die Platzierung im Gesamtergebnis.
+
+    ## Wer startet wo?
+
+    Die Auswahl der Startgates erfolgt nach der Reihung in der Qualifikation. Die langsamste Fahrerin oder der langsamste Fahrer bekommt das Startgate, das am Schluss übrig bleibt. Stehen alle Fahrer auf ihren Positionen, gibt der Startschiedsrichter das Kommando „Riders ready! Five seconds warning“. Die Zeit danach ist variabel: Typischerweise vergehen 3 bis 7 Sekunden bis zum akustischen und visuellen Startsignal.
+
+    ## Die Zielgerade
+
+    Auf den letzten Metern wird es oft knapp, ein Fotofinish ist keine Seltenheit. Es zählt der vorderste Punkt der Kufe des Eislaufschuhs. Rückwärts durch das Ziel zu fahren zahlt sich also nicht aus.
+
+    ## Wer gehört in welchen Heat?
+
+    Auf den ersten Blick wirkt die Aufteilung nach den Qualifikationszeiten willkürlich. Sie folgt aber drei einfachen Grundregeln:
+
+    1. Alle Fahrer werden gleichmäßig aufgeteilt.
+    2. Der schnellere Fahrer erhält die bessere Ausgangslage.
+    3. Ein Platz Unterschied darf die Ausgangslage nicht sprunghaft ändern.
+
+    Beispiel mit 32 Fahrern: Da pro Heat 4 Fahrer starten, bilden wir 4 Gruppen mit je 8 Fahrern. Gruppe 1 sind die Plätze 1 bis 8, Gruppe 2 die Plätze 9 bis 16, Gruppe 3 die Plätze 17 bis 24 und Gruppe 4 die Plätze 25 bis 32. In jedem Heat fährt ein Fahrer aus jeder Gruppe. Damit der Schnellste die beste Ausgangslage bekommt, startet er gegen den Langsamsten:
+
+    - Heat 1: 01 – 16 – 17 – 32
+    - Heat 2: 08 – 09 – 24 – 25
+
+    Da immer zwei Fahrer weiterkommen, bilden zwei Heats der ersten Runde einen Heat der nächsten Runde (Sieger aus Heat 1 und Heat 2 treffen aufeinander). Die beiden Schnellsten sollen sich erst im Finale begegnen, deshalb liegt der Zweitschnellste im ersten Heat der unteren Hälfte, der Drittschnellste ebenfalls unten, der Viertschnellste oben.
+
+    ### Heat-Raster für 64 Fahrer
+
+    | Heat | Startplätze |
+    |---|---|
+    | 01 | 01 – 32 – 33 – 64 |
+    | 02 | 16 – 17 – 48 – 49 |
+    | 03 | 08 – 25 – 40 – 57 |
+    | 04 | 09 – 24 – 41 – 56 |
+    | 05 | 04 – 29 – 36 – 61 |
+    | 06 | 13 – 20 – 45 – 52 |
+    | 07 | 05 – 28 – 37 – 60 |
+    | 08 | 12 – 21 – 44 – 53 |
+    | 09 | 02 – 31 – 34 – 63 |
+    | 10 | 15 – 18 – 47 – 50 |
+    | 11 | 07 – 26 – 39 – 58 |
+    | 12 | 10 – 23 – 42 – 55 |
+    | 13 | 03 – 30 – 35 – 62 |
+    | 14 | 14 – 19 – 46 – 51 |
+    | 15 | 06 – 27 – 38 – 59 |
+    | 16 | 11 – 22 – 43 – 54 |
+
+    Wie ein Rennen ausgeht, siehst du im Heatbaum jedes Events unter [Ergebnisse](/events).
+  body_en: |
+    ## The basics
+
+    - Four athletes start together on a signal.
+    - They race down an icy track with various obstacles.
+    - The two faster ones advance to the next round.
+    - Deliberate body contact (body checks, holding back) is forbidden.
+
+    ## Qualification
+
+    Before the four-rider heats, every athlete has to prove themselves alone on the track. Two runs are made, and the better time is used for ranking. The second time is the tie-breaker for equal times. A good qualification time is the key to a successful race: you not only qualify, but also get an advantage when choosing your start position.
+
+    After the time trial there are three groups of riders:
+
+    - Directly qualified for the main race
+    - Qualified for the LCQ (Last Chance Qualifier)
+    - Eliminated
+
+    ## LCQ and heats
+
+    The Last Chance Qualifier (LCQ) is a kind of pre-race and a chance for athletes with a poor qualification to still make it into the main race. Example: 100 riders have registered. The best 32 qualify directly for the main race. Places 33 to 96 race for the remaining 32 spots.
+
+    In some sports, such as ski cross, short track or rallycross, starting groups are called heats. In ice cross downhill a heat always consists of four riders. If a rider does not start, this is recorded as Did Not Start (DNS).
+
+    Placements in the heats and the LCQ as well as the qualification time influence the overall result.
+
+    ## Who starts where?
+
+    Start gates are chosen in the order of the qualification ranking. The slowest rider gets the gate that is left over. When all riders are in position, the starter gives the command "Riders ready! Five seconds warning". The time after that varies: typically 3 to 7 seconds pass before the acoustic and visual start signal.
+
+    ## The finish
+
+    The last metres are often close, and a photo finish is not rare. The foremost point of the skate blade counts. Crossing the line backwards does not pay off.
+
+    ## Who goes into which heat?
+
+    At first glance the split into heats by qualification time looks arbitrary. It follows three simple rules:
+
+    1. All riders are divided evenly.
+    2. The faster rider gets the better starting situation.
+    3. One rank of difference must not change the starting situation drastically.
+
+    Example with 32 riders: as each heat has 4 riders, we form 4 groups of 8. Group 1 is places 1 to 8, group 2 places 9 to 16, group 3 places 17 to 24 and group 4 places 25 to 32. Each heat has one rider from each group. So that the fastest gets the best matchup, he or she races the slowest:
+
+    - Heat 1: 01 – 16 – 17 – 32
+    - Heat 2: 08 – 09 – 24 – 25
+
+    Since two riders advance, two heats of the first round form one heat of the next round (winners of heat 1 and heat 2 meet). The two fastest riders should only meet in the final, so the second fastest is placed in the first heat of the lower half, the third fastest also in the lower half and the fourth fastest in the upper half.
+
+    ### Heat grid for 64 riders
+
+    | Heat | Start positions |
+    |---|---|
+    | 01 | 01 – 32 – 33 – 64 |
+    | 02 | 16 – 17 – 48 – 49 |
+    | 03 | 08 – 25 – 40 – 57 |
+    | 04 | 09 – 24 – 41 – 56 |
+    | 05 | 04 – 29 – 36 – 61 |
+    | 06 | 13 – 20 – 45 – 52 |
+    | 07 | 05 – 28 – 37 – 60 |
+    | 08 | 12 – 21 – 44 – 53 |
+    | 09 | 02 – 31 – 34 – 63 |
+    | 10 | 15 – 18 – 47 – 50 |
+    | 11 | 07 – 26 – 39 – 58 |
+    | 12 | 10 – 23 – 42 – 55 |
+    | 13 | 03 – 30 – 35 – 62 |
+    | 14 | 14 – 19 – 46 – 51 |
+    | 15 | 06 – 27 – 38 – 59 |
+    | 16 | 11 – 22 – 43 – 54 |
+
+    You can see how a race went in the heat tree of every event under [Results](/events).
+
+- slug: zuschauer
+  nav: footer
+  position: 3
+  title_de: Für Zuschauer
+  title_en: For spectators
+  body_de: |
+    ## Ice Cross Weltcup – Infos für Besucher
+
+    Ice Cross Downhill live erleben: Sowohl die Sportveranstaltung als auch die Party im Festzelt finden auf der Winterleiten statt. Vor dem Hauptbewerb finden Vorrundenläufe statt. Zeitplan und Details zum nächsten Event findest du auf der [Event-Seite](/events).
+
+    ## Wo findet alles statt?
+
+    Ice Cross Downhill Strecke Winterleiten
+    Winterleitenhüttenstraße 1
+    8750 Judenburg
+    [Google Maps](https://goo.gl/maps/T3aPY1RPNdBweMcg9)
+
+    ## Ist Eintritt zu zahlen?
+
+    Nein, es wird kein Eintritt verlangt.
+
+    ## Wo kann ich parken?
+
+    Geparkt werden kann bei der Schmelzhütte und auf den Parkplätzen bis zur Zufahrt der Rodelbahn. Parkplatzordner weisen euch beim Parken ein.
+
+    ## Ist die Veranstaltung familienfreundlich?
+
+    Ja. Wir freuen uns wie jedes Jahr darauf, Familien und Kinder jedes Alters vor Ort begrüßen zu dürfen.
+
+    ## Gibt es Essen und Trinken vor Ort?
+
+    Ja. Es gibt warme Getränke im Zelt am Beginn der Strecke und in eigenen Gastro-Zelten entlang der Strecke.
+
+    ## Gibt es Videowalls?
+
+    Ja. An mehreren Abschnitten der Strecke gibt es Videowalls mit einer Live-Übertragung des Bildes. Die Übertragung findet nur vor Ort statt.
+
+    ## Kann ich das Event unterstützen?
+
+    Wir freuen uns immer über Unterstützer. Für Sponsoring und Helferanfragen erreichst du uns unter [info@ice-cross.at](mailto:info@ice-cross.at). Mehr Möglichkeiten findest du unter [Unterstütze uns](/unterstuetzung).
+  body_en: |
+    ## Ice Cross World Cup – visitor info
+
+    Experience ice cross downhill live: both the sporting event and the party in the tent take place in Winterleiten. Qualifying runs take place before the main competition. Schedule and details for the next event are on the [event page](/events).
+
+    ## Where does everything take place?
+
+    Ice Cross Downhill Track Winterleiten
+    Winterleitenhüttenstraße 1
+    8750 Judenburg
+    [Google Maps](https://goo.gl/maps/T3aPY1RPNdBweMcg9)
+
+    ## Is there an entrance fee?
+
+    No, entry is free.
+
+    ## Where can I park?
+
+    You can park at the Schmelzhütte and in the car parks up to the entrance of the toboggan run. Parking attendants will guide you.
+
+    ## Is the event family friendly?
+
+    Yes. As every year, we are happy to welcome families and children of all ages.
+
+    ## Is there food and drink on site?
+
+    Yes. There are hot drinks in the tent at the start of the track and in dedicated catering tents along the track.
+
+    ## Are there video walls?
+
+    Yes. At several sections of the track there are video walls with a live broadcast. The broadcast is only available on site.
+
+    ## Can I support the event?
+
+    We are always happy about supporters. For sponsoring and volunteer requests contact us at [info@ice-cross.at](mailto:info@ice-cross.at). More ways to help are on [Support us](/unterstuetzung).
+
+- slug: unterstuetzung
+  nav: footer
+  position: 4
+  title_de: Unterstütze uns
+  title_en: Support us
+  body_de: |
+    Jedes Jahr investieren wir hunderte Stunden, um Ice Cross in Österreich größer und besser zu machen. Wir organisieren Events wie die ATSX Ice Cross Weltmeisterschaft, verbessern unsere Paradestrecke in Winterleiten, bieten Trainings an und vieles mehr. Dafür sind wir auf unzählige Freiwillige, Sponsoren und die Unterstützung der Fans des Sports angewiesen.
+
+    Wenn du unsere Mission unterstützen willst, diesen großartigen Sport aufzubauen, [unterstütze uns hier](http://icecross.faninvest.com).
+
+    Für Sponsoring und Helferanfragen: [info@ice-cross.at](mailto:info@ice-cross.at)
+  body_en: |
+    Every year we spend hundreds of hours to make ice cross bigger and better in Austria. We organise events like the ATSX Ice Cross World Championship, improve our flagship track in Winterleiten, organise trainings and much more. To make all of that happen we rely heavily on countless volunteers, sponsors and the support of the fans of the sport.
+
+    If you want to support our mission of building this amazing sport, [support us here](http://icecross.faninvest.com).
+
+    For sponsoring and volunteer requests: [info@ice-cross.at](mailto:info@ice-cross.at)
+
+- slug: hotel
+  nav: footer
+  position: 5
+  title_de: Partnerhotel Art Spielberg
+  title_en: Partner hotel Art Spielberg
+  body_de: |
+    ## Wo befindet sich das Hotel?
+
+    Das Hotel befindet sich in Spielberg, mit dem Auto sind es etwa 35 Minuten zur Ice-Cross-Strecke. [Google Maps](https://maps.app.goo.gl/xM5YpJmqerJAXkrj9)
+
+    ## Was kostet das Hotel?
+
+    - **55 €** pro Nacht, Frühstück inklusive
+    - **80 €** pro Nacht, Frühstück und Abendessen inklusive
+
+    Verwende beim Buchen einfach den Rabattcode **ICECROSS2026**. [Hier buchen](http://www.arthotel-spielberg.at)
+
+    Bei weiteren Fragen an das Hotel schreibe eine E-Mail an [office@arthotel-spielberg.at](mailto:office@arthotel-spielberg.at).
+
+    ## All-inclusive-Weltcup-Paket: 400 €
+
+    Inklusive Renngebühr, 3 Nächten (Donnerstag bis Sonntag), Frühstück und Abendessen sowie 2 Trainings (Donnerstag Nachmittag, Freitag früh). Du sparst 50 €. [Im Ticketshop buchen](https://shop.entrello.app/de/icecross-austria/events/ev_37QOfN7OM2C0vh0enXHV4pVjfQA/tickets)
+  body_en: |
+    ## Where is the hotel?
+
+    The hotel is in Spielberg, about a 35-minute drive from the ice cross track. [Google Maps](https://maps.app.goo.gl/xM5YpJmqerJAXkrj9)
+
+    ## How much does the hotel cost?
+
+    - **€55** per night, breakfast included
+    - **€80** per night, breakfast and dinner included
+
+    Simply use our discount code **ICECROSS2026** when booking. [Book here](http://www.arthotel-spielberg.at)
+
+    For further questions to the hotel, write an email to [office@arthotel-spielberg.at](mailto:office@arthotel-spielberg.at).
+
+    ## All-inclusive World Cup package: €400
+
+    Includes the race fee, 3 nights (Thursday to Sunday), breakfast and dinner and 2 trainings (Thursday afternoon, Friday morning). You save €50. [Book in the ticket shop](https://shop.entrello.app/de/icecross-austria/events/ev_37QOfN7OM2C0vh0enXHV4pVjfQA/tickets)
+
+- slug: impressum
+  nav: footer
+  position: 90
+  title_de: Impressum
+  title_en: Legal notice
+  body_de: |
+    ## Angaben gemäß § 5 ECG und Offenlegung
+
+    **Österreichischer Skate Cross Verband**
+    Sitz: Graz, Österreich
+    ZVR-Zahl: 070488464
+
+    Zustellanschrift:
+    Wiener Straße 58/1
+    8020 Graz, Österreich
+
+    ## Vertreten durch
+
+    - Obmann: Marco Dallago
+    - Obmann-Stellvertreter: Michael Krainer-Bidovec
+    - Schriftführer: Gregor Luckeneder
+    - Schriftführer-Stellvertreter: Jakob Begander
+    - Kassier: David Reinisch
+    - Kassier-Stellvertreter: Benedikt Langegger
+
+    ## Kontakt
+
+    E-Mail: [info@ice-cross.at](mailto:info@ice-cross.at)
+    Telefon: 0664 92 32 384
+    Web: www.ice-cross.at
+
+    Verantwortlich für den Inhalt: Marco Dallago, Obmann
+
+    ## Haftungsausschluss
+
+    Die Inhalte dieser Webseite wurden mit größter Sorgfalt erstellt. Der Österreichische Skate Cross Verband übernimmt jedoch keine Haftung für die Vollständigkeit, Richtigkeit und Aktualität der Inhalte. Alle Inhalte dienen ausschließlich der allgemeinen Information und stellen keine rechtliche Beratung dar.
+
+    Für externe Links wird keine Haftung übernommen. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+
+    ## Urheberrecht
+
+    Die Inhalte und Werke auf dieser Webseite unterliegen dem österreichischen Urheberrecht. Alle Rechte vorbehalten. Die Vervielfältigung, Bearbeitung, Verbreitung oder Speicherung von Inhalten, insbesondere von Texten, Bildern und Videos, ist ohne ausdrückliche Zustimmung des Österreichischen Skate Cross Verbands nicht gestattet.
+
+    ## Datenschutz
+
+    Informationen zur Verarbeitung personenbezogener Daten findest du in der [Datenschutzerklärung](/datenschutz).
+  body_en: |
+    ## Information according to § 5 ECG (Austria)
+
+    **Österreichischer Skate Cross Verband** (Austrian Skate Cross Association)
+    Registered office: Graz, Austria
+    ZVR number: 070488464
+
+    Postal address:
+    Wiener Straße 58/1
+    8020 Graz, Austria
+
+    ## Represented by
+
+    - Chairman: Marco Dallago
+    - Deputy chairman: Michael Krainer-Bidovec
+    - Secretary: Gregor Luckeneder
+    - Deputy secretary: Jakob Begander
+    - Treasurer: David Reinisch
+    - Deputy treasurer: Benedikt Langegger
+
+    ## Contact
+
+    Email: [info@ice-cross.at](mailto:info@ice-cross.at)
+    Phone: 0664 92 32 384
+    Web: www.ice-cross.at
+
+    Responsible for the content: Marco Dallago, Chairman
+
+    ## Disclaimer
+
+    The content of this website was created with the greatest care. However, the Österreichischer Skate Cross Verband accepts no liability for the completeness, correctness and timeliness of the content. All content is for general information only and does not constitute legal advice.
+
+    No liability is accepted for external links. The operators of linked pages are solely responsible for their content.
+
+    ## Copyright
+
+    The content and works on this website are subject to Austrian copyright law. All rights reserved. Reproduction, editing, distribution or storage of content, in particular texts, images and videos, is not permitted without the express consent of the Österreichischer Skate Cross Verband.
+
+    ## Privacy
+
+    Information on the processing of personal data is available in our [privacy policy](/datenschutz).
+
+- slug: datenschutz
+  nav: footer
+  position: 91
+  title_de: Datenschutz
+  title_en: Privacy policy
+  body_de: |
+    > Entwurf: Diese Erklärung beschreibt die tatsächliche Datenverarbeitung dieser Anwendung und muss vor dem Livegang vom Verband geprüft werden.
+
+    ## Verantwortlicher
+
+    Österreichischer Skate Cross Verband, Wiener Straße 58/1, 8020 Graz, [info@ice-cross.at](mailto:info@ice-cross.at). Die Kontaktdaten findest du auch im [Impressum](/impressum).
+
+    ## Besucher der Webseite
+
+    Beim Aufruf der Seiten verarbeitet der Server technisch notwendige Daten (IP-Adresse, Zeitpunkt, aufgerufene Seite), um die Seite auszuliefern und sicher zu betreiben. Wir setzen keine Tracking- oder Werbe-Cookies ein. Gespeichert werden nur technisch notwendige Cookies: deine Spracheinstellung und, nach dem Login, dein Sitzungs-Cookie.
+
+    ## Fahrerlager (Login für Fahrerinnen und Fahrer)
+
+    Der Zugang zum Fahrerlager erfolgt nur auf Einladung. Wir speichern dafür deine E-Mail-Adresse, dein Passwort (verschlüsselt) und die Daten, die du im Profil angibst: Name, Nation, Geburtsdatum, Verein/Team und Info-Text. Zusätzlich speichern wir deine Anmeldungen zu Events sowie Zeiten und Ergebnisse. Rechtsgrundlage ist die Durchführung der Teilnahme am Wettbewerb (Art. 6 Abs. 1 lit. b DSGVO).
+
+    ## Ergebnisse und Fahrerprofile
+
+    - **Ergebnisse:** Name und Nation sind in den Ergebnissen öffentlich, weil sie für die Wertung benötigt werden. Bei Fahrerinnen und Fahrern unter 18 Jahren (oder ohne bekanntes Geburtsdatum) zeigen wir ohne Zustimmung nur die Initialen und keine Nation.
+    - **Öffentliches Profil:** Ein Profil wird nur veröffentlicht, wenn du im Fahrerlager ausdrücklich zustimmst. Du kannst die Zustimmung jederzeit widerrufen. E-Mail-Adresse und Geburtsdatum werden nie veröffentlicht.
+
+    ## Empfänger
+
+    Wir geben Daten nur weiter, soweit es für Anmeldung und Durchführung nötig ist (z. B. Ticketshop und internationaler Verband ATSX) oder wir gesetzlich dazu verpflichtet sind.
+
+    ## Deine Rechte
+
+    Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Schreib dazu an [info@ice-cross.at](mailto:info@ice-cross.at). Du kannst dich außerdem bei der österreichischen Datenschutzbehörde beschweren.
+  body_en: |
+    > Draft: This statement describes how this application actually processes data and must be reviewed by the association before going live.
+
+    ## Controller
+
+    Österreichischer Skate Cross Verband, Wiener Straße 58/1, 8020 Graz, Austria, [info@ice-cross.at](mailto:info@ice-cross.at). Contact details are also in the [legal notice](/impressum).
+
+    ## Website visitors
+
+    When you open the pages, the server processes technically necessary data (IP address, time, requested page) to deliver the site and operate it securely. We do not use tracking or advertising cookies. Only technically necessary cookies are stored: your language setting and, after login, your session cookie.
+
+    ## Paddock (rider login)
+
+    Access to the paddock is by invitation only. For this we store your email address, your password (encrypted) and the data you enter in your profile: name, nation, date of birth, club/team and info text. We also store your event registrations as well as times and results. The legal basis is performing your participation in the competition (Art. 6(1)(b) GDPR).
+
+    ## Results and rider profiles
+
+    - **Results:** Name and nation are public in the results because they are needed for the ranking. For riders under 18 (or with no known date of birth) we show only initials and no nation unless they consent.
+    - **Public profile:** A profile is only published if you explicitly consent in the paddock. You can withdraw your consent at any time. Email address and date of birth are never published.
+
+    ## Recipients
+
+    We only pass on data where necessary for registration and running the event (e.g. ticket shop and the international federation ATSX) or where we are legally required to.
+
+    ## Your rights
+
+    You have the right of access, rectification, erasure, restriction of processing, data portability and objection. Write to [info@ice-cross.at](mailto:info@ice-cross.at). You can also lodge a complaint with the Austrian data protection authority.
