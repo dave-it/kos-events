@@ -24,6 +24,14 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     assert_select "nav a", text: "Pro Men"
   end
 
+  test "Listenansicht zeigt den Endstand" do
+    get event_path(@event, view: "list")
+    assert_response :success
+    assert_select "table tbody tr", 1
+    assert_select "table tbody tr", /Anna Fast/
+    assert_select "a[aria-current=true]", text: "Liste"
+  end
+
   test "Kategorie ohne Heats erscheint nicht im Menü" do
     get event_path(@event)
     assert_select "nav a", text: "Women", count: 0

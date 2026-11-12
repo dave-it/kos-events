@@ -29,8 +29,20 @@
       <% end %>
     </nav>
 
-    <%= render "legend" %>
-    <%= render "bracket", bracket: @brackets[:main], medals: true, title: t(".main"), hint: t(".main_hint") %>
-    <%= render "bracket", bracket: @brackets[:lcq], title: t(".lcq"), hint: t(".lcq_hint") %>
+    <div class="mt-4 inline-flex rounded bg-white/10 p-0.5 text-sm font-semibold" role="group" aria-label="<%= t(".view") %>">
+      <% { "tree" => t(".view_tree"), "list" => t(".view_list") }.each do |key, label| %>
+        <%= link_to label, event_path(@event, category: @category.id, view: key == "list" ? "list" : nil),
+              class: "rounded px-4 py-1.5 #{@view == key ? 'bg-white text-ink' : 'text-white/80 hover:text-white'}",
+              "aria-current": (@view == key ? "true" : nil) %>
+      <% end %>
+    </div>
+
+    <% if @view == "list" %>
+      <%= render "standings", standings: @standings %>
+    <% else %>
+      <%= render "legend" %>
+      <%= render "bracket", bracket: @brackets[:main], medals: true, title: t(".main"), hint: t(".main_hint") %>
+      <%= render "bracket", bracket: @brackets[:lcq], title: t(".lcq"), hint: t(".lcq_hint") %>
+    <% end %>
   <% end %>
 </div>

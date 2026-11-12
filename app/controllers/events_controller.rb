@@ -14,5 +14,7 @@ class EventsController < ApplicationController
     @categories = @event.categories.select { |c| c.heats.exists? }
     @category = @categories.find { |c| c.id == params[:category].to_i } || @categories.first
     @brackets = @category&.brackets
+    @view = params[:view] == "list" ? "list" : "tree"
+    @standings = CategoryStandings.new(@brackets[:main], @brackets[:lcq]) if @category && @view == "list"
   end
 end

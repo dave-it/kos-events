@@ -101,12 +101,22 @@ de:
       back: ← Alle Events
       no_results: Für dieses Event gibt es noch keine Ergebnisse.
       register: Jetzt anmelden
+      view: Ansicht
+      view_tree: Heatbaum
+      view_list: Liste
       register_until: "Anmeldung bis %{date}"
       categories: Kategorien
       main: Heatbaum
       main_hint: Platz 1 und 2 jedes Heats kommen weiter.
       lcq: Last Chance Qualifier
       lcq_hint: Die zweite Chance für alle, die im Hauptfeld ausgeschieden sind.
+    standings:
+      hint: Endstand aus dem Heatbaum. Ab Platz 9 zählt zuerst die erreichte Runde, dann der Platz im Heat und das Zeitfahren.
+      rank: Platz
+      name: Name
+      nation: Nation
+      reached: Erreicht
+      trial: Zeitfahren
     bracket:
       heat: "Heat %{number}"
       final: Finale

@@ -100,6 +100,9 @@ en:
     show:
       back: ← All events
       register: Register now
+      view: View
+      view_tree: Heat tree
+      view_list: List
       register_until: "Registration until %{date}"
       no_results: There are no results for this event yet.
       categories: Categories
@@ -107,6 +110,13 @@ en:
       main_hint: The first two of each heat go through.
       lcq: Last Chance Qualifier
       lcq_hint: The second chance for everyone who dropped out of the main bracket.
+    standings:
+      hint: Final standings derived from the heat tree. From 9th place on, the round reached counts first, then the place in the heat and the time trial.
+      rank: Rank
+      name: Name
+      nation: Nation
+      reached: Reached
+      trial: Time trial
     bracket:
       heat: "Heat %{number}"
       final: Final
