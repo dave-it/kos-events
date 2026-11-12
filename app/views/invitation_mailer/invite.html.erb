@@ -1,4 +1,4 @@
-<p><%= t(".greeting", name: @rider.firstname) %></p>
-<p><%= t(".body") %></p>
+<p><%= (@rider ? t(".greeting", name: @rider.firstname) : t(".greeting_generic")) %></p>
+<p><%= t(".body#{@suffix}") %></p>
 <p><%= link_to t(".link"), invitation_url(token: @invitation.token) %></p>
 <p><%= t(".expires", date: l(@invitation.expires_at.to_date)) %></p>

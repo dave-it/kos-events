@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_one :rider, dependent: :nullify
 
-  enum :role, { rider: "rider", staff: "staff" }, default: :rider, suffix: :role
+  enum :role, { rider: "rider", staff: "staff", visitor: "visitor" }, default: :rider, suffix: :role
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 

@@ -153,8 +153,19 @@ de:
       confirmation: Neues Passwort wiederholen
       submit: Speichern
 
+  guest:
+    show:
+      title: Besucherbereich
+      intro: Alle Events und Ergebnisse auf einen Blick.
+      upcoming: Kommende Events
+      none: Aktuell sind keine Events geplant.
+      results: Letzte Ergebnisse
+      all_events: Alle Events →
   invitations:
     show:
+      title_generic: Willkommen!
+      intro_staff: "Lege ein Passwort für deinen Mitarbeiter-Zugang fest (%{email})."
+      intro_visitor: "Lege ein Passwort für deinen Besucher-Zugang fest (%{email})."
       title: "Willkommen, %{name}!"
       intro: "Lege ein Passwort für deinen Fahrerlager-Zugang fest (%{email})."
       password: Passwort (mind. 8 Zeichen)
@@ -199,6 +210,27 @@ de:
       events: Events
       riders: Fahrer
       pages: Seiten
+      users: Zugänge
+    users:
+      roles:
+        staff: Mitarbeiter
+        visitor: Besucher
+        rider: Fahrer
+      index:
+        title: Zugänge
+        invite: Zugang einladen
+        email: E-Mail
+        role: Rolle
+        invited: Eingeladen
+        revoke: Entziehen
+        confirm_revoke: "Zugang für %{email} wirklich entziehen?"
+        link_hint: "Einladungslink (gilt 14 Tage). Falls keine Mail ankommt, direkt weitergeben:"
+      new:
+        title: Zugang einladen
+        email: E-Mail-Adresse
+        role: Rolle
+        locale: Sprache
+        submit: Einladung senden
     pages:
       navs:
         header: Menü oben
@@ -303,6 +335,10 @@ de:
       submit: Speichern
 
   flash:
+    users:
+      invited: "Einladung an %{email} gesendet."
+      revoked: "Zugang für %{email} entzogen."
+      cannot_revoke_self: Du kannst dir nicht selbst den Zugang entziehen.
     pages:
       created: Seite angelegt.
       saved: Seite gespeichert.
@@ -341,6 +377,11 @@ de:
 
   invitation_mailer:
     invite:
+      subject_staff: Einladung ins Team
+      subject_visitor: Einladung als Besucher
+      greeting_generic: "Hallo,"
+      body_staff: du wurdest als Mitarbeiter eingeladen. Lege hier dein Passwort fest.
+      body_visitor: du wurdest als Besucher eingeladen. Lege hier dein Passwort fest.
       subject: Einladung ins Fahrerlager
       greeting: "Hallo %{name},"
       body: du wurdest ins Fahrerlager eingeladen. Lege hier dein Passwort fest.

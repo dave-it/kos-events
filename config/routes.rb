@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   # Rider Hub (Fahrer)
   resource :hub, controller: "hub", only: %i[show edit update]
 
+  # Besucher
+  resource :guest, controller: "guest", only: :show, path: "gast"
+
   # Staff
   namespace :admin do
+    resources :users, only: %i[index new create destroy]
     resources :riders, only: %i[index show new create] do
       post :invite, on: :member
     end

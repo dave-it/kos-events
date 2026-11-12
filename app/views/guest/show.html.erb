@@ -1,0 +1,27 @@
+<h1 class="font-bold text-3xl"><%= t(".title") %></h1>
+<p class="mt-2 text-gray-600"><%= t(".intro") %></p>
+
+<h2 class="mt-8 font-bold text-xl"><%= t(".upcoming") %></h2>
+<% if @upcoming.empty? %>
+  <p class="mt-2 text-gray-500"><%= t(".none") %></p>
+<% else %>
+  <ul class="mt-3 space-y-2">
+    <% @upcoming.each do |event| %>
+      <li class="bg-white rounded-lg border border-gray-200 p-4">
+        <%= link_to event.name, event_path(event), class: "font-medium text-blue-600 underline" %>
+        <div class="text-sm text-gray-500"><%= l(event.starts_at.to_date) %> · <%= event.location %></div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2 class="mt-8 font-bold text-xl"><%= t(".results") %></h2>
+<ul class="mt-3 space-y-2">
+  <% @recent.each do |event| %>
+    <li class="bg-white rounded-lg border border-gray-200 p-4">
+      <%= link_to event.name, event_path(event), class: "font-medium text-blue-600 underline" %>
+      <div class="text-sm text-gray-500"><%= l(event.starts_at.to_date) %> · <%= event.location %></div>
+    </li>
+  <% end %>
+</ul>
+<%= link_to t(".all_events"), events_path, class: "inline-block mt-4 underline" %>

@@ -2,6 +2,7 @@
   <h1 class="font-bold text-3xl"><%= t(".title") %></h1>
   <div class="flex items-center gap-3">
     <%= link_to t("admin.nav.events"), admin_events_path, class: "underline" %>
+    <%= link_to t("admin.nav.users"), admin_users_path, class: "underline" %>
     <%= link_to t(".invite"), new_admin_rider_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
   </div>
 </div>

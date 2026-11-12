@@ -9,3 +9,8 @@ rider_user:
   email_address: anna@example.com
   password_digest: <%= password_digest %>
   role: rider
+
+visitor:
+  email_address: gast@example.com
+  password_digest: <%= password_digest %>
+  role: visitor

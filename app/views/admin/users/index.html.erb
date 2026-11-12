@@ -1,0 +1,39 @@
+<div class="flex items-center justify-between">
+  <h1 class="font-bold text-3xl"><%= t(".title") %></h1>
+  <div class="flex items-center gap-3">
+    <%= link_to t("admin.nav.events"), admin_events_path, class: "underline" %>
+    <%= link_to t("admin.nav.riders"), admin_riders_path, class: "underline" %>
+    <%= link_to t(".invite"), new_admin_user_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+  </div>
+</div>
+
+<% if flash[:invite_url] %>
+  <div class="mt-5 p-4 bg-green-50 rounded-lg text-sm">
+    <p class="font-medium"><%= t(".link_hint") %></p>
+    <code class="block mt-2 break-all select-all"><%= flash[:invite_url] %></code>
+  </div>
+<% end %>
+
+<table class="mt-6 w-full bg-white rounded-lg border border-gray-200 text-sm">
+  <thead class="text-left text-gray-500"><tr><th class="p-3"><%= t(".email") %></th><th class="p-3"><%= t(".role") %></th><th class="p-3"></th></tr></thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class="border-t border-gray-100">
+        <td class="p-3"><%= user.email_address %></td>
+        <td class="p-3"><%= t("admin.users.roles.#{user.role}") %></td>
+        <td class="p-3 text-right">
+          <% unless user == current_user %>
+            <%= button_to t(".revoke"), admin_user_path(user), method: :delete, form: { data: { turbo_confirm: t(".confirm_revoke", email: user.email_address) } }, class: "underline text-red-600 cursor-pointer" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <% @invitations.each do |invitation| %>
+      <tr class="border-t border-gray-100 text-gray-500">
+        <td class="p-3"><%= invitation.email %></td>
+        <td class="p-3"><%= t("admin.users.roles.#{invitation.role}") %></td>
+        <td class="p-3 text-right"><%= t(".invited") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

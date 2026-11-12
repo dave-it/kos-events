@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_08_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_12_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -77,7 +77,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_08_120000) do
   end
 
   create_table "invitations", force: :cascade do |t|
-    t.bigint "rider_id", null: false
+    t.bigint "rider_id"
     t.string "email", null: false
     t.string "token", null: false
     t.datetime "expires_at", null: false
@@ -85,6 +85,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_08_120000) do
     t.bigint "invited_by_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role", default: "rider", null: false
+    t.string "locale", default: "de", null: false
     t.index ["invited_by_id"], name: "index_invitations_on_invited_by_id"
     t.index ["rider_id"], name: "index_invitations_on_rider_id"
     t.index ["token"], name: "index_invitations_on_token", unique: true

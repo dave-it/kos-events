@@ -1,6 +1,6 @@
-<%= t(".greeting", name: @rider.firstname) %>
+<%= (@rider ? t(".greeting", name: @rider.firstname) : t(".greeting_generic")) %>
 
-<%= t(".body") %>
+<%= t(".body#{@suffix}") %>
 
 <%= invitation_url(token: @invitation.token) %>
 

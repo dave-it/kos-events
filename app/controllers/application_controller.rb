@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
       head :forbidden unless current_user&.staff_role?
     end
 
+    def require_visitor
+      head :forbidden unless current_user&.visitor_role?
+    end
+
     def require_rider
       head :forbidden unless current_user&.rider_role? && current_user.rider
     end

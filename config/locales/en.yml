@@ -153,8 +153,19 @@ en:
       confirmation: Repeat new password
       submit: Save
 
+  guest:
+    show:
+      title: Visitor area
+      intro: All events and results at a glance.
+      upcoming: Upcoming events
+      none: No events planned right now.
+      results: Latest results
+      all_events: All events →
   invitations:
     show:
+      title_generic: Welcome!
+      intro_staff: "Choose a password for your staff access (%{email})."
+      intro_visitor: "Choose a password for your visitor access (%{email})."
       title: "Welcome, %{name}!"
       intro: "Set a password for your Paddock access (%{email})."
       password: Password (min. 8 characters)
@@ -199,6 +210,27 @@ en:
       events: Events
       riders: Riders
       pages: Pages
+      users: Access
+    users:
+      roles:
+        staff: Staff
+        visitor: Visitor
+        rider: Rider
+      index:
+        title: Access
+        invite: Invite someone
+        email: Email
+        role: Role
+        invited: Invited
+        revoke: Revoke
+        confirm_revoke: "Really revoke access for %{email}?"
+        link_hint: "Invitation link (valid for 14 days). If no email arrives, share it directly:"
+      new:
+        title: Invite someone
+        email: Email address
+        role: Role
+        locale: Language
+        submit: Send invitation
     pages:
       navs:
         header: Top menu
@@ -303,6 +335,10 @@ en:
       submit: Save
 
   flash:
+    users:
+      invited: "Invitation sent to %{email}."
+      revoked: "Access revoked for %{email}."
+      cannot_revoke_self: You cannot revoke your own access.
     pages:
       created: Page created.
       saved: Page saved.
@@ -341,6 +377,11 @@ en:
 
   invitation_mailer:
     invite:
+      subject_staff: Invitation to the team
+      subject_visitor: Invitation as a visitor
+      greeting_generic: "Hello,"
+      body_staff: you have been invited as staff. Set your password here.
+      body_visitor: you have been invited as a visitor. Set your password here.
       subject: Invitation to the Paddock
       greeting: "Hello %{name},"
       body: you have been invited to the Paddock. Set your password here.
