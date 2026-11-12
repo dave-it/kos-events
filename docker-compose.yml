@@ -1,0 +1,41 @@
+# Produktion auf sirius: nginx (Host) -> 127.0.0.1:3012 -> Thruster (8080)/Puma im Container
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3012:8080"
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      RAILS_MAX_THREADS: 3
+      SOLID_QUEUE_IN_PUMA: "true"
+      # Port 80 darf der unprivilegierte Container-User auf sirius nicht binden
+      HTTP_PORT: 8080
+    volumes:
+      - storage:/rails/storage
+    mem_limit: 500m
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kos_events
+      POSTGRES_PASSWORD: ${KOS_EVENTS_DATABASE_PASSWORD}
+      POSTGRES_DB: kos_events_production
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kos_events -d kos_events_production"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    mem_limit: 256m
+
+volumes:
+  storage:
+  pgdata:

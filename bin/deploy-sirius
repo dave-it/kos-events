@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Deployt den aktuellen Git-Stand (HEAD) nach sirius. Baut auf dem Server.
+# Voraussetzung: ~/kos-events/.env auf dem Server (siehe .env.example).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+  echo "Uncommitted changes: only committed code is deployed." >&2
+fi
+
+echo "==> Upload $(git rev-parse --short HEAD)"
+ssh sirius 'mkdir -p ~/kos-events'
+git archive HEAD | ssh sirius 'tar -x -C ~/kos-events'
+
+echo "==> Build + start"
+ssh sirius 'cd ~/kos-events && docker compose up -d --build && docker image prune -f >/dev/null'
+
+echo "==> Health"
+for i in $(seq 1 30); do
+  if ssh sirius 'curl -fs -o /dev/null http://127.0.0.1:3012/up'; then echo "OK"; exit 0; fi
+  sleep 3
+done
+echo "App did not become healthy" >&2
+ssh sirius 'cd ~/kos-events && docker compose logs --tail 40 web' >&2
+exit 1
