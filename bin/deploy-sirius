@@ -13,7 +13,15 @@ ssh sirius 'mkdir -p ~/kos-events'
 git archive HEAD | ssh sirius 'tar -x -C ~/kos-events'
 
 echo "==> Build + start"
-ssh sirius 'cd ~/kos-events && docker compose up -d --build && docker image prune -f >/dev/null'
+ssh sirius 'cd ~/kos-events && docker compose build'
+# Auf sirius (OpenVZ) scheitert das Container-Netzwerk gelegentlich mit "iptables: Memory allocation problem".
+# Ein erneuter Start hilft in der Regel.
+for attempt in 1 2 3 4; do
+  ssh sirius 'cd ~/kos-events && docker compose up -d' && break
+  echo "Start failed (attempt $attempt), retrying..." >&2
+  sleep 5
+done
+ssh sirius 'docker image prune -f >/dev/null' 
 
 echo "==> Health"
 for i in $(seq 1 30); do
