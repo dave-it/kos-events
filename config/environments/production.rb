@@ -62,12 +62,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: app_host, protocol: "https" }
   config.action_mailer.raise_delivery_errors = true
 
-  # SMTP is configured through the environment (see .env.example). Without
-  # SMTP_ADDRESS no mail leaves the server, which is fine until it is set up.
-  if ENV["SMTP_ADDRESS"].present?
+  # SMTP (IONOS) is configured through the environment (see .env.example). Without
+  # SMTP_PASSWORD no mail leaves the server, which is fine until it is set up.
+  if ENV["SMTP_PASSWORD"].present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: ENV["SMTP_ADDRESS"],
+      address: ENV.fetch("SMTP_ADDRESS", "smtp.ionos.de"),
       port: ENV.fetch("SMTP_PORT", 587).to_i,
       user_name: ENV["SMTP_USERNAME"],
       password: ENV["SMTP_PASSWORD"],

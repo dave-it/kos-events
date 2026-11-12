@@ -16,7 +16,7 @@ class InvitationsController < ApplicationController
     )
     start_new_session_for user
     cookies.permanent[:locale] = { value: @invitation.language, same_site: :lax }
-    redirect_to start_path, notice: t("flash.invitations.welcome")
+    redirect_to (user.rider_role? ? hub_path : start_path), notice: t("flash.invitations.welcome")
   rescue ActiveRecord::RecordInvalid => e
     @error = e.record.errors.full_messages.to_sentence
     render :show, status: :unprocessable_entity

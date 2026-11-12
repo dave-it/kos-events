@@ -12,7 +12,7 @@ Gebaut wird auf dem Server, Dateien liegen in `~/kos-events` (`.env` mit Secrets
 3. Erster Staff-Zugang:
    `ssh sirius 'cd ~/kos-events && docker compose exec web bin/rails runner "User.create!(email_address: %q(...), password: %q(...), role: :staff)"'`
 4. Mail: `SMTP_ADDRESS/PORT/USERNAME/PASSWORD` in `~/kos-events/.env`, dann `docker compose up -d`.
-   Ohne SMTP werden keine Mails (Einladungen, Passwort-Reset) verschickt.
+   Ohne SMTP_PASSWORD werden keine Mails (Einladungen, Passwort-Reset) verschickt.
 5. Inhalte: `docker compose exec web bin/rails db:seed` (legt nur Fehlendes an).
 
 ## Nützlich
