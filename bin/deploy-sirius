@@ -13,7 +13,16 @@ ssh sirius 'mkdir -p ~/kos-events'
 git archive HEAD | ssh sirius 'tar -x -C ~/kos-events'
 
 echo "==> Build + start"
-ssh sirius 'cd ~/kos-events && docker compose build'
+# Der Dockerfile-Frontend-Container (# syntax=...) startet auf sirius (OpenVZ) nicht zuverlässig.
+# Der eingebaute Frontend reicht, daher die Zeile nur auf dem Server entfernen.
+ssh sirius "sed -i '/^# syntax=/d' ~/kos-events/Dockerfile"
+built=0
+for attempt in 1 2 3 4 5; do
+  if ssh sirius 'cd ~/kos-events && docker compose build'; then built=1; break; fi
+  echo "Build failed (attempt $attempt), retrying..." >&2
+  sleep 10
+done
+[ "$built" = 1 ] || { echo "Build failed, nothing changed." >&2; exit 1; }
 # Auf sirius (OpenVZ) scheitert das Container-Netzwerk gelegentlich mit "iptables: Memory allocation problem".
 # Ein erneuter Start hilft in der Regel.
 for attempt in 1 2 3 4; do
