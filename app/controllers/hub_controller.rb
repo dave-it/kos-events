@@ -20,7 +20,7 @@ class HubController < ApplicationController
 
   def update
     if @rider.update(profile_params)
-      cookies.permanent[:locale] = { value: @rider.locale, same_site: :lax }
+      remember_locale(@rider.locale)
       redirect_to profile_hub_path, notice: t("flash.hub.saved", locale: @rider.locale)
     else
       render :edit, status: :unprocessable_entity

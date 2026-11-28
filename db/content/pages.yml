@@ -525,6 +525,12 @@
     Wiener Straße 58/1
     8020 Graz, Österreich
 
+    ## Vereinszweck
+
+    Förderung des Skate-Cross-Sports (Ice Cross Downhill) in Österreich: Training, Veranstaltungen und internationale Vertretung im Verband ATSX.
+
+    **Grundlegende Richtung:** Information über den Verband, den Sport, Trainings und Veranstaltungen.
+
     ## Vertreten durch
 
     - Obmann: Marco Dallago
@@ -554,7 +560,7 @@
 
     ## Datenschutz
 
-    Informationen zur Verarbeitung personenbezogener Daten findest du in der [Datenschutzerklärung](/datenschutz).
+    Informationen zur Verarbeitung personenbezogener Daten findest du in der [Datenschutzerklärung](/datenschutz) und auf der Seite [Cookies](/cookies).
   body_en: |
     ## Information according to § 5 ECG (Austria)
 
@@ -565,6 +571,12 @@
     Postal address:
     Wiener Straße 58/1
     8020 Graz, Austria
+
+    ## Purpose of the association
+
+    Promoting skate cross (ice cross downhill) in Austria: training, events and international representation within the ATSX federation.
+
+    **Editorial line:** information about the association, the sport, training and events.
 
     ## Represented by
 
@@ -595,7 +607,7 @@
 
     ## Privacy
 
-    Information on the processing of personal data is available in our [privacy policy](/datenschutz).
+    Information on the processing of personal data is available in our [privacy policy](/datenschutz) and on the [Cookies](/cookies) page.
 
 - slug: datenschutz
   nav: footer
@@ -603,56 +615,158 @@
   title_de: Datenschutz
   title_en: Privacy policy
   body_de: |
-    > Entwurf: Diese Erklärung beschreibt die tatsächliche Datenverarbeitung dieser Anwendung und muss vor dem Livegang vom Verband geprüft werden.
+    > Entwurf: Diese Erklärung beschreibt die tatsächliche Datenverarbeitung dieser Webseite und App. Sie wird vom Verband noch rechtlich geprüft.
 
     ## Verantwortlicher
 
-    Österreichischer Skate Cross Verband, Wiener Straße 58/1, 8020 Graz, [info@ice-cross.at](mailto:info@ice-cross.at). Die Kontaktdaten findest du auch im [Impressum](/impressum).
+    Österreichischer Skate Cross Verband (ZVR 070488464), Wiener Straße 58/1, 8020 Graz, [info@ice-cross.at](mailto:info@ice-cross.at). Weitere Angaben im [Impressum](/impressum).
 
-    ## Besucher der Webseite
+    ## Besuch der Webseite
 
-    Beim Aufruf der Seiten verarbeitet der Server technisch notwendige Daten (IP-Adresse, Zeitpunkt, aufgerufene Seite), um die Seite auszuliefern und sicher zu betreiben. Wir setzen keine Tracking- oder Werbe-Cookies ein. Gespeichert werden nur technisch notwendige Cookies: deine Spracheinstellung und, nach dem Login, dein Sitzungs-Cookie.
+    Beim Aufruf verarbeitet der Server IP-Adresse, Zeitpunkt, aufgerufene Seite und Angaben zum Browser, um die Seiten auszuliefern, Fehler zu finden und Angriffe abzuwehren (berechtigtes Interesse, Art. 6 Abs. 1 lit. f DSGVO). Die Protokolle des Webservers werden nach 14 Tagen gelöscht. Die Protokolle der Anwendung sind in der Größe begrenzt, ältere Einträge werden laufend überschrieben.
 
-    ## Fahrerlager (Login für Fahrerinnen und Fahrer)
+    Wir verwenden keine Tracking-, Analyse- oder Werbedienste. Schriften und Bilder kommen von unserem eigenen Server. Zu den Cookies siehe [Cookies](/cookies).
 
-    Der Zugang zum Fahrerlager erfolgt nur auf Einladung. Wir speichern dafür deine E-Mail-Adresse, dein Passwort (verschlüsselt) und die Daten, die du im Profil angibst: Name, Nation, Geburtsdatum, Verein/Team und Info-Text. Zusätzlich speichern wir deine Anmeldungen zu Events sowie Zeiten und Ergebnisse. Rechtsgrundlage ist die Durchführung der Teilnahme am Wettbewerb (Art. 6 Abs. 1 lit. b DSGVO).
+    ## Zugang und Anmeldung (Login)
 
-    ## Ergebnisse und Fahrerprofile
+    Zugänge gibt es nur auf Einladung. Gespeichert werden E-Mail-Adresse, Passwort (nur als nicht umkehrbarer Prüfwert), Rolle (Fahrer, Helfer, Besucher, Organisation) und Sprache. Bei jeder Anmeldung speichern wir IP-Adresse und Browser-Kennung, bis du dich abmeldest oder dein Zugang entfernt wird. Rechtsgrundlage: Bereitstellung deines Zugangs (Art. 6 Abs. 1 lit. b DSGVO) und Sicherheit (lit. f).
 
-    - **Ergebnisse:** Name und Nation sind in den Ergebnissen öffentlich, weil sie für die Wertung benötigt werden. Bei Fahrerinnen und Fahrern unter 18 Jahren (oder ohne bekanntes Geburtsdatum) zeigen wir ohne Zustimmung nur die Initialen und keine Nation.
-    - **Öffentliches Profil:** Ein Profil wird nur veröffentlicht, wenn du im Fahrerlager ausdrücklich zustimmst. Du kannst die Zustimmung jederzeit widerrufen. E-Mail-Adresse und Geburtsdatum werden nie veröffentlicht.
+    ## Fahrerprofil
+
+    Vorname, Nachname, Spitzname, Geschlecht, Nation, Geburtsdatum, Team oder Organisation, E-Mail-Adresse, freie Angaben über dich und deine Sprache. Wir brauchen diese Daten für die Organisation von Trainings und Rennen (Art. 6 Abs. 1 lit. b DSGVO). Das Geburtsdatum dient der Einteilung und dem Schutz Minderjähriger. Du kannst dein Profil im Fahrerlager ansehen und ändern.
+
+    ## Anmeldungen, Zeiten und Ergebnisse
+
+    Zu jedem Rennen speichern wir Kategorie, Startnummer, Zeiten, Heats, Platzierungen, Check-in und Verzichtserklärung. Ergebnisse mit Name und Nation werden veröffentlicht, weil sie zu einem sportlichen Wettbewerb gehören (Art. 6 Abs. 1 lit. b und f DSGVO).
+
+    **Unter 18 Jahren** (oder ohne bekanntes Geburtsdatum) zeigen wir ohne Zustimmung nur die Initialen und keine Nation.
+
+    Ergebnisse früherer Rennen (2022 bis 2026) haben wir aus unserem bisherigen Rennverwaltungssystem übernommen. Ergebnisse bleiben zur Dokumentation der Sportgeschichte gespeichert, solange du nicht aus Gründen deiner besonderen Situation widersprichst.
+
+    ## Zustimmung zur Veröffentlichung
+
+    Im Fahrerlager kannst du zustimmen, dass dein voller Name, deine Nation und dein Profil öffentlich angezeigt werden (Art. 6 Abs. 1 lit. a DSGVO). Wir speichern den Zeitpunkt. Du kannst die Zustimmung jederzeit mit Wirkung für die Zukunft zurücknehmen. Bei Personen unter 14 Jahren braucht es die Zustimmung der Erziehungsberechtigten.
+
+    ## Chat
+
+    Der Chat dient der Koordination rund um die Veranstaltungen (Art. 6 Abs. 1 lit. b und f DSGVO). Gespeichert werden deine Nachrichten mit Zeitpunkt sowie, welche Nachrichten du bereits gelesen hast. Fahrer erscheinen mit Vorname und abgekürztem Nachnamen. Eine Nachricht sehen alle, die Zugang zum jeweiligen Kanal haben, sowie die Organisation. Du kannst eigene Nachrichten löschen, die Organisation kann alle Nachrichten löschen. Nachrichten bleiben gespeichert, bis sie oder der Kanal gelöscht werden. Wird dein Zugang entfernt, bleiben sie ohne deinen Namen erhalten. Schreib in den Chat keine sensiblen Daten.
+
+    ## E-Mails
+
+    Einladungen und Nachrichten zum Zurücksetzen des Passworts verschicken wir an deine E-Mail-Adresse. Wenn du uns schreibst, verarbeiten wir deine Angaben, um dein Anliegen zu beantworten.
 
     ## Empfänger
 
-    Wir geben Daten nur weiter, soweit es für Anmeldung und Durchführung nötig ist (z. B. Ticketshop und internationaler Verband ATSX) oder wir gesetzlich dazu verpflichtet sind.
+    Für Betrieb und E-Mail-Versand setzen wir Dienstleister ein, die Daten nur in unserem Auftrag verarbeiten: IONOS SE, Elgendorfer Straße 57, 56410 Montabaur, Deutschland. Darüber hinaus geben wir Daten nur weiter, wenn wir dazu gesetzlich verpflichtet sind.
+
+    ## Links zu anderen Diensten
+
+    Tickets und Anmeldungen laufen über den Ticketshop Entrello, Ranglisten und Lizenzen über den internationalen Verband ATSX (data.atsx.org). Wir verlinken außerdem auf Google Maps, Instagram und Facebook. Diese Inhalte sind nicht eingebettet: Daten fließen erst, wenn du einen Link anklickst. Dann gelten die Datenschutzregeln des jeweiligen Anbieters.
+
+    ## Sicherungskopien
+
+    Vor Aktualisierungen sichern wir die Datenbank. Diese Kopien werden nach höchstens 30 Tagen bei der nächsten Aktualisierung gelöscht.
 
     ## Deine Rechte
 
-    Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Schreib dazu an [info@ice-cross.at](mailto:info@ice-cross.at). Du kannst dich außerdem bei der österreichischen Datenschutzbehörde beschweren.
+    Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Schreib dazu an [info@ice-cross.at](mailto:info@ice-cross.at). Du kannst dich außerdem bei der österreichischen Datenschutzbehörde beschweren: Barichgasse 40–42, 1030 Wien, [dsb.gv.at](https://www.dsb.gv.at).
+
+    Stand: November 2026
   body_en: |
-    > Draft: This statement describes how this application actually processes data and must be reviewed by the association before going live.
+    > Draft: this policy describes how this website and app actually process data. The association has not yet completed its legal review.
 
     ## Controller
 
-    Österreichischer Skate Cross Verband, Wiener Straße 58/1, 8020 Graz, Austria, [info@ice-cross.at](mailto:info@ice-cross.at). Contact details are also in the [legal notice](/impressum).
+    Österreichischer Skate Cross Verband (Austrian Skate Cross Association, ZVR 070488464), Wiener Straße 58/1, 8020 Graz, Austria, [info@ice-cross.at](mailto:info@ice-cross.at). See also the [legal notice](/impressum).
 
-    ## Website visitors
+    ## Visiting the website
 
-    When you open the pages, the server processes technically necessary data (IP address, time, requested page) to deliver the site and operate it securely. We do not use tracking or advertising cookies. Only technically necessary cookies are stored: your language setting and, after login, your session cookie.
+    When you open a page, the server processes your IP address, the time, the page requested and browser details in order to deliver the pages, find errors and fend off attacks (legitimate interest, Art. 6(1)(f) GDPR). Web server logs are deleted after 14 days. Application logs are limited in size and older entries are continuously overwritten.
 
-    ## Paddock (rider login)
+    We use no tracking, analytics or advertising services. Fonts and images come from our own server. See [Cookies](/cookies).
 
-    Access to the paddock is by invitation only. For this we store your email address, your password (encrypted) and the data you enter in your profile: name, nation, date of birth, club/team and info text. We also store your event registrations as well as times and results. The legal basis is performing your participation in the competition (Art. 6(1)(b) GDPR).
+    ## Access and sign-in
 
-    ## Results and rider profiles
+    Accounts are by invitation only. We store your email address, password (only as a non-reversible hash), role (rider, volunteer, visitor, organizer) and language. With each sign-in we store your IP address and browser identifier until you sign out or your access is removed. Legal basis: providing your account (Art. 6(1)(b) GDPR) and security (f).
 
-    - **Results:** Name and nation are public in the results because they are needed for the ranking. For riders under 18 (or with no known date of birth) we show only initials and no nation unless they consent.
-    - **Public profile:** A profile is only published if you explicitly consent in the paddock. You can withdraw your consent at any time. Email address and date of birth are never published.
+    ## Rider profile
+
+    First name, last name, nickname, gender, nation, date of birth, team or organization, email address, anything you write about yourself and your language. We need this data to organize training and races (Art. 6(1)(b) GDPR). The date of birth is used for categories and to protect minors. You can view and change your profile in the paddock.
+
+    ## Registrations, times and results
+
+    For each race we store category, start number, times, heats, placings, check-in and waiver. Results with name and nation are published because they belong to a sporting competition (Art. 6(1)(b) and (f) GDPR).
+
+    **Under 18** (or without a known date of birth), only initials and no nation are shown unless consent is given.
+
+    Results of earlier races (2022 to 2026) were transferred from our previous race management system. Results are kept to document the history of the sport unless you object on grounds relating to your particular situation.
+
+    ## Consent to publication
+
+    In the paddock you can consent to your full name, nation and profile being shown publicly (Art. 6(1)(a) GDPR). We record when you did so. You can withdraw consent at any time with effect for the future. Persons under 14 need the consent of a parent or guardian.
+
+    ## Chat
+
+    The chat is for coordination around our events (Art. 6(1)(b) and (f) GDPR). We store your messages with their time and which messages you have already read. Riders appear with their first name and last initial. A message is visible to everyone with access to that channel and to the organizers. You can delete your own messages; organizers can delete any message. Messages are kept until they or the channel are deleted. If your access is removed, they remain without your name. Please do not post sensitive data.
+
+    ## Email
+
+    We send invitations and password reset messages to your email address. If you write to us, we process your details to answer you.
 
     ## Recipients
 
-    We only pass on data where necessary for registration and running the event (e.g. ticket shop and the international federation ATSX) or where we are legally required to.
+    For hosting and email we use a service provider that processes data only on our behalf: IONOS SE, Elgendorfer Straße 57, 56410 Montabaur, Germany. Otherwise we only pass on data where the law requires it.
+
+    ## Links to other services
+
+    Tickets and registrations run through the Entrello ticket shop; rankings and licences through the international federation ATSX (data.atsx.org). We also link to Google Maps, Instagram and Facebook. None of this content is embedded: data only flows once you follow a link, and the provider's privacy rules then apply.
+
+    ## Backups
+
+    We back up the database before updates. These copies are deleted at the next update after 30 days at the latest.
 
     ## Your rights
 
-    You have the right of access, rectification, erasure, restriction of processing, data portability and objection. Write to [info@ice-cross.at](mailto:info@ice-cross.at). You can also lodge a complaint with the Austrian data protection authority.
+    You have the right of access, rectification, erasure, restriction, data portability and objection. Write to [info@ice-cross.at](mailto:info@ice-cross.at). You may also complain to the Austrian Data Protection Authority: Barichgasse 40–42, 1030 Vienna, [dsb.gv.at](https://www.dsb.gv.at).
+
+    As of November 2026
+
+- slug: cookies
+  nav: footer
+  position: 92
+  title_de: Cookies
+  title_en: Cookies
+  body_de: |
+    Wir setzen nur Cookies ein, die für den Betrieb nötig sind oder eine von dir gewählte Einstellung speichern. Es gibt **keine Tracking-, Analyse- oder Werbe-Cookies**. Deshalb brauchen wir keine Einwilligung (§ 165 Abs. 3 TKG 2021) und fragen auch nicht danach.
+
+    - `_kos_events_session`: schützt Formulare vor Missbrauch und zeigt Hinweise nach Aktionen. **Dauer:** bis du den Browser schließt.
+    - `session_id`: hält dich nach der Anmeldung eingeloggt. **Dauer:** 1 Jahr oder bis zum Abmelden.
+    - `locale`: merkt sich die gewählte Sprache. **Dauer:** 1 Jahr.
+
+    ## Weitere Speicherung auf deinem Gerät
+
+    - **cookie-hinweis** (lokaler Speicher): merkt sich, dass du den Cookie-Hinweis geschlossen hast.
+    - **App-Speicher:** Wird die Seite als App genutzt, speichert der Browser Gestaltungsdateien, Icons und eine Offline-Seite. Persönliche Inhalte werden dort nicht abgelegt.
+
+    ## Löschen
+
+    Du kannst Cookies und Website-Daten jederzeit in den Einstellungen deines Browsers löschen. Danach musst du dich neu anmelden.
+
+    Mehr in der [Datenschutzerklärung](/datenschutz).
+  body_en: |
+    We only use cookies that are needed to run the site or that store a setting you chose. There are **no tracking, analytics or advertising cookies**. That is why no consent is required (§ 165(3) Austrian Telecommunications Act 2021) and we do not ask for it.
+
+    - `_kos_events_session`: protects forms against misuse and shows messages after actions. **Duration:** until you close the browser.
+    - `session_id`: keeps you signed in. **Duration:** 1 year or until you sign out.
+    - `locale`: remembers your language. **Duration:** 1 year.
+
+    ## Other storage on your device
+
+    - **cookie-hinweis** (local storage): remembers that you closed the cookie notice.
+    - **App storage:** if you use the site as an app, the browser stores style files, icons and an offline page. No personal content is stored there.
+
+    ## Deleting
+
+    You can delete cookies and site data at any time in your browser settings. You will then need to sign in again.
+
+    More in our [privacy policy](/datenschutz).

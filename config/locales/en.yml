@@ -17,6 +17,7 @@ en:
       button: Install now
       ios: "On iPhone or iPad: tap Share in Safari, then choose “Add to Home Screen”."
   auth:
+    legal: Legal
     claim: Your access to the World Cup at Winterleiten
     website: To the website
     to_login: Back to sign in
@@ -50,7 +51,19 @@ en:
       ask: Ask in the chat
       still_questions: Still have a question?
       still_text: The organizers answer in the “Ask the organizers” channel.
+  cookie_notice:
+    label: Cookie notice
+    text: We only use technically necessary cookies, no tracking.
+    more: Learn more
+    ok: Got it
   shared:
+    under_construction:
+      eyebrow: Work in progress
+      title: Under construction
+      text: We are rebuilding our website. This page does not exist yet or any more. Have a look around in the meantime.
+      home: Go to the homepage
+      results: Results
+      contact: "Looking for something specific? Write to"
     sign_out: Sign out
     language: Language
     "yes": "Yes"

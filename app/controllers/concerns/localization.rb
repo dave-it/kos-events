@@ -11,6 +11,11 @@ module Localization
   private
     def available_locales = I18n.available_locales.map(&:to_s)
 
+    # Sprachwahl merken. Laufzeit wie auf der Cookie-Seite angegeben.
+    def remember_locale(locale)
+      cookies[:locale] = { value: locale.to_s, expires: 1.year, same_site: :lax }
+    end
+
     def switch_locale(&action)
       I18n.with_locale(requested_locale || I18n.default_locale, &action)
     end

@@ -17,6 +17,7 @@ de:
       button: Jetzt installieren
       ios: "Am iPhone oder iPad: in Safari auf Teilen tippen und dann „Zum Home-Bildschirm“ wählen."
   auth:
+    legal: Rechtliches
     claim: Dein Zugang zum Weltcup auf der Winterleiten
     website: Zur Webseite
     to_login: Zurück zur Anmeldung
@@ -50,7 +51,19 @@ de:
       ask: Im Chat fragen
       still_questions: Noch eine Frage offen?
       still_text: Im Kanal „Fragen an die Orga“ antworten die Organisatoren.
+  cookie_notice:
+    label: Cookie-Hinweis
+    text: Wir verwenden nur technisch notwendige Cookies, kein Tracking.
+    more: Mehr erfahren
+    ok: Verstanden
   shared:
+    under_construction:
+      eyebrow: Hier wird gebaut
+      title: Wir sind im Umbau
+      text: Unsere Webseite wird gerade neu gestaltet. Diese Seite gibt es noch nicht oder nicht mehr. Schau dich inzwischen bei uns um.
+      home: Zur Startseite
+      results: Ergebnisse
+      contact: "Du suchst etwas Bestimmtes? Schreib uns an"
     sign_out: Abmelden
     language: Sprache
     "yes": "Ja"

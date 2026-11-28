@@ -29,5 +29,11 @@
     <%= render "shared/locale_switcher" %>
   </section>
 
+  <nav class="flex justify-center gap-5 text-sm text-white/60" aria-label="<%= t("auth.legal") %>">
+    <% Page.published.where(slug: %w[impressum datenschutz cookies]).order(:position).each do |page| %>
+      <%= link_to page.title, content_page_path(page.slug), class: "underline underline-offset-4 hover:text-white" %>
+    <% end %>
+  </nav>
+
   <%= button_to t("shared.sign_out"), session_path, method: :delete, class: "btn-ghost w-full", form_class: "block" %>
 </div>

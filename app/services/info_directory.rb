@@ -9,7 +9,7 @@ class InfoDirectory
   Item = Struct.new(:title, :group, :body, keyword_init: true)
   Section = Struct.new(:level, :title, :body, keyword_init: true)
 
-  EXCLUDED_PAGES = %w[impressum datenschutz mitglied-werden unterstuetzung].freeze
+  EXCLUDED_PAGES = %w[impressum datenschutz cookies mitglied-werden unterstuetzung].freeze
 
   def self.sections(markdown)
     sections = [ Section.new(level: 0, title: nil, body: +"") ]

@@ -53,4 +53,9 @@ Rails.application.routes.draw do
   # Redaktionelle Seiten: /training, /preise, ... (nur für vorhandene, veröffentlichte Seiten)
   get ":slug", to: "content_pages#show", as: :content_page,
       constraints: ->(request) { Page.published.exists?(slug: request.path_parameters[:slug]) }
+
+  # Alles Übrige: Adressen der alten Webseite weiterleiten, sonst "Umbau"-Seite (404).
+  # Muss die letzte Route bleiben.
+  get "*path" => "fallback#show",
+      constraints: ->(request) { request.format.html? && !request.path.start_with?("/rails/", "/cable", "/assets/") }
 end

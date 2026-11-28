@@ -52,6 +52,8 @@ if [ "${SKIP_BACKUP:-}" != 1 ]; then
   echo "==> Datenbank sichern"
   retry "${SSH[@]}" "cd ~/kos-events && mkdir -p backups && umask 077 && timeout 90 docker compose exec -T db pg_dump -U kos_events kos_events_production | gzip > backups/vor-${REF:0:7}.sql.gz && [ \$(stat -c %s backups/vor-${REF:0:7}.sql.gz) -gt 1000 ]" ||
     { echo "Sicherung fehlgeschlagen, Abbruch. (SKIP_BACKUP=1 überspringt sie.)" >&2; exit 1; }
+  # Ältere Sicherungen löschen (Datenschutzerklärung: höchstens 30 Tage).
+  "${SSH[@]}" "find ~/kos-events/backups -name '*.sql.gz' -mtime +30 -delete"
 fi
 
 echo "==> Start"

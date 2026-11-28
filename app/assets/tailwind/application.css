@@ -48,4 +48,6 @@
 summary { list-style: none; }
 summary::-webkit-details-marker { display: none; }
 .prose-ice table { display: block; overflow-x: auto; }
-.prose-ice { overflow-wrap: anywhere; }
+.prose-ice { overflow-wrap: break-word; }
+.prose-ice a { overflow-wrap: anywhere; }
+.prose-ice code { white-space: nowrap; font-size: 0.85em; }

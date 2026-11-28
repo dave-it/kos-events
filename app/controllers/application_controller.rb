@@ -9,7 +9,20 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  # Nicht vorhandene Inhalte zeigen die "Umbau"-Seite statt einer nackten Fehlermeldung.
+  rescue_from ActiveRecord::RecordNotFound, with: :render_under_construction
+
   private
+    def render_under_construction
+      return head :not_found unless request.format.html?
+
+      resume_session
+      # Nach einem rescue_from ist die Sprachwahl des Requests schon zurückgesetzt.
+      I18n.with_locale(requested_locale || I18n.default_locale) do
+        render "shared/under_construction", layout: "public", status: :not_found, formats: :html
+      end
+    end
+
     def current_user = Current.user
 
     def require_staff

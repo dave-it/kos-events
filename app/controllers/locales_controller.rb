@@ -4,7 +4,7 @@ class LocalesController < ApplicationController
   def update
     locale = params[:locale].to_s
     if available_locales.include?(locale)
-      cookies.permanent[:locale] = { value: locale, same_site: :lax }
+      remember_locale(locale)
       # Beim Fahrer merkt sich das Profil die Wahl (andere Geräte, E-Mails).
       Current.user.rider&.update_column(:locale, locale) if authenticated?
     end

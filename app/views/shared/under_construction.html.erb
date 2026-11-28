@@ -1,0 +1,21 @@
+<% content_for(:title) { "#{t('.title')} – #{t('public.site_title')}" } %>
+<% content_for(:head) do %><meta name="robots" content="noindex"><% end %>
+<% next_event = Event.published.upcoming.first %>
+<section class="relative isolate flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden">
+  <%= image_tag "landing/track.jpg", alt: "", class: "absolute inset-0 -z-10 h-full w-full object-cover" %>
+  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/85 to-ink/60"></div>
+  <%# Baustellen-Band %>
+  <div class="absolute inset-x-0 top-0 h-3 bg-[repeating-linear-gradient(135deg,var(--color-signal)_0_18px,#fff_18px_36px)]" aria-hidden="true"></div>
+
+  <div class="mx-auto w-full max-w-3xl px-5 py-16 text-center">
+    <p class="eyebrow text-signal"><%= t(".eyebrow") %></p>
+    <h1 class="mt-3 font-display text-6xl uppercase leading-[0.95] sm:text-8xl"><%= t(".title") %></h1>
+    <p class="mx-auto mt-5 max-w-xl text-lg text-white/80"><%= t(".text") %></p>
+    <div class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
+      <%= link_to t(".home"), root_path, class: "btn-primary" %>
+      <% if next_event %><%= link_to next_event.name, event_path(next_event), class: "btn-ghost" %><% end %>
+      <%= link_to t(".results"), events_path, class: "btn-ghost" %>
+    </div>
+    <p class="mt-8 text-sm text-white/60"><%= t(".contact") %> <a href="mailto:info@ice-cross.at" class="underline underline-offset-4 hover:text-white">info@ice-cross.at</a></p>
+  </div>
+</section>

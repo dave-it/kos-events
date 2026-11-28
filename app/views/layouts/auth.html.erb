@@ -31,7 +31,14 @@
           <%= render "shared/flash" %>
           <%= yield %>
         </main>
+
+        <nav class="flex justify-center gap-5 text-xs text-white/50" aria-label="<%= t("auth.legal") %>">
+          <% Page.published.where(slug: %w[impressum datenschutz cookies]).order(:position).each do |page| %>
+            <%= link_to page.title, content_page_path(page.slug), class: "underline-offset-4 hover:text-white hover:underline" %>
+          <% end %>
+        </nav>
       </div>
     </div>
+    <%= render "shared/cookie_notice" %>
   </body>
 </html>

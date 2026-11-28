@@ -89,9 +89,11 @@ Rails.application.configure do
   config.active_record.attributes_for_inspect = [ :id ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  config.hosts = [ app_host ]
+  # Weitere Domains (z. B. "www.ice-cross.at") kommagetrennt in APP_EXTRA_HOSTS.
+  app_hosts = [ app_host, *ENV["APP_EXTRA_HOSTS"].to_s.split(",").map(&:strip) ].compact_blank
+  config.hosts = app_hosts
 
-  # Live-Chat (Action Cable) nur von der eigenen Domain.
-  config.action_cable.allowed_request_origins = [ "https://#{app_host}" ]
+  # Live-Chat (Action Cable) nur von den eigenen Domains.
+  config.action_cable.allowed_request_origins = app_hosts.map { |host| "https://#{host}" }
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end

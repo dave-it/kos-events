@@ -1,6 +1,14 @@
 # Produktion auf sirius: nginx (Host) -> 127.0.0.1:3012 -> Thruster (8080)/Puma im Container
+# Anwendungsprotokolle in der Größe begrenzen (so steht es in der Datenschutzerklärung).
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "5"
+
 services:
   web:
+    logging: *logging
     # Gebaut von GitHub Actions; bin/deploy-sirius setzt IMAGE_TAG in .env auf den Commit.
     image: ghcr.io/dave-it/kos-events:${IMAGE_TAG:-latest}
     restart: unless-stopped
@@ -21,6 +29,7 @@ services:
     mem_limit: 500m
 
   db:
+    logging: *logging
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
