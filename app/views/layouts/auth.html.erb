@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= content_for(:title) || t("public.site_title") %></title>
+    <%= render "shared/head" %>
+  </head>
+
+  <body class="min-h-dvh bg-ink text-white antialiased">
+    <div class="relative isolate grid min-h-dvh lg:grid-cols-[1.2fr_1fr]">
+      <div class="absolute inset-x-0 top-0 -z-10 h-80 lg:static lg:z-0 lg:h-auto lg:overflow-hidden">
+        <div class="relative h-full w-full">
+          <%= image_tag "landing/hero.jpg", alt: "", class: "absolute inset-0 h-full w-full object-cover object-[60%_60%]" %>
+          <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/30"></div>
+          <div class="absolute bottom-0 left-0 hidden p-12 lg:block">
+            <p class="eyebrow text-white/70"><%= t("public.brand") %></p>
+            <p class="mt-3 max-w-xl font-display text-6xl uppercase leading-[0.95] xl:text-7xl"><%= t("auth.claim") %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex min-h-dvh flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+        <div class="flex items-center justify-between">
+          <%= link_to root_path, class: "inline-flex items-center gap-1 rounded-full bg-ink/60 px-3 py-1.5 text-sm text-white/80 backdrop-blur hover:text-white" do %>
+            <%= app_icon :back, "h-4 w-4" %><%= t("auth.website") %>
+          <% end %>
+          <div class="rounded bg-ink/60 p-0.5 backdrop-blur"><%= render "shared/locale_switcher" %></div>
+        </div>
+
+        <main class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-8">
+          <%= image_tag "landing/logo-white.png", alt: t("public.brand"), class: "mb-8 h-14 w-auto self-start" %>
+          <%= render "shared/flash" %>
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

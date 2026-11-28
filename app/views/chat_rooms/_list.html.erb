@@ -1,0 +1,22 @@
+<ul class="divide-y divide-white/10">
+  <% @rooms.each do |room| %>
+    <li>
+      <%= link_to chat_room_path(room), class: "flex items-center gap-3 px-4 py-3.5 hover:bg-white/5 #{'bg-white/10' if room == @room}", "aria-current": (room == @room ? "page" : nil) do %>
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full <%= room.organizers_only? ? 'bg-signal' : 'bg-white/10' %>">
+          <%= app_icon(room.organizers_only? ? :flag : :users, "h-5 w-5") %>
+        </span>
+        <span class="min-w-0 flex-1">
+          <span class="block truncate font-semibold"><%= room.name %></span>
+          <span class="block truncate text-sm text-white/50"><%= room.description %></span>
+        </span>
+        <% if (count = @unread[room.id]) %>
+          <span class="min-w-6 rounded-full bg-signal px-2 text-center text-xs font-bold leading-6" aria-label="<%= t("chat.unread", count: count) %>"><%= [ count, 99 ].min %></span>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<% if @rooms.empty? %><p class="px-4 py-6 text-white/60"><%= t("chat.no_rooms") %></p><% end %>
+<% if current_user.staff_role? %>
+  <div class="p-4"><%= link_to t("chat.manage"), admin_chat_rooms_path, class: "btn-ghost w-full text-sm" %></div>
+<% end %>

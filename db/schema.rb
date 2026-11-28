@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_12_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_28_110000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,39 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_12_120000) do
     t.index ["event_id", "name"], name: "index_categories_on_event_id_and_name", unique: true
     t.index ["event_id"], name: "index_categories_on_event_id"
     t.index ["legacy_id"], name: "index_categories_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.bigint "chat_room_id", null: false
+    t.bigint "user_id"
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id", "id"], name: "index_chat_messages_on_chat_room_id_and_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
+  end
+
+  create_table "chat_reads", force: :cascade do |t|
+    t.bigint "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "last_read_message_id", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id", "user_id"], name: "index_chat_reads_on_chat_room_id_and_user_id", unique: true
+    t.index ["user_id"], name: "index_chat_reads_on_user_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "name_de", null: false
+    t.string "name_en", null: false
+    t.string "description_de"
+    t.string "description_en"
+    t.string "audience", default: [], null: false, array: true
+    t.boolean "organizers_only", default: false, null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name_de"], name: "index_chat_rooms_on_name_de", unique: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -142,7 +175,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_12_120000) do
     t.datetime "updated_at", null: false
     t.boolean "public_profile", default: false, null: false
     t.datetime "public_profile_consented_at"
-    t.string "locale", default: "de", null: false
+    t.string "locale", default: "en", null: false
     t.integer "legacy_id"
     t.index ["email"], name: "index_riders_on_email", unique: true
     t.index ["legacy_id"], name: "index_riders_on_legacy_id", unique: true, where: "(legacy_id IS NOT NULL)"
@@ -170,6 +203,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_12_120000) do
   end
 
   add_foreign_key "categories", "events"
+  add_foreign_key "chat_messages", "chat_rooms"
+  add_foreign_key "chat_messages", "users", on_delete: :nullify
+  add_foreign_key "chat_reads", "chat_rooms"
+  add_foreign_key "chat_reads", "users", on_delete: :cascade
   add_foreign_key "heat_entries", "heats"
   add_foreign_key "heat_entries", "registrations"
   add_foreign_key "heats", "categories"

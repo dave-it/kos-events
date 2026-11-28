@@ -3,10 +3,10 @@ module Admin
   class UsersController < ApplicationController
     before_action :require_staff
 
-    INVITABLE_ROLES = %w[staff visitor].freeze
+    INVITABLE_ROLES = %w[staff helper visitor].freeze
 
     def index
-      @users = User.where(role: %w[staff visitor]).order(:role, :email_address)
+      @users = User.where(role: INVITABLE_ROLES).order(:role, :email_address)
       @invitations = Invitation.pending.where(role: INVITABLE_ROLES).order(created_at: :desc)
     end
 
@@ -28,7 +28,7 @@ module Admin
     end
 
     def destroy
-      user = User.where(role: %w[staff visitor]).find(params[:id])
+      user = User.where(role: INVITABLE_ROLES).find(params[:id])
       if user == current_user
         redirect_to admin_users_path, alert: t("flash.users.cannot_revoke_self")
       else

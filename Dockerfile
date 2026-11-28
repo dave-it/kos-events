@@ -7,8 +7,9 @@
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=3.3.4
+# Produktion läuft auf 3.3.14 (behebt CVE-2026-132825). .ruby-version (lokal/CI) steht noch auf 3.3.4,
+# bis die Version auch lokal installiert ist; dann hier und dort gleichziehen.
+ARG RUBY_VERSION=3.3.14
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here

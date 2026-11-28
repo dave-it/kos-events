@@ -1,0 +1,20 @@
+announcements:
+  name_de: Ankündigungen
+  name_en: Announcements
+  audience: "{rider,helper,visitor}"
+  organizers_only: true
+  position: 1
+
+riders:
+  name_de: Fahrer-Chat
+  name_en: Rider chat
+  audience: "{rider}"
+  organizers_only: false
+  position: 2
+
+helpers:
+  name_de: Helfer
+  name_en: Volunteers
+  audience: "{helper}"
+  organizers_only: false
+  position: 3

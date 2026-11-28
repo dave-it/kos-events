@@ -18,7 +18,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to hub_path
     follow_redirect!
     assert_response :success
-    assert_select "h1", I18n.t("hub.show.title")
+    assert_select "h1", /Hallo Ben/
   end
 
   test "falsche Bestätigung zeigt Fehler" do

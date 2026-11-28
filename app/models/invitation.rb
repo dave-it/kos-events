@@ -1,6 +1,6 @@
 class Invitation < ApplicationRecord
   EXPIRES_IN = 14.days
-  ROLES = %w[rider staff visitor].freeze
+  ROLES = %w[rider staff helper visitor].freeze
 
   belongs_to :rider, optional: true
   belongs_to :invited_by, class_name: "User"

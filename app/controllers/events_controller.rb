@@ -2,7 +2,7 @@
 class EventsController < ApplicationController
   allow_unauthenticated_access
   before_action :resume_session
-  layout "public"
+  layout :public_or_app_layout
 
   def index
     @upcoming = Event.published.upcoming

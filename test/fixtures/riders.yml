@@ -2,9 +2,11 @@ anna:
   firstname: Anna
   lastname: Fast
   email: anna@example.com
+  locale: de
   user: rider_user
 
 ben:
   firstname: Ben
   lastname: Slow
   email: ben@example.com
+  locale: de

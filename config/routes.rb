@@ -9,14 +9,24 @@ Rails.application.routes.draw do
   # Einladungen (öffentlich, per Token)
   resources :invitations, param: :token, only: %i[show update]
 
-  # Rider Hub (Fahrer)
-  resource :hub, controller: "hub", only: %i[show edit update]
+  # Fahrerlager (Fahrer): Start und Profil
+  resource :hub, controller: "hub", only: %i[show edit update] do
+    get :profile
+  end
 
-  # Besucher
+  # App-Bereich für Fahrer und Organisatoren: Infos & Fragen, Chat
+  get "info" => "info#show", as: :info
+  resources :chat_rooms, path: "chat", only: %i[index show] do
+    patch :read, on: :member
+    resources :messages, controller: "chat_messages", only: %i[create destroy]
+  end
+
+  # Besucher und Helfer
   resource :guest, controller: "guest", only: :show, path: "gast"
 
   # Staff
   namespace :admin do
+    resources :chat_rooms, except: :show
     resources :users, only: %i[index new create destroy]
     resources :riders, only: %i[index show new create] do
       post :invite, on: :member
@@ -33,6 +43,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "start" => "home#index", as: :start
+
+  # Installierbare App (PWA)
+  get "launch" => "home#launch", as: :launch
+  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   root "pages#home"
 
   # Redaktionelle Seiten: /training, /preise, ... (nur für vorhandene, veröffentlichte Seiten)

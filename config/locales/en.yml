@@ -1,4 +1,55 @@
 en:
+  app:
+    title: Paddock – Ice Cross Austria
+    manifest_description: Paddock, Q&A, chat and results of the Ice Cross World Cup.
+    nav:
+      label: App navigation
+      home: Home
+      admin: Admin
+      chat: Chat
+      info: Q&A
+      results: Results
+      profile: Profile
+      website: Website
+    install:
+      title: Install as an app
+      text: Put Ice Cross on your home screen. It then opens like an app.
+      button: Install now
+      ios: "On iPhone or iPad: tap Share in Safari, then choose “Add to Home Screen”."
+  auth:
+    claim: Your access to the World Cup at Winterleiten
+    website: To the website
+    to_login: Back to sign in
+  chat:
+    placeholder: Write a message
+    send: Send
+    manage: Manage channels
+    no_rooms: No channels yet.
+    unread:
+      one: 1 unread message
+      other: "%{count} unread messages"
+  chat_rooms:
+    index:
+      title: Chat
+      pick: Pick a channel on the left.
+    show:
+      back: All channels
+      organizers_only: Only the organizers post here
+      read_only: Only the organizers can write here.
+      empty: No messages yet.
+      older: "Showing the latest %{count} messages."
+      confirm_delete: Really delete this message?
+  info:
+    overview: Overview
+    essentials: The essentials
+    show:
+      title: Questions & info
+      search: "Search, e.g. parking or helmet"
+      topics: Topics
+      no_results: We found nothing on that.
+      ask: Ask in the chat
+      still_questions: Still have a question?
+      still_text: The organizers answer in the “Ask the organizers” channel.
   shared:
     sign_out: Sign out
     language: Language
@@ -17,6 +68,8 @@ en:
     brand: Ice Cross Austria
     footer_org: Austrian Skate Cross Federation
     nav:
+      my_area_short: My app
+      menu: Menu
       event: Next event
       join: Join in
       sport: The sport
@@ -147,10 +200,18 @@ en:
   sessions:
     new:
       title: Sign in
+      subtitle: One login for everyone at the World Cup. You land in your own area automatically.
+      roles_label: Who signs in here
+      roles:
+        rider: Riders
+        helper: Volunteers
+        visitor: Visitors
       email: Email address
       password: Password
-      submit: Sign in
+      show_password: Show password
       forgot: Forgot password?
+      submit: Sign in
+      invite_only: "Access is by invitation. Haven't received one? Write to"
 
   passwords:
     new:
@@ -165,8 +226,8 @@ en:
 
   guest:
     show:
-      title: Visitor area
-      intro: All events and results at a glance.
+      title: Good to have you
+      intro: Your own area is being built. For now you find events and results here.
       upcoming: Upcoming events
       none: No events planned right now.
       results: Latest results
@@ -175,6 +236,7 @@ en:
     show:
       title_generic: Welcome!
       intro_staff: "Choose a password for your staff access (%{email})."
+      intro_helper: "Choose a password for your volunteer access (%{email})."
       intro_visitor: "Choose a password for your visitor access (%{email})."
       title: "Welcome, %{name}!"
       intro: "Set a password for your Paddock access (%{email})."
@@ -195,8 +257,30 @@ en:
   hub:
     show:
       title: Paddock
-      greeting: "Hello %{name}!"
-      profile: Your profile
+      greeting: "Hi %{name}!"
+      next_event: Next race
+      days:
+        one: day
+        other: days
+      number: "No. %{number}"
+      number_open: Start number pending
+      checked_in: Checked in
+      check_in_open: Check-in pending
+      waiver_done: Waiver ✓
+      waiver_open: Waiver pending
+      not_registered: You are not registered yet.
+      tiles:
+        schedule: Schedule
+        questions: Questions & info
+        chat: Chat
+        results: Results
+      announcements: News from the organizers
+      all: Open chat
+      no_announcements: No announcements yet.
+      my_events: My events
+      no_registrations: No registrations yet.
+    profile:
+      details: Your details
       edit: Edit
       name: Name
       nickname: Nickname
@@ -204,11 +288,6 @@ en:
       birthday: Date of birth
       organization: Team / organization
       public_profile: Public profile
-      my_events: My events
-      no_registrations: No registrations yet.
-      number: "No. %{number}"
-      number_open: Start number open
-      checked_in: checked in
     edit:
       title: Edit profile
       info: About me
@@ -221,9 +300,37 @@ en:
       riders: Riders
       pages: Pages
       users: Access
+      chat: Chat
+      app: App
+    chat_rooms:
+      fields:
+        name_de: Name (German)
+        name_en: Name (English)
+        description_de: Description (German)
+        description_en: Description (English)
+        audience: Who sees the channel? (Organizers see all)
+        organizers_only: Only organizers can write
+        position: Order
+        submit: Save
+      index:
+        title: Chat channels
+        open_chat: Open chat
+        new: New channel
+        name: Channel
+        audience: Visible to
+        writing: Writing
+        organizers: Organizers only
+        everyone: Everyone with access
+        delete: Delete
+        confirm_delete: "Delete channel %{name} and all its messages?"
+      new:
+        title: New channel
+      edit:
+        title: Edit channel
     users:
       roles:
-        staff: Staff
+        helper: Volunteer
+        staff: Organizer
         visitor: Visitor
         rider: Rider
       index:
@@ -345,6 +452,10 @@ en:
       submit: Save
 
   flash:
+    chat_rooms:
+      created: Channel created.
+      saved: Channel saved.
+      deleted: Channel deleted.
     users:
       invited: "Invitation sent to %{email}."
       revoked: "Access revoked for %{email}."
@@ -387,6 +498,8 @@ en:
 
   invitation_mailer:
     invite:
+      subject_helper: Invitation as a volunteer
+      body_helper: you have been invited as a volunteer. Set your password here.
       subject_staff: Invitation to the team
       subject_visitor: Invitation as a visitor
       greeting_generic: "Hello,"

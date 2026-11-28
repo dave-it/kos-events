@@ -1,4 +1,5 @@
-# Sprachauswahl: ?locale=, Cookie, Browser-Sprache, sonst Standard (de).
+# Sprachauswahl: ?locale=, Cookie, Vorgabe des Bereichs, Browser-Sprache, sonst Standard (de).
+# Vorgabe: Fahrer sehen alles in ihrer Profilsprache (anfangs Englisch).
 module Localization
   extend ActiveSupport::Concern
 
@@ -15,7 +16,12 @@ module Localization
     end
 
     def requested_locale
-      [ params[:locale], cookies[:locale], browser_locale ].find { |l| available_locales.include?(l.to_s) }
+      [ params[:locale], cookies[:locale], area_locale, browser_locale ].find { |l| available_locales.include?(l.to_s) }
+    end
+
+    # Von Controllern überschreibbar (z. B. Login: Englisch).
+    def area_locale
+      Current.user.rider&.locale || "en" if authenticated? && Current.user.rider_role?
     end
 
     def browser_locale

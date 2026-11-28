@@ -1,11 +1,11 @@
 # Produktion auf sirius: nginx (Host) -> 127.0.0.1:3012 -> Thruster (8080)/Puma im Container
 services:
   web:
-    build: .
+    # Gebaut von GitHub Actions; bin/deploy-sirius setzt IMAGE_TAG in .env auf den Commit.
+    image: ghcr.io/dave-it/kos-events:${IMAGE_TAG:-latest}
     restart: unless-stopped
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     ports:
       - "127.0.0.1:3012:8080"
     env_file:
@@ -29,11 +29,7 @@ services:
       POSTGRES_DB: kos_events_production
     volumes:
       - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U kos_events -d kos_events_production"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
+    # Kein Healthcheck: er startet alle paar Sekunden Prozesse im Container, was auf sirius (OpenVZ) hängt.
     mem_limit: 256m
 
 volumes:

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= content_for(:title) || t("app.title") %></title>
+    <%= render "shared/head" %>
+    <meta name="turbo-refresh-method" content="replace">
+  </head>
+
+  <%
+    home_path = current_user.staff_role? ? admin_events_path : hub_path
+    tabs = [
+      [ :home, current_user.staff_role? ? t("app.nav.admin") : t("app.nav.home"), home_path, controller_name == "hub" && action_name == "show" ],
+      [ :chat, t("app.nav.chat"), chat_rooms_path, controller_name == "chat_rooms" ],
+      [ :help, t("app.nav.info"), info_path, controller_name == "info" ],
+      [ :trophy, t("app.nav.results"), events_path, controller_name == "events" ]
+    ]
+    tabs << [ :user, t("app.nav.profile"), profile_hub_path, controller_name == "hub" && action_name != "show" ] unless current_user.staff_role?
+    focus = content_for?(:focus)
+  %>
+  <body class="min-h-dvh bg-ink text-white antialiased">
+    <div class="md:pl-60">
+      <header class="sticky top-0 z-30 border-b border-white/10 bg-ink/95 pt-[env(safe-area-inset-top)] backdrop-blur md:hidden <%= "hidden" if focus %>">
+        <div class="flex h-14 items-center justify-between px-4">
+          <%= link_to home_path, "aria-label": t("app.nav.home") do %>
+            <%= image_tag "landing/logo-white.png", alt: t("public.brand"), class: "h-8 w-auto" %>
+          <% end %>
+          <%= link_to root_path, class: "flex items-center gap-1.5 text-sm text-white/60 hover:text-white" do %>
+            <%= app_icon :globe, "h-5 w-5" %><%= t("app.nav.website") %>
+          <% end %>
+        </div>
+      </header>
+
+      <main class="<%= focus ? "" : "pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:pb-10" %>">
+        <% if notice.present? || alert.present? %><div class="mx-auto max-w-3xl px-4 pt-4"><%= render "shared/flash" %></div><% end %>
+        <%= yield %>
+      </main>
+    </div>
+
+    <nav aria-label="<%= t("app.nav.label") %>"
+         class="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink-soft pb-[env(safe-area-inset-bottom)] md:top-0 md:right-auto md:flex md:w-60 md:flex-col md:border-t-0 md:border-r md:pb-0 <%= "hidden md:flex" if focus %>">
+      <%= link_to home_path, class: "hidden px-6 pt-6 pb-8 md:block" do %>
+        <%= image_tag "landing/logo-white.png", alt: t("public.brand"), class: "h-11 w-auto" %>
+      <% end %>
+      <ul class="flex md:flex-col md:gap-1 md:px-3">
+        <% tabs.each do |icon, label, path, active| %>
+          <li class="flex-1 md:flex-none">
+            <%= link_to path, class: "relative flex flex-col items-center gap-1 py-2.5 text-[11px] font-semibold md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-3 md:text-sm #{active ? 'text-signal md:bg-white/10 md:text-white' : 'text-white/60 hover:text-white'}", "aria-current": (active ? "page" : nil) do %>
+              <%= app_icon icon %>
+              <span><%= label %></span>
+              <% if icon == :chat && chat_unread_total.positive? %>
+                <span class="absolute top-1 left-1/2 ml-2 min-w-5 rounded-full bg-signal px-1.5 text-center text-[11px] leading-5 text-white md:static md:ml-auto" aria-label="<%= t("chat.unread", count: chat_unread_total) %>"><%= [ chat_unread_total, 99 ].min %></span>
+              <% end %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="mt-auto hidden space-y-3 px-6 py-6 text-sm text-white/60 md:block">
+        <%= link_to root_path, class: "flex items-center gap-2 hover:text-white" do %><%= app_icon :globe, "h-5 w-5" %><%= t("app.nav.website") %><% end %>
+        <p class="truncate"><%= current_user.display_name %></p>
+        <%= button_to t("shared.sign_out"), session_path, method: :delete, class: "underline underline-offset-4 cursor-pointer hover:text-white" %>
+      </div>
+    </nav>
+  </body>
+</html>

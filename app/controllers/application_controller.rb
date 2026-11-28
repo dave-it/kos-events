@@ -16,9 +16,16 @@ class ApplicationController < ActionController::Base
       head :forbidden unless current_user&.staff_role?
     end
 
-    def require_visitor
-      head :forbidden unless current_user&.visitor_role?
+    def require_guest
+      head :forbidden unless current_user&.visitor_role? || current_user&.helper_role?
     end
+
+    def require_member
+      head :forbidden unless current_user&.member?
+    end
+
+    # Layout für Seiten, die öffentlich sind und eingeloggt in der App erscheinen.
+    def public_or_app_layout = current_user&.member? ? "app" : "public"
 
     def require_rider
       head :forbidden unless current_user&.rider_role? && current_user.rider

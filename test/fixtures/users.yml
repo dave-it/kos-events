@@ -14,3 +14,8 @@ visitor:
   email_address: gast@example.com
   password_digest: <%= password_digest %>
   role: visitor
+
+helper:
+  email_address: helfer@example.com
+  password_digest: <%= password_digest %>
+  role: helper

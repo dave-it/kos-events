@@ -1,7 +1,10 @@
 require "test_helper"
 
 class PasswordsControllerTest < ActionDispatch::IntegrationTest
-  setup { @user = User.take }
+  setup do
+    @user = User.take
+    cookies[:locale] = "de"
+  end
 
   test "new" do
     get new_password_path

@@ -1,0 +1,7 @@
+<%= form_with url: chat_room_messages_path(room), id: "chat_form", class: "flex items-end gap-2",
+              data: { chat_target: "form", action: "turbo:submit-end->chat#sent" } do %>
+  <textarea name="chat_message[body]" rows="1" required maxlength="<%= ChatMessage::MAX_LENGTH %>"
+            class="field max-h-40 resize-none [field-sizing:content]" placeholder="<%= t("chat.placeholder") %>" aria-label="<%= t("chat.placeholder") %>"
+            data-chat-target="input" data-action="keydown->chat#keydown"></textarea>
+  <button type="submit" class="btn-primary h-[3.1rem] w-[3.1rem] shrink-0 !p-0" aria-label="<%= t("chat.send") %>"><%= app_icon :send, "h-5 w-5" %></button>
+<% end %>

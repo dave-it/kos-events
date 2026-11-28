@@ -1,7 +1,8 @@
 # Redaktionelle Seite (Markdown, zweisprachig), bearbeitbar im Team-Bereich.
 class Page < ApplicationRecord
   NAVS = %w[header footer none].freeze
-  RESERVED_SLUGS = %w[admin events hub session passwords invitations locale start up p rails assets].freeze
+  RESERVED_SLUGS = %w[admin events hub session passwords invitations locale start up p rails assets
+                      chat info gast launch manifest service-worker].freeze
 
   validates :slug, presence: true, uniqueness: true,
                    format: { with: /\A[a-z0-9]+(-[a-z0-9]+)*\z/ },

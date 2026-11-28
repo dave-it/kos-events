@@ -1,0 +1,36 @@
+<% content_for(:title) { @room.name } %>
+<% content_for(:focus, "1") %>
+<div class="md:grid md:grid-cols-[20rem_1fr]">
+  <div class="hidden h-dvh overflow-y-auto border-r border-white/10 md:block">
+    <h2 class="px-4 pt-6 pb-3 font-display text-4xl uppercase leading-none"><%= t("chat_rooms.index.title") %></h2>
+    <%= render "list" %>
+  </div>
+
+  <section class="flex h-dvh min-w-0 flex-col" data-controller="chat"
+           data-chat-user-value="<%= current_user.id %>" data-chat-staff-value="<%= current_user.staff_role? %>"
+           data-chat-read-url-value="<%= read_chat_room_path(@room) %>" data-chat-confirm-value="<%= t(".confirm_delete") %>">
+    <%= turbo_stream_from @room, channel: ChatStreamsChannel %>
+
+    <header class="flex items-center gap-3 border-b border-white/10 bg-ink-soft px-3 pt-[env(safe-area-inset-top)]">
+      <%= link_to chat_rooms_path, class: "-ml-1 p-2 text-white/70 md:hidden", "aria-label": t(".back") do %><%= app_icon :back %><% end %>
+      <div class="min-w-0 py-3 md:px-2">
+        <h1 class="truncate font-semibold"><%= @room.name %></h1>
+        <p class="truncate text-xs text-white/50"><%= @room.organizers_only? ? t(".organizers_only") : @room.description %></p>
+      </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto overscroll-contain px-4 py-4" data-chat-target="scroll">
+      <% if @messages.size == ChatRoomsController::PAGE_SIZE %><p class="mb-4 text-center text-xs text-white/40"><%= t(".older", count: ChatRoomsController::PAGE_SIZE) %></p><% end %>
+      <ol id="chat_messages" class="peer flex flex-col gap-3" aria-live="polite"><%= render partial: "chat_messages/chat_message", collection: @messages %></ol>
+      <% if @messages.empty? %><p class="py-10 text-center text-white/40 peer-has-[li]:hidden"><%= t(".empty") %></p><% end %>
+    </div>
+
+    <div class="border-t border-white/10 bg-ink-soft px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      <% if @room.writable_by?(current_user) %>
+        <%= render "chat_messages/form", room: @room %>
+      <% else %>
+        <p class="flex items-center justify-center gap-2 py-2 text-sm text-white/50"><%= app_icon :lock, "h-4 w-4" %><%= t(".read_only") %></p>
+      <% end %>
+    </div>
+  </section>
+</div>

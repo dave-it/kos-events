@@ -1,15 +1,6 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl"><%= t(".title") %></h1>
-
-  <%= form_with url: password_path(params[:token]), method: :put, class: "contents" do |form| %>
-    <div class="my-5">
-      <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: t(".password"), maxlength: 72, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-    </div>
-    <div class="my-5">
-      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: t(".confirmation"), maxlength: 72, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-    </div>
-    <div class="inline">
-      <%= form.submit t(".submit"), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer inline-block" %>
-    </div>
-  <% end %>
-</div>
+<h1 class="font-display text-4xl uppercase leading-none"><%= t(".title") %></h1>
+<%= form_with url: password_path(params[:token]), method: :put, class: "mt-6 space-y-4" do |form| %>
+  <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: t(".password"), maxlength: 72, class: "field" %>
+  <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: t(".confirmation"), maxlength: 72, class: "field" %>
+  <%= form.submit t(".submit"), class: "btn-primary w-full" %>
+<% end %>

@@ -1,4 +1,55 @@
 de:
+  app:
+    title: Fahrerlager – Ice Cross Austria
+    manifest_description: Fahrerlager, Q&A, Chat und Ergebnisse des Ice Cross Weltcups.
+    nav:
+      label: App-Navigation
+      home: Start
+      admin: Verwaltung
+      chat: Chat
+      info: Q&A
+      results: Ergebnisse
+      profile: Profil
+      website: Webseite
+    install:
+      title: Als App installieren
+      text: Lege Ice Cross auf deinen Startbildschirm. Dann öffnet es sich wie eine App.
+      button: Jetzt installieren
+      ios: "Am iPhone oder iPad: in Safari auf Teilen tippen und dann „Zum Home-Bildschirm“ wählen."
+  auth:
+    claim: Dein Zugang zum Weltcup auf der Winterleiten
+    website: Zur Webseite
+    to_login: Zurück zur Anmeldung
+  chat:
+    placeholder: Nachricht schreiben
+    send: Senden
+    manage: Kanäle verwalten
+    no_rooms: Noch keine Kanäle.
+    unread:
+      one: 1 ungelesene Nachricht
+      other: "%{count} ungelesene Nachrichten"
+  chat_rooms:
+    index:
+      title: Chat
+      pick: Wähle links einen Kanal.
+    show:
+      back: Alle Kanäle
+      organizers_only: Nur die Organisatoren schreiben hier
+      read_only: Hier schreiben nur die Organisatoren.
+      empty: Noch keine Nachrichten.
+      older: "Angezeigt werden die letzten %{count} Nachrichten."
+      confirm_delete: Nachricht wirklich löschen?
+  info:
+    overview: Überblick
+    essentials: Das Wichtigste
+    show:
+      title: Fragen & Infos
+      search: "Suchen, z. B. Parken oder Helm"
+      topics: Themen
+      no_results: Dazu haben wir nichts gefunden.
+      ask: Im Chat fragen
+      still_questions: Noch eine Frage offen?
+      still_text: Im Kanal „Fragen an die Orga“ antworten die Organisatoren.
   shared:
     sign_out: Abmelden
     language: Sprache
@@ -17,6 +68,8 @@ de:
     brand: Ice Cross Austria
     footer_org: Österreichischer Skate Cross Verband
     nav:
+      my_area_short: Meine App
+      menu: Menü
       event: Nächstes Event
       join: Mitmachen
       sport: Der Sport
@@ -147,10 +200,18 @@ de:
   sessions:
     new:
       title: Anmelden
+      subtitle: Ein Login für alle beim Weltcup. Du landest automatisch in deinem Bereich.
+      roles_label: Wer sich hier anmeldet
+      roles:
+        rider: Fahrer
+        helper: Helfer
+        visitor: Besucher
       email: E-Mail-Adresse
       password: Passwort
-      submit: Anmelden
+      show_password: Passwort anzeigen
       forgot: Passwort vergessen?
+      submit: Anmelden
+      invite_only: "Zugänge gibt es per Einladung. Noch keine bekommen? Schreib an"
 
   passwords:
     new:
@@ -165,8 +226,8 @@ de:
 
   guest:
     show:
-      title: Besucherbereich
-      intro: Alle Events und Ergebnisse auf einen Blick.
+      title: Schön, dass du dabei bist
+      intro: Dein eigener Bereich wird gerade gebaut. Hier findest du schon Events und Ergebnisse.
       upcoming: Kommende Events
       none: Aktuell sind keine Events geplant.
       results: Letzte Ergebnisse
@@ -175,6 +236,7 @@ de:
     show:
       title_generic: Willkommen!
       intro_staff: "Lege ein Passwort für deinen Mitarbeiter-Zugang fest (%{email})."
+      intro_helper: "Lege ein Passwort für deinen Helfer-Zugang fest (%{email})."
       intro_visitor: "Lege ein Passwort für deinen Besucher-Zugang fest (%{email})."
       title: "Willkommen, %{name}!"
       intro: "Lege ein Passwort für deinen Fahrerlager-Zugang fest (%{email})."
@@ -196,7 +258,29 @@ de:
     show:
       title: Fahrerlager
       greeting: "Hallo %{name}!"
-      profile: Dein Profil
+      next_event: Nächstes Rennen
+      days:
+        one: Tag
+        other: Tage
+      number: "Nr. %{number}"
+      number_open: Startnummer offen
+      checked_in: Eingecheckt
+      check_in_open: Check-in offen
+      waiver_done: Verzichtserklärung ✓
+      waiver_open: Verzichtserklärung offen
+      not_registered: Du bist noch nicht angemeldet.
+      tiles:
+        schedule: Zeitplan
+        questions: Fragen & Infos
+        chat: Chat
+        results: Ergebnisse
+      announcements: Neues von der Orga
+      all: Zum Chat
+      no_announcements: Noch keine Ankündigungen.
+      my_events: Meine Events
+      no_registrations: Noch keine Anmeldungen.
+    profile:
+      details: Deine Daten
       edit: Bearbeiten
       name: Name
       nickname: Nickname
@@ -204,11 +288,6 @@ de:
       birthday: Geburtstag
       organization: Team / Organisation
       public_profile: Öffentliches Profil
-      my_events: Meine Events
-      no_registrations: Noch keine Anmeldungen.
-      number: "Nr. %{number}"
-      number_open: Startnummer offen
-      checked_in: eingecheckt
     edit:
       title: Profil bearbeiten
       info: Über mich
@@ -221,9 +300,37 @@ de:
       riders: Fahrer
       pages: Seiten
       users: Zugänge
+      chat: Chat
+      app: App
+    chat_rooms:
+      fields:
+        name_de: Name (Deutsch)
+        name_en: Name (Englisch)
+        description_de: Beschreibung (Deutsch)
+        description_en: Beschreibung (Englisch)
+        audience: Wer sieht den Kanal? (Organisatoren sehen alle)
+        organizers_only: Nur Organisatoren dürfen schreiben
+        position: Reihenfolge
+        submit: Speichern
+      index:
+        title: Chat-Kanäle
+        open_chat: Zum Chat
+        new: Neuer Kanal
+        name: Kanal
+        audience: Sichtbar für
+        writing: Schreiben
+        organizers: Nur Organisatoren
+        everyone: Alle mit Zugang
+        delete: Löschen
+        confirm_delete: "Kanal %{name} samt allen Nachrichten löschen?"
+      new:
+        title: Neuer Kanal
+      edit:
+        title: Kanal bearbeiten
     users:
       roles:
-        staff: Mitarbeiter
+        helper: Helfer
+        staff: Organisator
         visitor: Besucher
         rider: Fahrer
       index:
@@ -345,6 +452,10 @@ de:
       submit: Speichern
 
   flash:
+    chat_rooms:
+      created: Kanal angelegt.
+      saved: Kanal gespeichert.
+      deleted: Kanal gelöscht.
     users:
       invited: "Einladung an %{email} gesendet."
       revoked: "Zugang für %{email} entzogen."
@@ -387,6 +498,8 @@ de:
 
   invitation_mailer:
     invite:
+      subject_helper: Einladung als Helfer
+      body_helper: du wurdest als Helfer eingeladen. Lege hier dein Passwort fest.
       subject_staff: Einladung ins Team
       subject_visitor: Einladung als Besucher
       greeting_generic: "Hallo,"

@@ -1,4 +1,5 @@
 class PasswordsController < ApplicationController
+  layout "auth"
   allow_unauthenticated_access
   before_action :set_user_by_token, only: %i[ edit update ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_password_path, alert: I18n.t("flash.try_again_later") }
@@ -32,4 +33,7 @@ class PasswordsController < ApplicationController
     rescue ActiveSupport::MessageVerifier::InvalidSignature
       redirect_to new_password_path, alert: t("flash.passwords.invalid")
     end
+
+    # Die Anmeldung ist wie das Fahrerlager zuerst Englisch, umschaltbar auf Deutsch.
+    def area_locale = "en"
 end

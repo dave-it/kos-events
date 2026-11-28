@@ -1,0 +1,30 @@
+<%= form_with model: @room, url: url, class: "mt-5" do |form| %>
+  <% if @room.errors.any? %>
+    <div class="py-2 px-3 bg-red-50 text-red-600 rounded-lg"><%= @room.errors.full_messages.to_sentence %></div>
+  <% end %>
+  <% %i[name_de name_en description_de description_en].each do |field| %>
+    <div class="my-4">
+      <%= form.label field, t("admin.chat_rooms.fields.#{field}"), class: "text-sm text-gray-600" %>
+      <%= form.text_field field, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+  <% end %>
+  <fieldset class="my-4">
+    <legend class="text-sm text-gray-600"><%= t("admin.chat_rooms.fields.audience") %></legend>
+    <input type="hidden" name="chat_room[audience][]" value="">
+    <% ChatRoom::AUDIENCES.each do |role| %>
+      <label class="mt-2 mr-5 inline-flex items-center gap-2">
+        <%= check_box_tag "chat_room[audience][]", role, @room.audience.include?(role), id: "chat_room_audience_#{role}" %>
+        <%= t("admin.users.roles.#{role}") %>
+      </label>
+    <% end %>
+  </fieldset>
+  <label class="my-4 flex items-center gap-2">
+    <%= form.check_box :organizers_only %> <%= t("admin.chat_rooms.fields.organizers_only") %>
+  </label>
+  <div class="my-4">
+    <%= form.label :position, t("admin.chat_rooms.fields.position"), class: "text-sm text-gray-600" %>
+    <%= form.number_field :position, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-32" %>
+  </div>
+  <%= form.submit t("admin.chat_rooms.fields.submit"), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+  <%= link_to t("shared.cancel"), admin_chat_rooms_path, class: "ml-3 underline" %>
+<% end %>

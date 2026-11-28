@@ -1,42 +1,69 @@
 #!/usr/bin/env bash
-# Deployt den aktuellen Git-Stand (HEAD) nach sirius. Baut auf dem Server.
-# Voraussetzung: ~/kos-events/.env auf dem Server (siehe .env.example).
+# Deployt den aktuellen Commit nach sirius. Das Image baut GitHub Actions, sirius lädt es nur.
+#
+# Voraussetzungen (einmalig, siehe docs/deployment.md):
+#   - ~/kos-events/.env auf dem Server (siehe .env.example)
+#   - auf dem Server: docker login ghcr.io (Token mit nur "read:packages")
+#
+# Optional: SSH_CONFIG=/pfad/zur/ssh_config, SKIP_BACKUP=1
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
-  echo "Uncommitted changes: only committed code is deployed." >&2
+SSH=(ssh ${SSH_CONFIG:+-F "$SSH_CONFIG"} sirius)
+REF=$(git rev-parse HEAD)
+IMAGE="ghcr.io/dave-it/kos-events:$REF"
+
+git fetch -q origin main
+if ! git merge-base --is-ancestor "$REF" origin/main; then
+  echo "Commit ${REF:0:7} ist noch nicht auf origin/main. Zuerst pushen." >&2
+  exit 1
 fi
 
-echo "==> Upload $(git rev-parse --short HEAD)"
-ssh sirius 'mkdir -p ~/kos-events'
-git archive HEAD | ssh sirius 'tar -x -C ~/kos-events'
+echo "==> Warte auf das Image ${REF:0:7} (GitHub Actions)"
+pulled=0
+for _ in $(seq 1 60); do
+  if out=$("${SSH[@]}" "docker pull -q $IMAGE" 2>&1); then pulled=1; break; fi
+  if grep -qiE "unauthorized|denied" <<<"$out"; then
+    echo "sirius darf das Image nicht laden. Auf dem Server einmal anmelden: docker login ghcr.io" >&2
+    echo "$out" >&2
+    exit 1
+  fi
+  sleep 20
+done
+[ "$pulled" = 1 ] || { echo "Image nicht verfügbar. Ist der Workflow 'CI' grün?" >&2; echo "$out" >&2; exit 1; }
 
-echo "==> Build + start"
-# Der Dockerfile-Frontend-Container (# syntax=...) startet auf sirius (OpenVZ) nicht zuverlässig.
-# Der eingebaute Frontend reicht, daher die Zeile nur auf dem Server entfernen.
-ssh sirius "sed -i '/^# syntax=/d' ~/kos-events/Dockerfile"
-built=0
-for attempt in 1 2 3 4 5; do
-  if ssh sirius 'cd ~/kos-events && docker compose build'; then built=1; break; fi
-  echo "Build failed (attempt $attempt), retrying..." >&2
-  sleep 10
-done
-[ "$built" = 1 ] || { echo "Build failed, nothing changed." >&2; exit 1; }
-# Auf sirius (OpenVZ) scheitert das Container-Netzwerk gelegentlich mit "iptables: Memory allocation problem".
-# Ein erneuter Start hilft in der Regel.
-for attempt in 1 2 3 4; do
-  ssh sirius 'cd ~/kos-events && docker compose up -d' && break
-  echo "Start failed (attempt $attempt), retrying..." >&2
-  sleep 5
-done
-ssh sirius 'docker image prune -f >/dev/null' 
+# Auf sirius (OpenVZ) scheitert das Starten von Containern gelegentlich. Deshalb zuerst mit
+# einem Wegwerf-Container prüfen; die laufende App wird erst danach ersetzt.
+retry() {
+  local attempt
+  for attempt in 1 2 3 4 5; do
+    "$@" && return 0
+    echo "Fehlgeschlagen (Versuch $attempt)" >&2
+    sleep 10
+  done
+  return 1
+}
+
+echo "==> Probestart"
+retry "${SSH[@]}" "timeout 90 docker run --rm --entrypoint true $IMAGE" ||
+  { echo "Docker kann gerade keine Container starten. Nichts wurde geändert." >&2; exit 1; }
+
+if [ "${SKIP_BACKUP:-}" != 1 ]; then
+  echo "==> Datenbank sichern"
+  retry "${SSH[@]}" "cd ~/kos-events && mkdir -p backups && umask 077 && timeout 90 docker compose exec -T db pg_dump -U kos_events kos_events_production | gzip > backups/vor-${REF:0:7}.sql.gz && [ \$(stat -c %s backups/vor-${REF:0:7}.sql.gz) -gt 1000 ]" ||
+    { echo "Sicherung fehlgeschlagen, Abbruch. (SKIP_BACKUP=1 überspringt sie.)" >&2; exit 1; }
+fi
+
+echo "==> Start"
+"${SSH[@]}" "cat > ~/kos-events/docker-compose.yml" < docker-compose.yml
+"${SSH[@]}" "cd ~/kos-events && sed -i '/^IMAGE_TAG=/d' .env && echo IMAGE_TAG=$REF >> .env"
+retry "${SSH[@]}" "cd ~/kos-events && docker compose up -d --no-build" || echo "Start meldet Fehler, prüfe Zustand..." >&2
 
 echo "==> Health"
-for i in $(seq 1 30); do
-  if ssh sirius 'curl -fs -o /dev/null http://127.0.0.1:3012/up'; then echo "OK"; exit 0; fi
+for _ in $(seq 1 40); do
+  if "${SSH[@]}" 'curl -fs -m 5 -o /dev/null http://127.0.0.1:3012/up'; then echo "OK"; exit 0; fi
   sleep 3
 done
-echo "App did not become healthy" >&2
-ssh sirius 'cd ~/kos-events && docker compose logs --tail 40 web' >&2
+echo "Die App antwortet nicht." >&2
+"${SSH[@]}" 'cd ~/kos-events && docker compose ps && docker compose logs --tail 40 web' >&2
 exit 1

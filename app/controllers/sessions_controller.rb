@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout "auth"
   allow_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_path, alert: I18n.t("flash.try_again_later") }
 
@@ -18,4 +19,8 @@ class SessionsController < ApplicationController
     terminate_session
     redirect_to new_session_path, status: :see_other
   end
+
+  private
+    # Die Anmeldung ist wie das Fahrerlager zuerst Englisch, umschaltbar auf Deutsch.
+    def area_locale = "en"
 end

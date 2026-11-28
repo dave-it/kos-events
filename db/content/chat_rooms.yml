@@ -1,0 +1,49 @@
+# Start-Kanäle. Nur angelegt, wenn noch nicht vorhanden; Änderungen im Team-Bereich bleiben erhalten.
+
+- name_de: Ankündigungen
+  name_en: Announcements
+  description_de: Wichtige Infos von den Organisatoren
+  description_en: Important updates from the organizers
+  audience: [rider, helper, visitor]
+  organizers_only: true
+  position: 1
+
+- name_de: Zeitplan & Briefing
+  name_en: Schedule & briefing
+  description_de: Änderungen am Zeitplan, Briefings, Startzeiten
+  description_en: Schedule changes, briefings, start times
+  audience: [rider, helper]
+  organizers_only: true
+  position: 2
+
+- name_de: Fahrer-Chat
+  name_en: Rider chat
+  description_de: Austausch unter Fahrerinnen und Fahrern
+  description_en: Chat among riders
+  audience: [rider]
+  organizers_only: false
+  position: 3
+
+- name_de: Fragen an die Orga
+  name_en: Ask the organizers
+  description_de: Fragen zum Rennen, alle Fahrer lesen mit
+  description_en: Questions about the race, all riders can read along
+  audience: [rider]
+  organizers_only: false
+  position: 4
+
+- name_de: Anreise & Unterkunft
+  name_en: Travel & accommodation
+  description_de: Fahrgemeinschaften, Zimmer, Shuttle
+  description_en: Ride sharing, rooms, shuttle
+  audience: [rider, helper]
+  organizers_only: false
+  position: 5
+
+- name_de: Helfer
+  name_en: Volunteers
+  description_de: Koordination der Helfer
+  description_en: Volunteer coordination
+  audience: [helper]
+  organizers_only: false
+  position: 6

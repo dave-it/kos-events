@@ -33,6 +33,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   test "Angemeldete sehen Link zu ihrem Bereich" do
     sign_in_as users(:rider_user)
     get root_path
-    assert_select "a[href=?]", start_path, text: "Zu meinem Bereich"
+    assert_select "a[href=?] span", start_path, text: "Zu meinem Bereich"
   end
 end

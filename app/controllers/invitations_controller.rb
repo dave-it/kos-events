@@ -1,5 +1,6 @@
 # Öffentliche Annahme einer Einladung per Token-Link.
 class InvitationsController < ApplicationController
+  layout "auth"
   allow_unauthenticated_access
   rate_limit to: 10, within: 3.minutes, only: :update,
              with: -> { redirect_to new_session_path, alert: I18n.t("flash.try_again_later") }

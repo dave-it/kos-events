@@ -1,31 +1,35 @@
-<h1 class="font-bold text-3xl"><%= t(".title") %></h1>
+<div class="mx-auto max-w-xl px-4 py-6">
+  <h1 class="font-display text-4xl uppercase leading-none"><%= t(".title") %></h1>
 
-<%= form_with model: @rider, url: hub_path, method: :patch, class: "mt-5" do |form| %>
-  <% if @rider.errors.any? %>
-    <div class="py-2 px-3 bg-red-50 text-red-600 rounded-lg"><%= @rider.errors.full_messages.to_sentence %></div>
-  <% end %>
-  <% %i[firstname lastname nickname nation organization].each do |field| %>
-    <div class="my-4">
-      <%= form.label field, t("riders.fields.#{field}"), class: "text-sm text-gray-600" %>
-      <%= form.text_field field, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+  <%= form_with model: @rider, url: hub_path, method: :patch, class: "mt-6 space-y-4" do |form| %>
+    <% if @rider.errors.any? %>
+      <div class="rounded-xl bg-red-500/15 px-4 py-3 text-red-200" role="alert"><%= @rider.errors.full_messages.to_sentence %></div>
+    <% end %>
+    <% %i[firstname lastname nickname nation organization].each do |field| %>
+      <div>
+        <%= form.label field, t("riders.fields.#{field}"), class: "mb-1.5 block text-sm text-white/60" %>
+        <%= form.text_field field, class: "field" %>
+      </div>
+    <% end %>
+    <div>
+      <%= form.label :birthday, t("riders.fields.birthday"), class: "mb-1.5 block text-sm text-white/60" %>
+      <%= form.date_field :birthday, class: "field [color-scheme:dark]" %>
+    </div>
+    <div>
+      <%= form.label :info, t(".info"), class: "mb-1.5 block text-sm text-white/60" %>
+      <%= form.text_area :info, rows: 4, class: "field" %>
+    </div>
+    <div>
+      <%= form.label :locale, t("riders.fields.locale"), class: "mb-1.5 block text-sm text-white/60" %>
+      <%= form.select :locale, available_locales.map { |l| [ t("shared.locale_names.#{l}"), l ] }, {}, class: "field" %>
+    </div>
+    <label class="flex items-start gap-3 rounded-xl bg-white/5 p-4 text-sm">
+      <%= form.check_box :public_profile, class: "mt-0.5 h-5 w-5 shrink-0 accent-signal" %>
+      <span><%= t(".public_consent") %></span>
+    </label>
+    <div class="flex gap-3">
+      <%= form.submit t(".submit"), class: "btn-primary flex-1" %>
+      <%= link_to t("shared.cancel"), profile_hub_path, class: "btn-ghost" %>
     </div>
   <% end %>
-  <div class="my-4">
-    <%= form.label :birthday, t("riders.fields.birthday"), class: "text-sm text-gray-600" %>
-    <%= form.date_field :birthday, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-  </div>
-  <div class="my-4">
-    <%= form.label :info, t(".info"), class: "text-sm text-gray-600" %>
-    <%= form.text_area :info, rows: 4, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-  </div>
-  <div class="my-4">
-    <%= form.label :locale, t("riders.fields.locale"), class: "text-sm text-gray-600" %>
-    <%= form.select :locale, available_locales.map { |l| [ t("shared.locale_names.#{l}"), l ] }, {}, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-  </div>
-  <div class="my-6 flex items-start gap-3">
-    <%= form.check_box :public_profile, class: "mt-1" %>
-    <%= form.label :public_profile, t(".public_consent"), class: "text-sm" %>
-  </div>
-  <%= form.submit t(".submit"), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
-  <%= link_to t("shared.cancel"), hub_path, class: "ml-3 underline" %>
-<% end %>
+</div>

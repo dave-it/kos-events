@@ -4,7 +4,7 @@ class HubControllerTest < ActionDispatch::IntegrationTest
   setup { sign_in_as users(:rider_user) }
 
   test "zeigt eigenes Profil" do
-    get hub_path
+    get profile_hub_path
     assert_response :success
     assert_select "dd", text: "Anna Fast"
   end
@@ -17,7 +17,7 @@ class HubControllerTest < ActionDispatch::IntegrationTest
 
   test "Profil aktualisieren" do
     patch hub_path, params: { rider: { nickname: "Flash", nation: "DE" } }
-    assert_redirected_to hub_path
+    assert_redirected_to profile_hub_path
     assert_equal "Flash", riders(:anna).reload.nickname
   end
 
