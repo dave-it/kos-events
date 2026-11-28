@@ -13,6 +13,9 @@ class User < ApplicationRecord
   validates :email_address, presence: true, uniqueness: true
   validates :password, length: { minimum: 8 }, allow_nil: true
 
+  # Solange der Login gesperrt ist, kommt nur das Team hinein.
+  def login_allowed? = staff_role? || Rails.configuration.x.login_open
+
   # Fahrer mit Profil und Organisatoren haben den vollen App-Bereich.
   def member? = staff_role? || (rider_role? && rider.present?)
 

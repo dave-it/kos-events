@@ -27,6 +27,9 @@ class InvitationsController < ApplicationController
     def set_invitation
       @invitation = Invitation.find_pending(params[:token])
       return redirect_to new_session_path, alert: t("flash.invitations.invalid") unless @invitation
+      unless @invitation.role == "staff" || Rails.configuration.x.login_open
+        return redirect_to new_session_path, alert: t("flash.sessions.closed")
+      end
 
       # Einladung in der Sprache des Fahrers zeigen, außer er hat selbst umgeschaltet.
       I18n.locale = @invitation.language if params[:locale].blank? && cookies[:locale].blank?

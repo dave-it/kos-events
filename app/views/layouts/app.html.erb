@@ -7,14 +7,16 @@
   </head>
 
   <%
-    home_path = current_user.staff_role? ? admin_events_path : hub_path
+    rider = current_user.rider
+    home_path = rider ? hub_path : admin_events_path
     tabs = [
-      [ :home, current_user.staff_role? ? t("app.nav.admin") : t("app.nav.home"), home_path, controller_name == "hub" && action_name == "show" ],
+      [ :home, rider ? t("app.nav.home") : t("app.nav.admin"), home_path, controller_name == "hub" && action_name == "show" ],
       [ :chat, t("app.nav.chat"), chat_rooms_path, controller_name == "chat_rooms" ],
       [ :help, t("app.nav.info"), info_path, controller_name == "info" ],
       [ :trophy, t("app.nav.results"), events_path, controller_name == "events" ]
     ]
-    tabs << [ :user, t("app.nav.profile"), profile_hub_path, controller_name == "hub" && action_name != "show" ] unless current_user.staff_role?
+    tabs << [ :user, t("app.nav.profile"), profile_hub_path, controller_name == "hub" && action_name != "show" ] if rider
+    tabs << [ :settings, t("app.nav.admin"), admin_events_path, false ] if rider && current_user.staff_role?
     focus = content_for?(:focus)
   %>
   <body class="min-h-dvh bg-ink text-white antialiased">

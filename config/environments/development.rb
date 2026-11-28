@@ -1,6 +1,9 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # In Entwicklung und Test ist der Login offen (Produktion: LOGIN_OPEN, siehe application.rb).
+  config.x.login_open = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Make code changes take effect immediately without server restart.

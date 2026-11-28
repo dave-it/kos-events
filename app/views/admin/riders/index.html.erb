@@ -14,7 +14,7 @@
       <tr class="border-t border-gray-100">
         <td class="p-3"><%= link_to rider.name, admin_rider_path(rider), class: "text-blue-600 underline" %></td>
         <td class="p-3"><%= rider.email %></td>
-        <td class="p-3"><%= rider.registered? ? t(".active") : t(".invited") %></td>
+        <td class="p-3"><%= rider.registered? ? t(".active") : (Rails.configuration.x.login_open ? t(".invited") : "–") %></td>
       </tr>
     <% end %>
   </tbody>

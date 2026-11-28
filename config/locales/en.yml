@@ -212,6 +212,7 @@ en:
 
   sessions:
     new:
+      closed: Sign-in is currently open to the team only.
       title: Sign in
       subtitle: One login for everyone at the World Cup. You land in your own area automatically.
       roles_label: Who signs in here
@@ -479,6 +480,7 @@ en:
       deleted: Page deleted.
     try_again_later: Please try again later.
     sessions:
+      closed: Sign-in is currently open to the team only.
       invalid: Wrong email address or password.
     passwords:
       sent: If an account with that email address exists, we have sent reset instructions.
@@ -491,6 +493,8 @@ en:
     hub:
       saved: Profile saved.
     riders:
+      created_without_invitation: Rider created. No invitation was sent because sign-in is closed.
+      login_closed: Sign-in is closed. No invitations are sent.
       created: Rider created and invitation sent.
       already_registered: This rider already has access.
       reinvited: Invitation sent again.

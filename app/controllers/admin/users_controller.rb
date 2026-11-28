@@ -16,7 +16,9 @@ module Admin
 
     def create
       @invitation = Invitation.new(invitation_params.merge(invited_by: current_user))
-      if INVITABLE_ROLES.include?(@invitation.role) && @invitation.save
+      if @invitation.role != "staff" && !Rails.configuration.x.login_open
+        redirect_to admin_users_path, alert: t("flash.riders.login_closed")
+      elsif INVITABLE_ROLES.include?(@invitation.role) && @invitation.save
         InvitationMailer.invite(@invitation).deliver_later
         # Der Link wird dem Team angezeigt, damit er auch ohne Mailversand weitergegeben werden kann.
         flash[:invite_url] = invitation_url(token: @invitation.token)

@@ -39,6 +39,9 @@ Stand der Prüfung: 28.11.2026. Reihenfolge einhalten.
 
        ssh -t sirius 'sudo certbot --nginx -d ice-cross.at -d www.ice-cross.at --redirect'
 
+## Login freischalten
+Bis dahin kommt nur das Team hinein. Freischalten: `LOGIN_OPEN=1` in `~/kos-events/.env`, dann `docker compose up -d`.
+
 ## Prüfen
 - [ ] https://ice-cross.at, `/impressum`, `/datenschutz`, `/cookies`
 - [ ] Alte Adressen: `/winterleiten_27`, `/prices`, `/art-hotel-spielberg`, `/en/home`

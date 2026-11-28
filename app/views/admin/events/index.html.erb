@@ -5,7 +5,7 @@
     <%= link_to t("admin.nav.pages"), admin_pages_path, class: "underline" %>
     <%= link_to t("admin.nav.users"), admin_users_path, class: "underline" %>
     <%= link_to t("admin.nav.chat"), admin_chat_rooms_path, class: "underline" %>
-    <%= link_to t("admin.nav.app"), info_path, class: "underline" %>
+    <%= link_to t("admin.nav.app"), (current_user.rider ? hub_path : info_path), class: "underline" %>
     <%= link_to t(".new"), new_admin_event_path, class: "rounded-md px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
   </div>
 </div>

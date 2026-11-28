@@ -5,9 +5,11 @@
   <dt class="text-gray-500"><%= t("riders.fields.nation") %></dt><dd><%= @rider.nation.presence || "–" %></dd>
   <dt class="text-gray-500"><%= t("riders.fields.organization") %></dt><dd><%= @rider.organization.presence || "–" %></dd>
   <dt class="text-gray-500"><%= t("riders.fields.locale") %></dt><dd><%= t("shared.locale_names.#{@rider.locale}") %></dd>
-  <dt class="text-gray-500"><%= t(".access") %></dt><dd><%= @rider.registered? ? t(".access_active") : t(".access_invited") %></dd>
+  <dt class="text-gray-500"><%= t(".access") %></dt><dd><%= @rider.registered? ? t(".access_active") : (Rails.configuration.x.login_open ? t(".access_invited") : "–") %></dd>
 </dl>
-<% unless @rider.registered? %>
+<% if !Rails.configuration.x.login_open %>
+  <p class="mt-5 text-sm text-gray-600"><%= t("flash.riders.login_closed") %></p>
+<% elsif !@rider.registered? %>
   <%= button_to t(".resend"), invite_admin_rider_path(@rider), class: "mt-5 rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
 <% end %>
 <%= link_to t("shared.back"), admin_riders_path, class: "mt-5 inline-block underline" %>

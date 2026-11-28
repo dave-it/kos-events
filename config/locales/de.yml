@@ -212,6 +212,7 @@ de:
 
   sessions:
     new:
+      closed: Der Login ist derzeit nur für das Team freigeschaltet.
       title: Anmelden
       subtitle: Ein Login für alle beim Weltcup. Du landest automatisch in deinem Bereich.
       roles_label: Wer sich hier anmeldet
@@ -479,6 +480,7 @@ de:
       deleted: Seite gelöscht.
     try_again_later: Bitte später erneut versuchen.
     sessions:
+      closed: Der Login ist derzeit nur für das Team freigeschaltet.
       invalid: E-Mail-Adresse oder Passwort stimmt nicht.
     passwords:
       sent: Falls ein Konto mit dieser E-Mail-Adresse existiert, haben wir eine Anleitung zum Zurücksetzen gesendet.
@@ -491,6 +493,8 @@ de:
     hub:
       saved: Profil gespeichert.
     riders:
+      created_without_invitation: Fahrer angelegt. Es wurde keine Einladung verschickt, weil der Login gesperrt ist.
+      login_closed: Der Login ist gesperrt. Es werden keine Einladungen verschickt.
       created: Fahrer angelegt und Einladung verschickt.
       already_registered: Fahrer hat bereits einen Zugang.
       reinvited: Einladung erneut verschickt.

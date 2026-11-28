@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
     def public_or_app_layout = current_user&.member? ? "app" : "public"
 
     def require_rider
-      head :forbidden unless current_user&.rider_role? && current_user.rider
+      # Auch ein Team-Konto mit Fahrerprofil (z. B. zum Testen) kommt ins Fahrerlager.
+      head :forbidden unless current_user&.rider && (current_user.rider_role? || current_user.staff_role?)
     end
 end

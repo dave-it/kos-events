@@ -10,6 +10,10 @@
   <% end %>
 </ul>
 
+<% unless Rails.configuration.x.login_open %>
+  <p class="mt-5 rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-semibold" role="status"><%= t(".closed") %></p>
+<% end %>
+
 <%= form_with url: session_path, class: "mt-6 space-y-4" do |form| %>
   <div>
     <%= form.label :email_address, t(".email"), class: "mb-1.5 block text-sm text-white/70" %>

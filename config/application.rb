@@ -14,6 +14,10 @@ module KosEvents
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
+    # Login für Fahrer, Helfer und Besucher. Solange er gesperrt ist, kommt nur das Team hinein
+    # und es werden keine Einladungen verschickt. Freischalten: LOGIN_OPEN=1 in der Umgebung.
+    config.x.login_open = ENV["LOGIN_OPEN"] == "1"
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

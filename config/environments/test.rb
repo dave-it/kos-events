@@ -4,6 +4,9 @@
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  # In Entwicklung und Test ist der Login offen (Produktion: LOGIN_OPEN, siehe application.rb).
+  config.x.login_open = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # While tests run files are not watched, reloading is not necessary.

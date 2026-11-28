@@ -17,6 +17,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          # Wie im Dockerfile. Neuere GitHub-Runner bieten 3.3.4 nicht mehr an.
+          ruby-version: "3.3.14"
           bundler-cache: true
 
       - name: Scan for common Rails security vulnerabilities using static analysis
@@ -37,6 +39,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          # Wie im Dockerfile. Neuere GitHub-Runner bieten 3.3.4 nicht mehr an.
+          ruby-version: "3.3.14"
           bundler-cache: true
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
@@ -53,6 +57,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          # Wie im Dockerfile. Neuere GitHub-Runner bieten 3.3.4 nicht mehr an.
+          ruby-version: "3.3.14"
           bundler-cache: true
 
       - name: Prepare RuboCop cache
@@ -97,6 +103,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          # Wie im Dockerfile. Neuere GitHub-Runner bieten 3.3.4 nicht mehr an.
+          ruby-version: "3.3.14"
           bundler-cache: true
 
       - name: Run tests

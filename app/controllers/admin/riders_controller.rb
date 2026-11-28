@@ -17,15 +17,21 @@ module Admin
     def create
       @rider = Rider.new(rider_params)
       if @rider.save
-        send_invitation(@rider)
-        redirect_to admin_rider_path(@rider), notice: t("flash.riders.created")
+        if Rails.configuration.x.login_open
+          send_invitation(@rider)
+          redirect_to admin_rider_path(@rider), notice: t("flash.riders.created")
+        else
+          redirect_to admin_rider_path(@rider), notice: t("flash.riders.created_without_invitation")
+        end
       else
         render :new, status: :unprocessable_entity
       end
     end
 
     def invite
-      if @rider.registered?
+      if !Rails.configuration.x.login_open
+        redirect_to admin_rider_path(@rider), alert: t("flash.riders.login_closed")
+      elsif @rider.registered?
         redirect_to admin_rider_path(@rider), alert: t("flash.riders.already_registered")
       else
         send_invitation(@rider)
