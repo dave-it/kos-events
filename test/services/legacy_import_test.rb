@@ -93,4 +93,29 @@ class LegacyImportTest < ActiveSupport::TestCase
     error = assert_raises(ArgumentError) { LegacyImport.new(Rails.root.join("test/fixtures/files")).call }
     assert_match "events", error.message
   end
+
+  test "leere Heats werden nicht importiert" do
+    result = LegacyImport.new(DIR).call
+    assert_nil Heat.find_by(legacy_id: 942)
+    assert_equal 2, result.counts[:heats]
+    assert_equal 1, result.counts[:empty_heats_skipped]
+  end
+
+  test "erneuter Import entfernt früher angelegte leere Heats" do
+    LegacyImport.new(DIR).call
+    Heat.create!(category: Category.find_by!(legacy_id: 910), round: 0, number: 1, legacy_id: 942)
+
+    LegacyImport.new(DIR).call
+    assert_nil Heat.find_by(legacy_id: 942)
+  end
+
+  test "empty_heats trifft nur importierte Heats ohne Fahrer" do
+    LegacyImport.new(DIR).call
+    men = Category.find_by!(legacy_id: 910)
+    imported_empty = Heat.create!(category: men, round: 0, number: 2, legacy_id: 999)
+    own_empty = Heat.create!(category: men, round: 2, number: 1)
+
+    assert_equal [ imported_empty ], LegacyImport.empty_heats.to_a
+    assert_not_includes LegacyImport.empty_heats, own_empty
+  end
 end

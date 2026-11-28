@@ -8,6 +8,10 @@ class LegacyImport
 
   Result = Struct.new(:counts, :warnings, keyword_init: true)
 
+  # Importierte Heats ohne einen einzigen Fahrer. Im alten kos sind das z. B. Heats der "Runde 0",
+  # die nie angezeigt wurden und die Nummern von Runde 1 doppeln.
+  def self.empty_heats = Heat.where.not(legacy_id: nil).where.missing(:heat_entries)
+
   def initialize(dir, publish: false, dry_run: false)
     @dir = Pathname(dir)
     @publish = publish
@@ -104,7 +108,11 @@ class LegacyImport
     end
 
     def import_heats
+      filled = rows("heatriders").map { |r| r["heat_id"] }.to_set
+
       rows("heats").each do |r|
+        next skip_empty_heat(r) unless filled.include?(r["id"])
+
         category = @categories[r["category_id"]] or next warn("Heat #{r['id']}: Kategorie #{r['category_id']} fehlt")
         heat = Heat.find_or_initialize_by(legacy_id: r["id"])
         heat.assign_attributes(category: category, round: r["heatround"].to_i, number: r["heatnumber"].to_i,
@@ -114,6 +122,12 @@ class LegacyImport
           @counts[:heats] += 1
         end
       end
+    end
+
+    # Für Ergebnisse irrelevant: nicht anlegen und aus früheren Importen entfernen.
+    def skip_empty_heat(row)
+      self.class.empty_heats.where(legacy_id: row["id"]).destroy_all
+      @counts[:empty_heats_skipped] += 1
     end
 
     def import_heat_entries
